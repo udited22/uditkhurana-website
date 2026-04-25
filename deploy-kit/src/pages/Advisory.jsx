@@ -1,0 +1,67 @@
+import Layout from "../components/Layout.jsx";
+import { C, ADVISORY_AREAS } from "../constants.js";
+
+export default function AdvisoryPage() {
+  return (
+    <Layout activePath="/advisory">
+      <style>{`
+        .adv-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+        .area-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+        .sp{padding:80px 80px;}
+        @media(max-width:768px){.adv-grid{grid-template-columns:1fr!important;gap:40px!important;}.sp{padding:64px 24px!important;}.area-grid{grid-template-columns:1fr!important;}}
+      `}</style>
+
+      <div style={{ background: C.bgSection, padding: "80px 80px 64px", borderBottom: `1px solid ${C.borderSoft}` }} className="sp">
+        <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: C.cyan, marginBottom: "14px" }}>Advisory</p>
+          <h1 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(28px,4vw,52px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.1, marginBottom: "16px" }}>
+            Select advisory for fintech,<br /><em style={{ fontStyle: "italic", color: C.cyan }}>product, and leadership.</em>
+          </h1>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "14px", fontWeight: 300, color: C.textMid, lineHeight: 1.8, maxWidth: "520px" }}>
+            High-context conversations where experience can be genuinely useful — not volume, but depth.
+          </p>
+        </div>
+      </div>
+
+      <div className="sp" style={{ padding: "80px 80px", background: C.bg }}>
+        <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
+          <div className="adv-grid">
+            <div>
+              <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(18px,2.5vw,26px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.4, marginBottom: "20px" }}>
+                I take on a small number of high-context conversations where my experience can be genuinely useful.
+              </p>
+              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "13.5px", lineHeight: 1.85, color: C.textMid, fontWeight: 300, marginBottom: "16px" }}>
+                Relevant for fintech founders, early-stage startups, product leaders, and teams building investing, crypto, wealth, or AI-enabled products — or professionals looking for product and career clarity.
+              </p>
+              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "13.5px", lineHeight: 1.85, color: C.textMid, fontWeight: 300, marginBottom: "40px" }}>
+                This is not a consulting business. It is a small number of relationships where experience, honesty, and context can genuinely move the needle.
+              </p>
+              <div style={{ padding: "20px 24px", background: C.bgCard, border: `1px solid ${C.borderSoft}`, borderRadius: "5px", marginBottom: "32px" }}>
+                <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "16px", fontStyle: "italic", color: C.textMid, lineHeight: 1.7, marginBottom: "12px" }}>
+                  "The best advisory relationships are the ones where context is deep, trust is high, and the conversation can be honest."
+                </p>
+              </div>
+              <a href="mailto:hello@uditkhurana.in"
+                style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "13px 30px", background: C.cyan, color: "#071424", fontFamily: "'DM Sans',sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", cursor: "pointer", border: "none", borderRadius: "4px", textDecoration: "none" }}>
+                Write to hello@uditkhurana.in →
+              </a>
+            </div>
+
+            <div>
+              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: C.cyan, marginBottom: "20px" }}>Areas</p>
+              <div className="area-grid">
+                {ADVISORY_AREAS.map((a, i) => (
+                  <div key={i} style={{ background: C.bgCard, border: `1px solid ${C.borderSoft}`, borderRadius: "5px", padding: "16px" }}>
+                    <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "16px", color: C.cyan, opacity: 0.5, marginBottom: "8px" }}>{a.icon}</p>
+                    <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "11px", fontWeight: 600, color: C.textMid, marginBottom: "5px", lineHeight: 1.35 }}>{a.title}</p>
+                    <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "11px", fontWeight: 300, color: C.textLow, lineHeight: 1.62 }}>{a.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Layout>
+  );
+}
