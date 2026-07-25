@@ -1,5 +1,6 @@
 import Layout from "../components/Layout.jsx";
 import { C, ADVISORY_AREAS, CONTACT_EMAIL } from "../constants.js";
+import { ICONS } from "../components/Icons.jsx";
 
 export default function AdvisoryPage() {
   return (
@@ -51,13 +52,16 @@ export default function AdvisoryPage() {
             <div>
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: C.cyan, marginBottom: "20px" }}>General Areas I Can Help With</p>
               <div className="area-grid">
-                {ADVISORY_AREAS.map((a, i) => (
-                  <div key={i} style={{ background: C.bgCard, border: `1px solid ${C.borderSoft}`, borderRadius: "5px", padding: "16px" }}>
-                    <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "16px", color: C.cyan, opacity: 0.5, marginBottom: "8px" }}>{a.icon}</p>
-                    <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "11px", fontWeight: 600, color: C.textMid, marginBottom: "5px", lineHeight: 1.35 }}>{a.title}</p>
-                    <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "11px", fontWeight: 300, color: C.textLow, lineHeight: 1.62 }}>{a.desc}</p>
-                  </div>
-                ))}
+                {ADVISORY_AREAS.map((a, i) => {
+                  const Icon = ICONS[a.icon];
+                  return (
+                    <div key={i} style={{ background: C.bgCard, border: `1px solid ${C.borderSoft}`, borderRadius: "5px", padding: "16px" }}>
+                      <div style={{ color: C.cyan, opacity: 0.75, marginBottom: "10px" }}><Icon size={17} /></div>
+                      <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "11px", fontWeight: 600, color: C.textMid, marginBottom: "5px", lineHeight: 1.35 }}>{a.title}</p>
+                      <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "11px", fontWeight: 300, color: C.textLow, lineHeight: 1.62 }}>{a.desc}</p>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>

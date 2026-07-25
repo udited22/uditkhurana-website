@@ -1,5 +1,6 @@
 import Layout from "../components/Layout.jsx";
-import { C, CRED, JOURNEY } from "../constants.js";
+import { C, CRED, JOURNEY, COMPANIES } from "../constants.js";
+import { ICONS } from "../components/Icons.jsx";
 
 export default function AboutPage() {
   return (
@@ -44,19 +45,32 @@ export default function AboutPage() {
             {/* Left: credential cards */}
             <div>
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: C.cyan, marginBottom: "20px" }}>Credentials</p>
-              <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "24px" }}>
                 {[
-                  ["◈", "Principal Product Manager", "CoinDCX · Current"],
-                  ["◎", "Ironman 70.3 Finisher",     "Hybrid Triathlete"],
-                  ["⟁", "TradFi → Fintech → Crypto", "smallcase · Tickertape · CoinDCX"],
-                  ["◇", "Systems Builder & Writer",   "AI tools · Frameworks · Essays"],
-                ].map(([icon, label, sub], i) => (
-                  <div key={i} style={{ display: "flex", gap: "12px", padding: "12px 14px", background: C.bgCard, borderRadius: "5px", border: `1px solid ${C.borderSoft}` }}>
-                    <span style={{ color: C.cyan, fontSize: "13px", minWidth: "16px", marginTop: "1px" }}>{icon}</span>
-                    <div>
-                      <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12.5px", fontWeight: 500, color: C.textHigh }}>{label}</p>
-                      <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "11px", color: C.textMid, marginTop: "2px" }}>{sub}</p>
+                  ["briefcase", "Principal Product Manager", "CoinDCX · Current"],
+                  ["medal",     "Ironman 70.3 Finisher",     "Hybrid Triathlete"],
+                  ["arrows",    "TradFi → Fintech → Crypto", "smallcase · Tickertape · CoinDCX"],
+                  ["pen",       "Systems Builder & Writer",   "AI tools · Frameworks · Essays"],
+                ].map(([iconKey, label, sub], i) => {
+                  const Icon = ICONS[iconKey];
+                  return (
+                    <div key={i} style={{ display: "flex", gap: "12px", padding: "12px 14px", background: C.bgCard, borderRadius: "5px", border: `1px solid ${C.borderSoft}` }}>
+                      <span style={{ color: C.cyan, minWidth: "16px", marginTop: "1px" }}><Icon size={16} /></span>
+                      <div>
+                        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12.5px", fontWeight: 500, color: C.textHigh }}>{label}</p>
+                        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "11px", color: C.textMid, marginTop: "2px" }}>{sub}</p>
+                      </div>
                     </div>
+                  );
+                })}
+              </div>
+
+              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", color: C.textLow, marginBottom: "12px" }}>Companies</p>
+              <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                {COMPANIES.map((co, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", padding: "8px 2px", borderBottom: i < COMPANIES.length - 1 ? `1px solid ${C.borderSoft}` : "none" }}>
+                    <span style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "15px", color: C.textHigh }}>{co.name}</span>
+                    <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: C.textLow }}>{co.era}</span>
                   </div>
                 ))}
               </div>

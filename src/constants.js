@@ -51,14 +51,22 @@ export const NAV_LINKS = [
 ];
 
 // ─── IDENTITY CARDS (homepage) ───────────────────────────────────
-// Ordered professional-first: the two cards that establish industry
-// credibility lead, the eclectic-life cards follow as supporting proof.
+// Two explicit tiers, not just card order: "professional" establishes
+// industry credibility first, "eclectic" follows as supporting proof —
+// framed as evidence of how he operates, not a parallel identity.
 export const IDENTITY_CARDS = [
-  { icon: "◈", title: "Product & Fintech",    desc: "Operator notes on fintech, crypto, wealth, and product leadership.", href: "/writing"     },
-  { icon: "◇", title: "Advisory",             desc: "Selective work with founders, product leaders, and fintech teams.",   href: "/advisory"    },
-  { icon: "◎", title: "Writing & Per Diem",   desc: "Essays, notes, reflections, and frameworks for ambitious operators.", href: "/per-diem"    },
-  { icon: "○", title: "Fitness & Discipline", desc: "Training, endurance, strength, and the systems behind transformation.", href: "/discipline" },
-  { icon: "⬡", title: "Photography",          desc: "Visual stories from mountains, roads, cities, and quiet moments.",    href: "/photography" },
+  { tier: "professional", icon: "briefcase", title: "Product & Fintech",  desc: "Notes and essays on fintech, crypto, wealth, and product leadership.", href: "/writing"   },
+  { tier: "professional", icon: "users",     title: "Advisory",           desc: "Selective work with founders, product leaders, and fintech teams.", href: "/advisory"    },
+  { tier: "professional", icon: "pen",       title: "Writing & Per Diem", desc: "Essays, notes, reflections, and frameworks for ambitious operators.", href: "/per-diem"  },
+  { tier: "eclectic",     icon: "dumbbell",  title: "Fitness & Discipline", desc: "Training, endurance, strength, and the systems behind transformation.", href: "/discipline" },
+  { tier: "eclectic",     icon: "camera",    title: "Photography",        desc: "Visual stories from mountains, roads, cities, and quiet moments.",   href: "/photography" },
+];
+
+// ─── COMPANIES ────────────────────────────────────────────────────
+export const COMPANIES = [
+  { name: "CoinDCX",    era: "Now" },
+  { name: "Tickertape", era: "Fintech" },
+  { name: "smallcase",  era: "Fintech" },
 ];
 
 // ─── FEATURED (homepage strip, non-LinkedIn — max 2) ────────────
@@ -98,12 +106,12 @@ export const WRITINGS = [
 // ─── ADVISORY AREAS ─────────────────────────────────────────────
 // General areas of help — not a fixed engagement menu.
 export const ADVISORY_AREAS = [
-  { icon: "◈", title: "Product Strategy & Roadmap",    desc: "Cutting through noise to define what matters — sequencing, prioritization, and roadmaps for early-stage teams and product leaders." },
-  { icon: "⬡", title: "Fintech, Crypto & Wealth",      desc: "General domain guidance across equity investing infrastructure, crypto exchanges, and wealth products." },
-  { icon: "⟁", title: "Growth & Activation",           desc: "How products grow, retain, and build durable habits over time." },
-  { icon: "◇", title: "PM Cadence & Execution",        desc: "Operating rituals and rhythms that make execution consistent across chaos." },
-  { icon: "○", title: "AI-Enabled PM Workflows",       desc: "Using AI to think faster, write better, and ship more — without losing judgment." },
-  { icon: "◎", title: "Career & Leadership Mentoring", desc: "General guidance for PMs and product leaders navigating their next move." },
+  { icon: "compass",         title: "Product Strategy & Roadmap",    desc: "Cutting through noise to define what matters — sequencing, prioritization, and roadmaps for early-stage teams and product leaders." },
+  { icon: "wallet",          title: "Fintech, Crypto & Wealth",      desc: "General domain guidance across equity investing infrastructure, crypto exchanges, and wealth products." },
+  { icon: "trending-up",     title: "Growth & Activation",           desc: "How products grow, retain, and build durable habits over time." },
+  { icon: "clock",           title: "PM Cadence & Execution",        desc: "Operating rituals and rhythms that make execution consistent across chaos." },
+  { icon: "cpu",             title: "AI-Enabled PM Workflows",       desc: "Using AI to think faster, write better, and ship more — without losing judgment." },
+  { icon: "graduation-cap",  title: "Career & Leadership Mentoring", desc: "General guidance for PMs and product leaders navigating their next move." },
 ];
 
 // ─── CRED STRIP ──────────────────────────────────────────────────

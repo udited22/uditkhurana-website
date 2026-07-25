@@ -36,7 +36,7 @@ export default function WritingPage() {
             Recent &amp; highlighted,<br /><em style={{ fontStyle: "italic", color: C.cyan }}>straight from LinkedIn.</em>
           </h1>
           <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "14px", fontWeight: 300, color: C.textMid, lineHeight: 1.8, maxWidth: "560px" }}>
-            Operator notes on fintech, product, wealth, and systems. LinkedIn doesn't offer a way to auto-sync a personal feed, so these are hand-picked and embedded live — updated as new pieces publish.
+            Field notes on fintech, product, wealth, and systems. LinkedIn doesn't offer a way to auto-sync a personal feed, so these are hand-picked and embedded live — updated as new pieces publish.
           </p>
         </div>
       </div>

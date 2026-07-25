@@ -33,7 +33,7 @@ export default function PerDiemPage() {
               "Think clearer about work, money, and systems",
               "Build better operating habits",
               "Career leverage without the hustle",
-              "Real operator notes — not generic advice",
+              "Real field notes — not generic advice",
               "Stay disciplined without burning out",
             ].map((r, i) => (
               <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
@@ -53,7 +53,7 @@ export default function PerDiemPage() {
             <div style={{ background: C.bgCard, border: `1px solid ${C.border}`, borderRadius: "8px", padding: "36px 32px", position: "relative", overflow: "hidden" }}>
               <div style={{ position: "absolute", top: 0, right: 0, width: "180px", height: "180px", background: "radial-gradient(circle, rgba(28,143,166,0.08) 0%, transparent 70%)", pointerEvents: "none" }} />
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "22px", position: "relative", zIndex: 1 }}>
-                <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "8.5px", fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", color: C.cyan }}>Coming Soon · Daily</span>
+                <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "8.5px", fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", color: C.cyan }}>Coming Soon</span>
               </div>
               <div style={{ marginBottom: "18px", position: "relative", zIndex: 1 }}>
                 <PerDiemWordmark size="lg" />

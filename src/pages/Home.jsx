@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import Layout from "../components/Layout.jsx";
 import { C, IDENTITY_CARDS, FEATURED, CRED, JOURNEY, WRITINGS, SOCIAL, linkedInEmbedSrc } from "../constants.js";
+import { ICONS } from "../components/Icons.jsx";
 
 function useInView(threshold = 0.1) {
   const ref = useRef(null);
@@ -54,6 +55,7 @@ export default function HomePage() {
         @media(max-width:768px){
           .hero-ctas{flex-direction:column!important;align-items:flex-start!important;}
           .id-grid{grid-template-columns:1fr 1fr!important;}
+          .id-grid-2{grid-template-columns:1fr!important;}
           .feat-grid{grid-template-columns:1fr!important;}
           .li-grid{grid-template-columns:1fr!important;}
           .journey-row{grid-template-columns:1fr!important;}
@@ -137,27 +139,49 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SECTION 4: CHOOSE YOUR DOOR ─────────────────────────── */}
+      {/* ── SECTION 4: CHOOSE YOUR DOOR (professional-first, tiered) ── */}
       <section className="section-pad" style={{ padding: "72px 80px", background: C.bgSection }}>
         <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
           <Reveal>
             <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: C.cyan, marginBottom: "10px" }}>This is my world</p>
-            <h2 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(22px,3vw,34px)", fontWeight: 400, color: C.textHigh, marginBottom: "40px" }}>
+            <h2 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(22px,3vw,34px)", fontWeight: 400, color: C.textHigh, marginBottom: "36px" }}>
               Choose your door.
             </h2>
           </Reveal>
 
-          <div className="id-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "10px" }}>
-            {IDENTITY_CARDS.map((card, i) => (
-              <Reveal key={card.title} delay={i * 0.06}>
-                <div className="id-card" onClick={() => navigate(card.href)}>
-                  <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "20px", color: C.cyan, opacity: 0.55, marginBottom: "14px" }}>{card.icon}</p>
-                  <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "18px", fontWeight: 500, color: C.textHigh, lineHeight: 1.2, marginBottom: "8px" }}>{card.title}</h3>
-                  <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12px", fontWeight: 300, lineHeight: 1.7, color: C.textMid, flex: 1, marginBottom: "16px" }}>{card.desc}</p>
-                  <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: C.cyan, opacity: 0.7 }}>Explore →</p>
-                </div>
-              </Reveal>
-            ))}
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", color: C.textLow, marginBottom: "14px" }}>The Work</p>
+          <div className="id-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "10px", marginBottom: "36px" }}>
+            {IDENTITY_CARDS.filter(c => c.tier === "professional").map((card, i) => {
+              const Icon = ICONS[card.icon];
+              return (
+                <Reveal key={card.title} delay={i * 0.06}>
+                  <div className="id-card" onClick={() => navigate(card.href)}>
+                    <div style={{ color: C.cyan, opacity: 0.8, marginBottom: "14px" }}><Icon size={22} /></div>
+                    <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "18px", fontWeight: 500, color: C.textHigh, lineHeight: 1.2, marginBottom: "8px" }}>{card.title}</h3>
+                    <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12px", fontWeight: 300, lineHeight: 1.7, color: C.textMid, flex: 1, marginBottom: "16px" }}>{card.desc}</p>
+                    <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: C.cyan, opacity: 0.7 }}>Explore →</p>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", color: C.textLow, marginBottom: "14px" }}>The Rest of It</p>
+          <div className="id-grid-2" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "10px" }}>
+            {IDENTITY_CARDS.filter(c => c.tier === "eclectic").map((card, i) => {
+              const Icon = ICONS[card.icon];
+              return (
+                <Reveal key={card.title} delay={i * 0.06}>
+                  <div className="id-card" onClick={() => navigate(card.href)} style={{ padding: "20px 22px" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                      <span style={{ color: C.textMid, opacity: 0.85, flexShrink: 0 }}><Icon size={19} /></span>
+                      <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "16px", fontWeight: 500, color: C.textHigh, lineHeight: 1.2 }}>{card.title}</h3>
+                    </div>
+                    <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "11.5px", fontWeight: 300, lineHeight: 1.65, color: C.textMid, marginTop: "10px" }}>{card.desc}</p>
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
