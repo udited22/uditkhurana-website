@@ -1,6 +1,8 @@
 import Layout from "../components/Layout.jsx";
 import { C, ADVISORY_AREAS, CONTACT_EMAIL } from "../constants.js";
 import { ICONS } from "../components/Icons.jsx";
+import { CASE_STUDIES } from "../case-studies.js";
+import CaseStudyCard from "../components/CaseStudy.jsx";
 
 export default function AdvisoryPage() {
   return (
@@ -63,6 +65,16 @@ export default function AdvisoryPage() {
                   );
                 })}
               </div>
+            </div>
+          </div>
+
+          <div style={{ marginTop: "64px" }}>
+            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: C.cyan, marginBottom: "10px" }}>Case Studies</p>
+            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "13px", fontWeight: 300, color: C.textMid, lineHeight: 1.7, maxWidth: "60ch", marginBottom: "24px" }}>
+              Two anonymized engagements, in full — how the thinking actually unfolded, not just the outcome.
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+              {CASE_STUDIES.map((study, i) => <CaseStudyCard key={i} study={study} />)}
             </div>
           </div>
         </div>

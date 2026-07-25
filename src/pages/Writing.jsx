@@ -16,6 +16,12 @@ const HIGHLIGHTED = WRITINGS.slice(0, 3);
 const MORE = WRITINGS.slice(3);
 
 export default function WritingPage() {
+  const navigate = (href) => {
+    if (href.startsWith("http")) { window.open(href, "_blank"); return; }
+    window.history.pushState({}, "", href);
+    window.dispatchEvent(new PopStateEvent("popstate"));
+  };
+
   return (
     <Layout activePath="/writing">
       <style>{`
@@ -70,24 +76,29 @@ export default function WritingPage() {
             <a href={SOCIAL.linkedin} target="_blank" rel="noreferrer" style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: C.textMid }}>Full archive on LinkedIn →</a>
           </div>
           <div className="wgrid">
-            {MORE.map((w, i) => (
-              <a key={i} href={w.url} target={w.url.startsWith("http") ? "_blank" : undefined} rel="noreferrer" style={{ display: "block", height: "100%" }}>
-                <div className="writing-card">
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "14px" }}>
-                    <div style={{ display: "flex", gap: "8px" }}>
-                      <PlatformBadge platform={w.platform} />
-                      <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "8px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: C.cyan, background: "rgba(28,143,166,0.1)", padding: "3px 9px", borderRadius: "3px" }}>{w.tag}</span>
+            {MORE.map((w, i) => {
+              const internal = !w.url.startsWith("http");
+              return (
+                <a key={i} href={w.url} target={internal ? undefined : "_blank"} rel={internal ? undefined : "noreferrer"}
+                  onClick={internal ? (e => { e.preventDefault(); navigate(w.url); }) : undefined}
+                  style={{ display: "block", height: "100%" }}>
+                  <div className="writing-card">
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "14px" }}>
+                      <div style={{ display: "flex", gap: "8px" }}>
+                        <PlatformBadge platform={w.platform} />
+                        <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "8px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: C.cyan, background: "rgba(28,143,166,0.1)", padding: "3px 9px", borderRadius: "3px" }}>{w.tag}</span>
+                      </div>
+                      <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "11px", color: C.textLow }}>{w.min} read</span>
                     </div>
-                    <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "11px", color: C.textLow }}>{w.min} read</span>
+                    <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "19px", fontWeight: 500, color: C.textHigh, lineHeight: 1.28, marginBottom: "10px", flex: 1 }}>{w.title}</h3>
+                    <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12.5px", fontWeight: 300, lineHeight: 1.72, color: C.textMid, marginBottom: "18px" }}>{w.summary}</p>
+                    <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PLATFORM_COLORS[w.platform] || C.cyan }}>
+                      {internal ? "Read Essay →" : "Read on LinkedIn →"}
+                    </p>
                   </div>
-                  <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "19px", fontWeight: 500, color: C.textHigh, lineHeight: 1.28, marginBottom: "10px", flex: 1 }}>{w.title}</h3>
-                  <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12.5px", fontWeight: 300, lineHeight: 1.72, color: C.textMid, marginBottom: "18px" }}>{w.summary}</p>
-                  <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: PLATFORM_COLORS[w.platform] || C.cyan }}>
-                    Read on LinkedIn →
-                  </p>
-                </div>
-              </a>
-            ))}
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>

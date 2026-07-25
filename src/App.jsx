@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import HomePage        from "./pages/Home.jsx";
 import AboutPage       from "./pages/About.jsx";
 import WritingPage     from "./pages/Writing.jsx";
+import EssayLifeIsIntelligentPage from "./pages/EssayLifeIsIntelligent.jsx";
 import PhotographyPage from "./pages/Photography.jsx";
 import AdvisoryPage    from "./pages/Advisory.jsx";
 import PerDiemPage     from "./pages/PerDiem.jsx";
@@ -25,6 +26,7 @@ const ROUTES = {
   "/":            HomePage,
   "/about":       AboutPage,
   "/writing":     WritingPage,
+  "/writing/life-is-intelligent": EssayLifeIsIntelligentPage,
   "/photography": PhotographyPage,
   "/advisory":    AdvisoryPage,
   "/per-diem":    PerDiemPage,

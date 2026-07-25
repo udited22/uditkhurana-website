@@ -101,6 +101,7 @@ export const WRITINGS = [
   { platform: "LinkedIn", tag: "FINTECH",    title: "Don't Let Compliance Write Your UX",                     summary: "The hard-learned lesson most fintech teams discover too late — how to design for regulation without ruining the product experience.", url: "https://www.linkedin.com/posts/uditkhurana_most-teams-discover-this-the-hard-way-you-activity-7371399542723944448-WSP-", min: "4 min" },
   { platform: "LinkedIn", tag: "SYSTEMS",    title: "Data Is Never Perfect",                                   summary: "Waiting for clean data means waiting forever. A framework for making confident decisions with imperfect information.", url: "https://www.linkedin.com/posts/uditkhurana_fintech-productthinking-systemdesign-share-7356236354931904514-_3qf", min: "5 min" },
   { platform: "LinkedIn", tag: "CAREER",     title: "Where Does Product Sense Come From?",                    summary: "Product intuition is not a trait — it's a practice. Notes on how experienced PMs develop judgment.", url: "https://www.linkedin.com/posts/uditkhurana_where-does-product-sense-come-from-at-some-share-7290690643297812480-PSlF", min: "6 min" },
+  { platform: "Essay",    tag: "PHILOSOPHY", title: "Life is Intelligent",                                    summary: "On trusting that the dots — the near-misses, the closed doors, the strangers' small gestures — connect looking backwards, even when the future gives no guarantees.", url: "/writing/life-is-intelligent", min: "3 min" },
 ];
 
 // ─── ADVISORY AREAS ─────────────────────────────────────────────
