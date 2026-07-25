@@ -3,7 +3,6 @@ import HomePage        from "./pages/Home.jsx";
 import AboutPage       from "./pages/About.jsx";
 import WritingPage     from "./pages/Writing.jsx";
 import PhotographyPage from "./pages/Photography.jsx";
-import ProjectsPage    from "./pages/Projects.jsx";
 import AdvisoryPage    from "./pages/Advisory.jsx";
 import PerDiemPage     from "./pages/PerDiem.jsx";
 import DisciplinePage  from "./pages/Discipline.jsx";
@@ -14,10 +13,10 @@ const GLOBAL_STYLES = `
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{background:#07111C;}
-  ::selection{background:rgba(0,180,198,0.2);}
+  ::selection{background:rgba(28,143,166,0.2);}
   ::-webkit-scrollbar{width:3px;}
   ::-webkit-scrollbar-track{background:#07111C;}
-  ::-webkit-scrollbar-thumb{background:#00B4C6;border-radius:3px;}
+  ::-webkit-scrollbar-thumb{background:#1C8FA6;border-radius:3px;}
   a{color:inherit;text-decoration:none;}
   button{font-family:'DM Sans',sans-serif;}
 `;
@@ -27,7 +26,6 @@ const ROUTES = {
   "/about":       AboutPage,
   "/writing":     WritingPage,
   "/photography": PhotographyPage,
-  "/projects":    ProjectsPage,
   "/advisory":    AdvisoryPage,
   "/per-diem":    PerDiemPage,
   "/discipline":  DisciplinePage,

@@ -1,5 +1,5 @@
 import Layout from "../components/Layout.jsx";
-import { C, ADVISORY_AREAS } from "../constants.js";
+import { C, ADVISORY_AREAS, CONTACT_EMAIL } from "../constants.js";
 
 export default function AdvisoryPage() {
   return (
@@ -34,21 +34,22 @@ export default function AdvisoryPage() {
                 Relevant for fintech founders, early-stage startups, product leaders, and teams building investing, crypto, wealth, or AI-enabled products — or professionals looking for product and career clarity.
               </p>
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "13.5px", lineHeight: 1.85, color: C.textMid, fontWeight: 300, marginBottom: "40px" }}>
-                This is not a consulting business. It is a small number of relationships where experience, honesty, and context can genuinely move the needle.
+                This is not a consulting business. It is a small number of relationships where experience, honesty, and context can genuinely move the needle. The areas on the right are a general map of what I can help with — for anything current, the fastest way to reach me is email.
               </p>
               <div style={{ padding: "20px 24px", background: C.bgCard, border: `1px solid ${C.borderSoft}`, borderRadius: "5px", marginBottom: "32px" }}>
-                <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "16px", fontStyle: "italic", color: C.textMid, lineHeight: 1.7, marginBottom: "12px" }}>
-                  "The best advisory relationships are the ones where context is deep, trust is high, and the conversation can be honest."
+                <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: C.cyan, marginBottom: "8px" }}>For current requests</p>
+                <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "16px", fontStyle: "italic", color: C.textMid, lineHeight: 1.7 }}>
+                  Reach out directly — I read and reply to every email myself.
                 </p>
               </div>
-              <a href="mailto:hello@uditkhurana.in"
+              <a href={`mailto:${CONTACT_EMAIL}`}
                 style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "13px 30px", background: C.cyan, color: "#071424", fontFamily: "'DM Sans',sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", cursor: "pointer", border: "none", borderRadius: "4px", textDecoration: "none" }}>
-                Write to hello@uditkhurana.in →
+                Write to {CONTACT_EMAIL} →
               </a>
             </div>
 
             <div>
-              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: C.cyan, marginBottom: "20px" }}>Areas</p>
+              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: C.cyan, marginBottom: "20px" }}>General Areas I Can Help With</p>
               <div className="area-grid">
                 {ADVISORY_AREAS.map((a, i) => (
                   <div key={i} style={{ background: C.bgCard, border: `1px solid ${C.borderSoft}`, borderRadius: "5px", padding: "16px" }}>

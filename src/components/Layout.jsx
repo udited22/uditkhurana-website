@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { C, NAV_LINKS } from "../constants.js";
+import { C, NAV_LINKS, SOCIAL, CONTACT_EMAIL } from "../constants.js";
 
 const LI   = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>;
 const IG   = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>;
@@ -10,7 +10,7 @@ export function PerDiemWordmark({ size = "md" }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: big ? "14px" : "10px" }}>
       {/* Replace this div with: <img src={logo} alt="Per Diem" style={{height: big?"44px":"32px",width:"auto"}} /> */}
-      <div style={{ width: big ? "42px" : "30px", height: big ? "42px" : "30px", background: "rgba(0,180,198,0.15)", border: "1.5px solid rgba(0,180,198,0.3)", borderRadius: "6px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+      <div style={{ width: big ? "42px" : "30px", height: big ? "42px" : "30px", background: "rgba(28,143,166,0.15)", border: "1.5px solid rgba(28,143,166,0.3)", borderRadius: "6px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
         <span style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: big ? "18px" : "13px", fontWeight: 600, color: C.cyan }}>P</span>
       </div>
       <div>
@@ -74,11 +74,11 @@ export default function Layout({ children, activePath = "/" }) {
         </div>
 
         <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-          <button
-            onClick={() => navigate("/per-diem")}
-            style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "8px 18px", background: C.cyan, color: "#071424", fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", cursor: "pointer", border: "none", borderRadius: "3px" }}>
-            Subscribe Free →
-          </button>
+          <a
+            href={SOCIAL.linkedin} target="_blank" rel="noreferrer"
+            style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "8px 18px", background: C.cyan, color: "#071424", fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", cursor: "pointer", border: "none", borderRadius: "3px", textDecoration: "none" }}>
+            <LI /> Connect
+          </a>
           <button onClick={() => setMenu(!menu)} aria-label="Menu"
             style={{ background: "none", border: "none", cursor: "pointer", padding: "6px", display: "flex", flexDirection: "column", gap: "5px" }}>
             <span style={{ width: "18px", height: "1.5px", background: C.textMid, display: "block", transition: "all .25s", transform: menu ? "rotate(45deg) translateY(6px)" : "none" }} />
@@ -118,11 +118,11 @@ export default function Layout({ children, activePath = "/" }) {
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: C.textLow, marginBottom: "4px" }}>Newsletter</p>
               <a href="/per-diem" onClick={e => { e.preventDefault(); navigate("/per-diem"); }} style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "15px", fontWeight: 500, color: C.cyan }}>Per Diem →</a>
-              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", color: C.textLow }}>Daily · Free · High signal</p>
+              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", color: C.textLow }}>Coming soon</p>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: C.textLow, marginBottom: "4px" }}>Navigate</p>
-              {["About","Essays","Photography","Projects","Advisory"].map(l => (
+              {["About","Essays","Photography","Advisory"].map(l => (
                 <a key={l} href={`/${l.toLowerCase()}`}
                   onClick={e => { e.preventDefault(); navigate(l === "Essays" ? "/writing" : `/${l.toLowerCase()}`); }}
                   style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: C.textLow, cursor: "pointer" }}>
@@ -132,13 +132,13 @@ export default function Layout({ children, activePath = "/" }) {
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: C.textLow, marginBottom: "4px" }}>Connect</p>
-              <a href="https://linkedin.com/in/uditkhurana" target="_blank" rel="noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: C.textMid }}><LI /> LinkedIn</a>
-              <a href="https://instagram.com/livingtheeclecticlife" target="_blank" rel="noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: C.textMid }}><IG /> Instagram</a>
-              <a href="mailto:hello@uditkhurana.in" style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: C.textMid }}><Mail /> Email</a>
+              <a href={SOCIAL.linkedin} target="_blank" rel="noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: C.textMid }}><LI /> LinkedIn <span style={{ textTransform: "none", letterSpacing: 0, color: C.textLow, fontSize: "10px" }}>— product & fintech notes</span></a>
+              <a href={SOCIAL.instagram} target="_blank" rel="noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: C.textMid }}><IG /> Instagram <span style={{ textTransform: "none", letterSpacing: 0, color: C.textLow, fontSize: "10px" }}>— training, travel & photography</span></a>
+              <a href={`mailto:${CONTACT_EMAIL}`} style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: C.textMid }}><Mail /> Email</a>
             </div>
           </div>
           <div style={{ marginTop: "32px", paddingTop: "20px", borderTop: `1px solid ${C.borderSoft}`, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "12px" }}>
-            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", color: C.textLow }}>© 2025 Udit Khurana</p>
+            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", color: C.textLow }}>© {new Date().getFullYear()} Udit Khurana</p>
             <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", color: C.textLow, fontStyle: "italic" }}>A life beyond one dimension.</p>
           </div>
         </div>

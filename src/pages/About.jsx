@@ -64,8 +64,8 @@ export default function AboutPage() {
 
             {/* Right: bio + journey */}
             <div>
-              <blockquote style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "19px", fontStyle: "italic", color: C.textMid, lineHeight: 1.72, marginBottom: "24px", borderLeft: `3px solid rgba(0,180,198,0.2)`, paddingLeft: "22px" }}>
-                "Combines strategic product vision with granular knowledge — operates with clarity, ownership, and intention."
+              <blockquote style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "19px", fontStyle: "italic", color: C.textMid, lineHeight: 1.72, marginBottom: "24px", borderLeft: `3px solid rgba(28,143,166,0.2)`, paddingLeft: "22px" }}>
+                9+ years shaping how India invests — from equity investing infrastructure at smallcase and Tickertape to product at CoinDCX, India's leading crypto exchange.
               </blockquote>
               <p style={{ fontSize: "14px", lineHeight: 1.87, color: C.textMid, fontWeight: 300, marginBottom: "16px" }}>
                 A fintech product leader who has navigated India's full financial technology arc — from traditional markets, through equity investing infrastructure at smallcase and Tickertape, and now into crypto at CoinDCX, India's leading crypto exchange.
@@ -80,7 +80,7 @@ export default function AboutPage() {
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: C.cyan, marginBottom: "16px" }}>The Journey</p>
               <div className="journey-row">
                 {JOURNEY.map((j, i) => (
-                  <div key={i} style={{ padding: "18px", background: j.active ? "rgba(0,180,198,0.06)" : C.bgCard, borderLeft: j.active ? `3px solid ${C.cyan}` : "3px solid transparent" }}>
+                  <div key={i} style={{ padding: "18px", background: j.active ? "rgba(28,143,166,0.06)" : C.bgCard, borderLeft: j.active ? `3px solid ${C.cyan}` : "3px solid transparent" }}>
                     <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "8.5px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: j.active ? C.cyan : C.textLow, marginBottom: "5px" }}>{j.era}</p>
                     <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12px", fontWeight: 500, color: j.active ? C.textHigh : C.textMid, marginBottom: "4px" }}>{j.label}</p>
                     <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "11px", fontWeight: 300, color: C.textMid, lineHeight: 1.58 }}>{j.sub}</p>
