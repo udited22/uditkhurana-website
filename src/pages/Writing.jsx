@@ -1,5 +1,7 @@
+import { useState, useMemo } from "react";
 import Layout from "../components/Layout.jsx";
 import { C, WRITINGS, SOCIAL, linkedInEmbedSrc } from "../constants.js";
+import Reveal from "../components/Reveal.jsx";
 
 const PLATFORM_COLORS = { LinkedIn: "#0A66C2", Essay: "#007A8A", "Per Diem": "#1C8FA6" };
 
@@ -14,8 +16,12 @@ function PlatformBadge({ platform }) {
 
 const HIGHLIGHTED = WRITINGS.slice(0, 3);
 const MORE = WRITINGS.slice(3);
+const TAGS = ["All", ...new Set(MORE.map(w => w.tag))];
 
 export default function WritingPage() {
+  const [tag, setTag] = useState("All");
+  const filtered = useMemo(() => tag === "All" ? MORE : MORE.filter(w => w.tag === tag), [tag]);
+
   const navigate = (href) => {
     if (href.startsWith("http")) { window.open(href, "_blank"); return; }
     window.history.pushState({}, "", href);
@@ -31,6 +37,9 @@ export default function WritingPage() {
         .li-highlight-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
         .wgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
         .sp{padding:80px 80px;}
+        .tag-pill{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:7px 15px;border-radius:20px;cursor:pointer;border:1px solid ${C.borderSoft};background:transparent;color:${C.textLow};transition:all .2s;}
+        .tag-pill:hover{color:${C.textHigh};border-color:${C.border};}
+        .tag-pill.active{background:${C.cyan};color:#071424;border-color:${C.cyan};}
         @media(max-width:900px){.li-highlight-grid{grid-template-columns:1fr 1fr!important;}}
         @media(max-width:768px){.wgrid{grid-template-columns:1fr!important;}.li-highlight-grid{grid-template-columns:1fr!important;}.sp{padding:64px 24px!important;}}
       `}</style>
@@ -49,20 +58,24 @@ export default function WritingPage() {
 
       <div className="sp" style={{ padding: "72px 80px 40px", background: C.bg }}>
         <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
-          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: C.cyan, marginBottom: "24px" }}>Highlighted</p>
+          <Reveal>
+            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: C.cyan, marginBottom: "24px" }}>Highlighted</p>
+          </Reveal>
           <div className="li-highlight-grid">
-            {HIGHLIGHTED.map((w) => {
+            {HIGHLIGHTED.map((w, i) => {
               const src = linkedInEmbedSrc(w.url);
               return (
-                <div key={w.url} className="li-embed-wrap">
-                  {src ? (
-                    <iframe src={src} title={w.title} height="520" width="100%" frameBorder="0" allowFullScreen loading="lazy" style={{ display: "block" }} />
-                  ) : (
-                    <a href={w.url} target="_blank" rel="noreferrer" style={{ display: "block", padding: "24px" }}>
-                      <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "16px", color: C.textHigh }}>{w.title}</p>
-                    </a>
-                  )}
-                </div>
+                <Reveal key={w.url} delay={i * 0.06}>
+                  <div className="li-embed-wrap">
+                    {src ? (
+                      <iframe src={src} title={w.title} height="520" width="100%" frameBorder="0" allowFullScreen loading="lazy" style={{ display: "block" }} />
+                    ) : (
+                      <a href={w.url} target="_blank" rel="noreferrer" style={{ display: "block", padding: "24px" }}>
+                        <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "16px", color: C.textHigh }}>{w.title}</p>
+                      </a>
+                    )}
+                  </div>
+                </Reveal>
               );
             })}
           </div>
@@ -71,12 +84,19 @@ export default function WritingPage() {
 
       <div className="sp" style={{ padding: "40px 80px 80px", background: C.bg }}>
         <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
-          <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", flexWrap: "wrap", gap: "10px", marginBottom: "24px" }}>
+          <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", flexWrap: "wrap", gap: "10px", marginBottom: "20px" }}>
             <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: C.cyan }}>More Writing</p>
             <a href={SOCIAL.linkedin} target="_blank" rel="noreferrer" style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: C.textMid }}>Full archive on LinkedIn →</a>
           </div>
+
+          <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: "26px" }}>
+            {TAGS.map(t => (
+              <button key={t} className={`tag-pill${tag === t ? " active" : ""}`} onClick={() => setTag(t)}>{t}</button>
+            ))}
+          </div>
+
           <div className="wgrid">
-            {MORE.map((w, i) => {
+            {filtered.map((w, i) => {
               const internal = !w.url.startsWith("http");
               return (
                 <a key={i} href={w.url} target={internal ? undefined : "_blank"} rel={internal ? undefined : "noreferrer"}
@@ -99,6 +119,9 @@ export default function WritingPage() {
                 </a>
               );
             })}
+            {filtered.length === 0 && (
+              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "13px", color: C.textLow }}>Nothing tagged "{tag}" yet.</p>
+            )}
           </div>
         </div>
       </div>

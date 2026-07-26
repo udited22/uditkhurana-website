@@ -1,6 +1,7 @@
 import Layout from "../components/Layout.jsx";
 import { C, CRED, JOURNEY, COMPANIES } from "../constants.js";
 import { ICONS } from "../components/Icons.jsx";
+import Reveal from "../components/Reveal.jsx";
 
 export default function AboutPage() {
   return (
@@ -41,6 +42,7 @@ export default function AboutPage() {
       {/* Main content */}
       <div className="sp" style={{ padding: "80px 80px" }}>
         <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
+          <Reveal>
           <div className="about-grid">
             {/* Left: credential cards */}
             <div>
@@ -103,6 +105,7 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
+          </Reveal>
         </div>
       </div>
 
@@ -119,10 +122,12 @@ export default function AboutPage() {
               ["Long games always win",  "Two-year thinking beats two-week thinking every time."],
               ["Refuse one dimension",   "Career, body, mind, money, taste — build all of them."],
             ].map(([title, desc], i) => (
-              <div key={i} style={{ background: C.bgCard, border: `1px solid ${C.borderSoft}`, borderRadius: "5px", padding: "20px 18px" }}>
-                <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "17px", fontWeight: 500, color: C.textHigh, marginBottom: "8px", lineHeight: 1.25 }}>{title}</p>
-                <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12px", fontWeight: 300, color: C.textMid, lineHeight: 1.68 }}>{desc}</p>
-              </div>
+              <Reveal key={i} delay={i * 0.05}>
+                <div style={{ background: C.bgCard, border: `1px solid ${C.borderSoft}`, borderRadius: "5px", padding: "20px 18px" }}>
+                  <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "17px", fontWeight: 500, color: C.textHigh, marginBottom: "8px", lineHeight: 1.25 }}>{title}</p>
+                  <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12px", fontWeight: 300, color: C.textMid, lineHeight: 1.68 }}>{desc}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>

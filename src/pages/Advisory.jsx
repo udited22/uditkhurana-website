@@ -3,6 +3,7 @@ import { C, ADVISORY_AREAS, CONTACT_EMAIL } from "../constants.js";
 import { ICONS } from "../components/Icons.jsx";
 import { CASE_STUDIES } from "../case-studies.js";
 import CaseStudyCard from "../components/CaseStudy.jsx";
+import Reveal from "../components/Reveal.jsx";
 
 export default function AdvisoryPage() {
   return (
@@ -28,6 +29,7 @@ export default function AdvisoryPage() {
 
       <div className="sp" style={{ padding: "80px 80px", background: C.bg }}>
         <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
+          <Reveal>
           <div className="adv-grid">
             <div>
               <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(18px,2.5vw,26px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.4, marginBottom: "20px" }}>
@@ -67,14 +69,19 @@ export default function AdvisoryPage() {
               </div>
             </div>
           </div>
+          </Reveal>
 
           <div style={{ marginTop: "64px" }}>
-            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: C.cyan, marginBottom: "10px" }}>Case Studies</p>
-            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "13px", fontWeight: 300, color: C.textMid, lineHeight: 1.7, maxWidth: "60ch", marginBottom: "24px" }}>
-              Two anonymized engagements, in full — how the thinking actually unfolded, not just the outcome.
-            </p>
+            <Reveal>
+              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: C.cyan, marginBottom: "10px" }}>Case Studies</p>
+              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "13px", fontWeight: 300, color: C.textMid, lineHeight: 1.7, maxWidth: "60ch", marginBottom: "24px" }}>
+                Two anonymized engagements, in full — how the thinking actually unfolded, not just the outcome.
+              </p>
+            </Reveal>
             <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-              {CASE_STUDIES.map((study, i) => <CaseStudyCard key={i} study={study} />)}
+              {CASE_STUDIES.map((study, i) => (
+                <Reveal key={i} delay={i * 0.06}><CaseStudyCard study={study} /></Reveal>
+              ))}
             </div>
           </div>
         </div>

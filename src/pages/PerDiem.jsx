@@ -1,6 +1,7 @@
 import Layout from "../components/Layout.jsx";
 import { C, CONTACT_EMAIL } from "../constants.js";
 import { PerDiemWordmark } from "../components/Layout.jsx";
+import Reveal from "../components/Reveal.jsx";
 
 export default function PerDiemPage() {
   return (
@@ -50,6 +51,7 @@ export default function PerDiemPage() {
         <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
           <div className="nl-grid">
             {/* Per Diem */}
+            <Reveal>
             <div style={{ background: C.bgCard, border: `1px solid ${C.border}`, borderRadius: "8px", padding: "36px 32px", position: "relative", overflow: "hidden" }}>
               <div style={{ position: "absolute", top: 0, right: 0, width: "180px", height: "180px", background: "radial-gradient(circle, rgba(28,143,166,0.08) 0%, transparent 70%)", pointerEvents: "none" }} />
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "22px", position: "relative", zIndex: 1 }}>
@@ -77,8 +79,10 @@ export default function PerDiemPage() {
                 </a>
               </div>
             </div>
+            </Reveal>
 
             {/* Eclectic Dispatch */}
+            <Reveal delay={0.08}>
             <div style={{ background: C.bgCard, border: `1px solid ${C.borderSoft}`, borderRadius: "8px", padding: "36px 32px" }}>
               <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "8.5px", fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", color: C.textLow, display: "block", marginBottom: "22px" }}>Coming Soon · Periodic</span>
               <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "24px", fontWeight: 500, color: C.textHigh, letterSpacing: "0.02em", lineHeight: 1, marginBottom: "4px" }}>The Eclectic Dispatch</p>
@@ -95,6 +99,7 @@ export default function PerDiemPage() {
                 </p>
               </div>
             </div>
+            </Reveal>
           </div>
         </div>
       </div>

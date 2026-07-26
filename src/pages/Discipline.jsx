@@ -1,13 +1,15 @@
 import Layout from "../components/Layout.jsx";
 import { C } from "../constants.js";
+import { ICONS } from "../components/Icons.jsx";
+import Reveal from "../components/Reveal.jsx";
 
 const PRINCIPLES = [
-  { icon: "◎", title: "Train like you build product", desc: "Periodisation, load management, recovery — the same systems thinking that works in product works in training." },
-  { icon: "◈", title: "Consistency over intensity",   desc: "Showing up at 70% every day beats showing up at 100% twice a week. The compounding is in the habit, not the heroics." },
-  { icon: "⟁", title: "The long game mindset",        desc: "An Ironman 70.3 is built over months of unglamorous training. So is every meaningful physical transformation." },
-  { icon: "○", title: "Recovery is the work",         desc: "Sleep, nutrition, and rest are not breaks from the system. They are the system." },
-  { icon: "⬡", title: "Discipline creates freedom",  desc: "Structure is not a cage. A well-designed training system gives you the freedom to perform, not just survive." },
-  { icon: "◇", title: "The body is infrastructure",  desc: "Physical capacity is leverage. Energy, focus, resilience — everything downstream improves when the body is strong." },
+  { icon: "cpu",       title: "Train like you build product", desc: "Periodisation, load management, recovery — the same systems thinking that works in product works in training." },
+  { icon: "clock",     title: "Consistency over intensity",   desc: "Showing up at 70% every day beats showing up at 100% twice a week. The compounding is in the habit, not the heroics." },
+  { icon: "trending-up", title: "The long game mindset",      desc: "An Ironman 70.3 is built over months of unglamorous training. So is every meaningful physical transformation." },
+  { icon: "moon",      title: "Recovery is the work",         desc: "Sleep, nutrition, and rest are not breaks from the system. They are the system." },
+  { icon: "compass",   title: "Discipline creates freedom",   desc: "Structure is not a cage. A well-designed training system gives you the freedom to perform, not just survive." },
+  { icon: "dumbbell",  title: "The body is infrastructure",   desc: "Physical capacity is leverage. Energy, focus, resilience — everything downstream improves when the body is strong." },
 ];
 
 const MILESTONES = [
@@ -47,6 +49,7 @@ export default function DisciplinePage() {
       {/* Ironman feature */}
       <div className="sp" style={{ padding: "80px 80px", background: C.bg }}>
         <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
+          <Reveal>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "center", marginBottom: "80px" }}>
             <div>
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: C.cyan, marginBottom: "16px" }}>Signature Achievement</p>
@@ -74,28 +77,40 @@ export default function DisciplinePage() {
               ))}
             </div>
           </div>
+          </Reveal>
 
           {/* Milestones */}
-          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: C.cyan, marginBottom: "20px" }}>Disciplines</p>
+          <Reveal>
+            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: C.cyan, marginBottom: "20px" }}>Disciplines</p>
+          </Reveal>
           <div className="mile-grid" style={{ marginBottom: "64px" }}>
             {MILESTONES.map((m, i) => (
-              <div key={i} style={{ background: C.bgCard, border: `1px solid ${C.borderSoft}`, borderRadius: "5px", padding: "18px 18px" }}>
-                <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "17px", fontWeight: 500, color: C.textHigh, marginBottom: "6px" }}>{m.label}</p>
-                <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "11.5px", fontWeight: 300, color: C.textMid, lineHeight: 1.65 }}>{m.sub}</p>
-              </div>
+              <Reveal key={i} delay={(i % 3) * 0.06}>
+                <div style={{ background: C.bgCard, border: `1px solid ${C.borderSoft}`, borderRadius: "5px", padding: "18px 18px" }}>
+                  <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "17px", fontWeight: 500, color: C.textHigh, marginBottom: "6px" }}>{m.label}</p>
+                  <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "11.5px", fontWeight: 300, color: C.textMid, lineHeight: 1.65 }}>{m.sub}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
 
           {/* Principles */}
-          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: C.cyan, marginBottom: "20px" }}>Operating Principles</p>
+          <Reveal>
+            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: C.cyan, marginBottom: "20px" }}>Operating Principles</p>
+          </Reveal>
           <div className="prin-grid">
-            {PRINCIPLES.map((p, i) => (
-              <div key={i} style={{ background: C.bgCard, border: `1px solid ${C.borderSoft}`, borderRadius: "5px", padding: "22px 20px" }}>
-                <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "18px", color: C.cyan, opacity: 0.55, marginBottom: "12px" }}>{p.icon}</p>
-                <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "17px", fontWeight: 500, color: C.textHigh, marginBottom: "8px", lineHeight: 1.25 }}>{p.title}</p>
-                <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12px", fontWeight: 300, color: C.textMid, lineHeight: 1.7 }}>{p.desc}</p>
-              </div>
-            ))}
+            {PRINCIPLES.map((p, i) => {
+              const Icon = ICONS[p.icon];
+              return (
+                <Reveal key={i} delay={(i % 3) * 0.06}>
+                  <div style={{ background: C.bgCard, border: `1px solid ${C.borderSoft}`, borderRadius: "5px", padding: "22px 20px" }}>
+                    <div style={{ color: C.cyan, opacity: 0.85, marginBottom: "12px" }}><Icon size={19} /></div>
+                    <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "17px", fontWeight: 500, color: C.textHigh, marginBottom: "8px", lineHeight: 1.25 }}>{p.title}</p>
+                    <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12px", fontWeight: 300, color: C.textMid, lineHeight: 1.7 }}>{p.desc}</p>
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -105,6 +105,12 @@ export const IconArrows = (p) => (
   </Svg>
 );
 
+export const IconMoon = (p) => (
+  <Svg {...p}>
+    <path d="M20 13.5A8.5 8.5 0 1 1 10.5 4a6.8 6.8 0 0 0 9.5 9.5z" />
+  </Svg>
+);
+
 export const ICONS = {
   briefcase: IconBriefcase,
   users: IconUsers,
@@ -119,4 +125,5 @@ export const ICONS = {
   "graduation-cap": IconGraduationCap,
   medal: IconMedal,
   arrows: IconArrows,
+  moon: IconMoon,
 };
