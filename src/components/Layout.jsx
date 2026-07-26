@@ -10,12 +10,12 @@ export function PerDiemWordmark({ size = "md" }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: big ? "14px" : "10px" }}>
       {/* Replace this div with: <img src={logo} alt="Per Diem" style={{height: big?"44px":"32px",width:"auto"}} /> */}
-      <div style={{ width: big ? "42px" : "30px", height: big ? "42px" : "30px", background: "rgba(28,143,166,0.15)", border: "1.5px solid rgba(28,143,166,0.3)", borderRadius: "6px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-        <span style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: big ? "18px" : "13px", fontWeight: 600, color: C.cyan }}>P</span>
+      <div style={{ width: big ? "42px" : "30px", height: big ? "42px" : "30px", background: "rgba(201,162,75,0.15)", border: "1.5px solid rgba(201,162,75,0.3)", borderRadius: "6px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+        <span style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: big ? "18px" : "13px", fontWeight: 600, color: C.gold }}>P</span>
       </div>
       <div>
         <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: big ? "26px" : "18px", fontWeight: 500, color: C.textHigh, letterSpacing: "0.03em", lineHeight: 1 }}>Per Diem</p>
-        {big && <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: C.cyanDim, marginTop: "4px" }}>Daily Dose of Learning</p>}
+        {big && <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: C.goldDim, marginTop: "4px" }}>Daily Dose of Learning</p>}
       </div>
     </div>
   );
@@ -47,14 +47,14 @@ export default function Layout({ children, activePath = "/" }) {
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 500,
         height: "60px", padding: "0 52px",
         display: "flex", alignItems: "center", justifyContent: "space-between",
-        background: scrolled ? "rgba(7,17,28,0.97)" : "transparent",
+        background: scrolled ? "rgba(11,11,12,0.97)" : "transparent",
         borderBottom: scrolled ? `1px solid ${C.borderSoft}` : "1px solid transparent",
         backdropFilter: scrolled ? "blur(20px)" : "none",
         transition: "all 0.3s ease",
       }}>
         <a href="/" onClick={e => { e.preventDefault(); navigate("/"); }} style={{ display: "flex", flexDirection: "column", gap: "2px", lineHeight: 1 }}>
           <span style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "18px", fontWeight: 500, letterSpacing: "0.03em", color: C.textHigh }}>Udit Khurana</span>
-          <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "7px", fontWeight: 600, letterSpacing: "0.24em", textTransform: "uppercase", color: C.cyan }}>Living The Eclectic Life</span>
+          <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "7px", fontWeight: 600, letterSpacing: "0.24em", textTransform: "uppercase", color: C.gold }}>Living The Eclectic Life</span>
         </a>
 
         <div className="nav-desktop" style={{ display: "flex", gap: "28px", alignItems: "center" }}>
@@ -64,7 +64,7 @@ export default function Layout({ children, activePath = "/" }) {
               style={{
                 fontFamily: "'DM Sans',sans-serif",
                 fontSize: "11px", fontWeight: 500, letterSpacing: "0.11em", textTransform: "uppercase",
-                color: activePath === l.href ? C.cyan : C.textMid,
+                color: activePath === l.href ? C.gold : C.textMid,
                 transition: "color .2s", cursor: "pointer",
               }}
               onMouseEnter={e => { if (activePath !== l.href) e.target.style.color = C.textHigh; }}
@@ -76,7 +76,7 @@ export default function Layout({ children, activePath = "/" }) {
         <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
           <a
             href={SOCIAL.linkedin} target="_blank" rel="noreferrer"
-            style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "8px 18px", background: C.cyan, color: "#071424", fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", cursor: "pointer", border: "none", borderRadius: "3px", textDecoration: "none" }}>
+            style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "8px 18px", background: C.gold, color: "#071424", fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", cursor: "pointer", border: "none", borderRadius: "3px", textDecoration: "none" }}>
             <LI /> Connect
           </a>
           <button onClick={() => setMenu(!menu)} aria-label="Menu"
@@ -90,11 +90,11 @@ export default function Layout({ children, activePath = "/" }) {
 
       {/* Mobile menu */}
       {menu && (
-        <div style={{ position: "fixed", top: 60, left: 0, right: 0, zIndex: 499, background: "rgba(7,17,28,0.98)", backdropFilter: "blur(20px)", borderBottom: `1px solid ${C.borderSoft}`, padding: "8px 28px 28px" }}>
+        <div style={{ position: "fixed", top: 60, left: 0, right: 0, zIndex: 499, background: "rgba(11,11,12,0.98)", backdropFilter: "blur(20px)", borderBottom: `1px solid ${C.borderSoft}`, padding: "8px 28px 28px" }}>
           {NAV_LINKS.map(l => (
             <a key={l.label} href={l.href}
               onClick={e => { e.preventDefault(); navigate(l.href); }}
-              style={{ display: "block", padding: "14px 0", borderBottom: `1px solid ${C.borderSoft}`, fontFamily: "'DM Sans',sans-serif", fontSize: "12px", fontWeight: 500, letterSpacing: "0.14em", textTransform: "uppercase", color: l.href === "/per-diem" ? C.cyan : C.textMid }}>
+              style={{ display: "block", padding: "14px 0", borderBottom: `1px solid ${C.borderSoft}`, fontFamily: "'DM Sans',sans-serif", fontSize: "12px", fontWeight: 500, letterSpacing: "0.14em", textTransform: "uppercase", color: activePath === l.href ? C.gold : C.textMid }}>
               {l.label}
             </a>
           ))}
@@ -111,22 +111,22 @@ export default function Layout({ children, activePath = "/" }) {
         <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "40px", flexWrap: "wrap" }}>
             <div>
-              <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "16px", fontWeight: 500, color: C.cyan, marginBottom: "3px" }}>Udit Khurana</p>
+              <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "16px", fontWeight: 500, color: C.gold, marginBottom: "3px" }}>Udit Khurana</p>
               <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "12px", fontStyle: "italic", color: C.textLow, marginBottom: "8px" }}>Living The Eclectic Life</p>
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", color: C.textLow }}>uditkhurana.in</p>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: C.textLow, marginBottom: "4px" }}>Newsletter</p>
-              <a href="/per-diem" onClick={e => { e.preventDefault(); navigate("/per-diem"); }} style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "15px", fontWeight: 500, color: C.cyan }}>Per Diem →</a>
+              <a href="/per-diem" onClick={e => { e.preventDefault(); navigate("/per-diem"); }} style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "15px", fontWeight: 500, color: C.gold }}>Per Diem →</a>
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", color: C.textLow }}>Coming soon</p>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: C.textLow, marginBottom: "4px" }}>Navigate</p>
-              {["About","Essays","Photography","Advisory"].map(l => (
-                <a key={l} href={`/${l.toLowerCase()}`}
-                  onClick={e => { e.preventDefault(); navigate(l === "Essays" ? "/writing" : `/${l.toLowerCase()}`); }}
+              {NAV_LINKS.map(l => (
+                <a key={l.label} href={l.href}
+                  onClick={e => { e.preventDefault(); navigate(l.href); }}
                   style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: C.textLow, cursor: "pointer" }}>
-                  {l}
+                  {l.label}
                 </a>
               ))}
             </div>
