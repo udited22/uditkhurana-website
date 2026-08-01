@@ -41,6 +41,19 @@ export default function Layout({ children, activePath = "/" }) {
 
   return (
     <div style={{ background: C.bg, color: C.textHigh, minHeight: "100vh", fontFamily: "'DM Sans',sans-serif" }}>
+      <style>{`
+        /* nav-desktop has no natural wrap point (flex row, no flex-wrap) and the
+           hamburger button below has no default hidden state — without this,
+           both the full link row and the hamburger render at every width. That
+           was borderline-tolerable at 5 nav items; at 6 (with Projects added)
+           the full row no longer reliably fits below ~1150px, so it needs a
+           real breakpoint: full row above it, hamburger-only below it. */
+        .nav-hamburger{display:none;}
+        @media(max-width:1150px){
+          .nav-desktop{display:none!important;}
+          .nav-hamburger{display:flex!important;}
+        }
+      `}</style>
 
       {/* NAV */}
       <nav style={{
@@ -79,8 +92,8 @@ export default function Layout({ children, activePath = "/" }) {
             style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "8px 18px", background: C.gold, color: "#071424", fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", cursor: "pointer", border: "none", borderRadius: "3px", textDecoration: "none" }}>
             <LI /> Connect
           </a>
-          <button onClick={() => setMenu(!menu)} aria-label="Menu"
-            style={{ background: "none", border: "none", cursor: "pointer", padding: "6px", display: "flex", flexDirection: "column", gap: "5px" }}>
+          <button className="nav-hamburger" onClick={() => setMenu(!menu)} aria-label="Menu"
+            style={{ background: "none", border: "none", cursor: "pointer", padding: "6px", flexDirection: "column", gap: "5px" }}>
             <span style={{ width: "18px", height: "1.5px", background: C.textMid, display: "block", transition: "all .25s", transform: menu ? "rotate(45deg) translateY(6px)" : "none" }} />
             <span style={{ width: "18px", height: "1.5px", background: C.textMid, display: "block", opacity: menu ? 0 : 1 }} />
             <span style={{ width: "18px", height: "1.5px", background: C.textMid, display: "block", transition: "all .25s", transform: menu ? "rotate(-45deg) translateY(-6px)" : "none" }} />

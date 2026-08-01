@@ -30,9 +30,14 @@ export default function HomePage() {
       `}</style>
 
       {/* ── SECTION 1: BANNER + IDENTITY (LinkedIn-cover-style) ─── */}
-      {/* aspect-ratio matches the source photo (1312:520) exactly, so background-size:cover
-          has nothing to crop — height scales with viewport width instead of a fixed band. */}
-      <div style={{ width: "100%", aspectRatio: "1312 / 520", backgroundImage: `url(${PHOTO.heroLandscape})`, backgroundSize: "cover", backgroundPosition: "center" }} />
+      {/* Source photo is 1312:520. Container's aspect-ratio is set to the cropped
+          1312:442 (top 78px / ~15% removed — mostly sky/peaks) so the banner reads
+          shorter without re-cropping the reflection at the bottom (that part was
+          deliberately preserved last round). backgroundPosition:"bottom" means any
+          overflow background-size:cover needs to trim gets taken from the top only,
+          so the math above and the visual result stay in sync — no re-introduction
+          of the original crop bug. */}
+      <div style={{ width: "100%", aspectRatio: "1312 / 442", backgroundImage: `url(${PHOTO.heroLandscape})`, backgroundSize: "cover", backgroundPosition: "center bottom" }} />
       <div style={{ background: C.bgSection, borderBottom: `1px solid ${C.borderSoft}` }}>
         <div className="hero-inner" style={{ padding: "32px 80px 56px", maxWidth: "1080px", margin: "0 auto" }}>
           <div style={{ maxWidth: "860px" }}>

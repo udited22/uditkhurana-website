@@ -68,6 +68,7 @@ export function linkedInEmbedSrc(url) {
 export const NAV_LINKS = [
   { label: "About",             href: "/about"     },
   { label: "Product & Fintech", href: "/work"      },
+  { label: "Projects",          href: "/projects"  },
   { label: "Adventure",         href: "/adventure" },
   { label: "Fitness",           href: "/fitness"   },
   { label: "Advisory",          href: "/advisory"  },
