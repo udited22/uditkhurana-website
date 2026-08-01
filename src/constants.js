@@ -46,6 +46,7 @@ export const CONTACT_EMAIL = "writetouditkhurana@gmail.com";
 export const SOCIAL = {
   linkedin: "https://linkedin.com/in/uditkhurana",
   instagram: "https://instagram.com/livingtheeclecticlife",
+  github: "https://github.com/udited22?tab=repositories",
 };
 
 // ─── LINKEDIN EMBED HELPER ──────────────────────────────────────
@@ -138,6 +139,64 @@ export const WRITINGS = [
   { platform: "LinkedIn", tag: "CAREER",     title: "Where Does Product Sense Come From?",                    summary: "Product intuition is not a trait — it's a practice. Notes on how experienced PMs develop judgment.", url: "https://www.linkedin.com/posts/uditkhurana_where-does-product-sense-come-from-at-some-share-7290690643297812480-PSlF", min: "6 min" },
   { platform: "Essay",    tag: "PHILOSOPHY", title: "Life is Intelligent",                                    summary: "On trusting that the dots — the near-misses, the closed doors, the strangers' small gestures — connect looking backwards, even when the future gives no guarantees.", url: "/writing/life-is-intelligent", min: "3 min" },
 ];
+
+// ─── SIDE PROJECTS (public GitHub builds) ────────────────────────
+// Kept in sync with github.com/udited22 — one-line status tags on the
+// two early-stage scaffolds (Exposure Dashboard, Morpheus Rapid Ring)
+// are honest about where they are, not padded to look further along.
+export const PROJECTS = [
+  {
+    name: "Aegis",
+    tag: "Exchange Intelligence",
+    stack: "TypeScript · Full-Stack",
+    summary: "A role-gated, real-time intelligence platform for crypto exchange health — liquidity, revenue, and competitive positioning in one view.",
+    url: "https://github.com/udited22/aegis",
+  },
+  {
+    name: "Sentinel",
+    tag: "Market Infrastructure",
+    stack: "Python",
+    summary: "Real-time order book health monitoring across crypto exchanges, with composite scoring, alerting, and a live dashboard.",
+    url: "https://github.com/udited22/sentinel",
+  },
+  {
+    name: "Rapid Ring",
+    tag: "AI Agents",
+    stack: "Python",
+    summary: "An autonomous AI agent that runs crypto exchange trade-ops SOPs end-to-end, with risk-tiered human approval built in, not bolted on.",
+    url: "https://github.com/udited22/rapid-ring",
+  },
+  {
+    name: "Algo Trading Platform",
+    tag: "Quant & Trading",
+    stack: "FastAPI · Next.js",
+    summary: "A full-stack algo trading platform for crypto — strategy code moves from backtest to paper trading to live execution without changing logic at any step.",
+    url: "https://github.com/udited22/algo-trading-platform",
+  },
+  {
+    name: "Niyam",
+    tag: "RegTech & AI",
+    stack: "Python · RAG",
+    summary: "A RAG-powered regulatory co-pilot for Indian fintech — ask plain-English questions on SEBI, AMFI, and IFSCA rules, or audit a PRD before it reaches compliance review.",
+    url: "https://github.com/udited22/niyam",
+  },
+  {
+    name: "Exposure Dashboard",
+    tag: "Risk & Crypto",
+    stack: "Early Build",
+    summary: "A planned dashboard for tracking custody and concentration risk across wallets and venues on a crypto platform. Design in progress.",
+    url: "https://github.com/udited22/exposure-dashboard",
+  },
+  {
+    name: "Morpheus Rapid Ring",
+    tag: "Experimental",
+    stack: "Early Build",
+    summary: "A reserved build slot for a related trade-ops experiment, distinct from Rapid Ring. Early-stage.",
+    url: "https://github.com/udited22/morpheus-rapid-ring",
+  },
+];
+
+export const RESEARCH_PORTFOLIO_URL = "https://app.notion.com/p/theeclecticlife/Side-Projects-Product-Portfolio-1438f1766bce8074af71e29411b1afbd?source=copy_link";
 
 // ─── ADVISORY AREAS ─────────────────────────────────────────────
 // General areas of help — not a fixed engagement menu.

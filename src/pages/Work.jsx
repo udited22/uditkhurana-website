@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import Layout from "../components/Layout.jsx";
-import { C, WRITINGS, SOCIAL, linkedInEmbedSrc, JOURNEY, PHOTO, PILLAR_ACCENTS } from "../constants.js";
+import { C, WRITINGS, SOCIAL, linkedInEmbedSrc, JOURNEY, PHOTO, PILLAR_ACCENTS, PROJECTS, RESEARCH_PORTFOLIO_URL } from "../constants.js";
 import Reveal from "../components/Reveal.jsx";
 
 const A = PILLAR_ACCENTS.product;
@@ -166,6 +166,49 @@ export default function WorkPage() {
             {filtered.length === 0 && (
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "13px", color: C.textLow }}>Nothing tagged "{tag}" yet.</p>
             )}
+          </div>
+        </div>
+      </div>
+
+      {/* Side Projects */}
+      <div className="sp" style={{ padding: "64px 80px", background: C.bg }}>
+        <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
+          <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", flexWrap: "wrap", gap: "10px", marginBottom: "10px" }}>
+            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: A.accent }}>Side Projects</p>
+            <a href={SOCIAL.github} target="_blank" rel="noreferrer" style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: C.textMid }}>View all repositories →</a>
+          </div>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "13px", fontWeight: 300, color: C.textMid, lineHeight: 1.75, maxWidth: "620px", marginBottom: "26px" }}>
+            What gets built outside the day job — mostly crypto-exchange infrastructure and AI agents, prototyped and shipped with the same systems-first approach as the day job.
+          </p>
+
+          <div className="wgrid">
+            {PROJECTS.map((p, i) => {
+              const early = p.stack === "Early Build";
+              return (
+                <a key={p.name} href={p.url} target="_blank" rel="noreferrer" style={{ display: "block", height: "100%" }}>
+                  <div className="writing-card">
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "14px" }}>
+                      <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "8px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: A.accent, background: A.soft, padding: "3px 9px", borderRadius: "3px" }}>{p.tag}</span>
+                      <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", color: C.textLow, fontStyle: early ? "italic" : "normal" }}>{p.stack}</span>
+                    </div>
+                    <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "19px", fontWeight: 500, color: C.textHigh, lineHeight: 1.28, marginBottom: "10px", flex: 1 }}>{p.name}</h3>
+                    <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12.5px", fontWeight: 300, lineHeight: 1.72, color: C.textMid, marginBottom: "18px" }}>{p.summary}</p>
+                    <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: A.accent }}>View on GitHub →</p>
+                  </div>
+                </a>
+              );
+            })}
+            <a href={RESEARCH_PORTFOLIO_URL} target="_blank" rel="noreferrer" style={{ display: "block", height: "100%" }}>
+              <div className="writing-card" style={{ background: C.bgSection }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "14px" }}>
+                  <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "8px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: C.gold, background: "rgba(201,162,75,0.13)", padding: "3px 9px", borderRadius: "3px" }}>Deep Dives</span>
+                  <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", color: C.textLow }}>Notion</span>
+                </div>
+                <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "19px", fontWeight: 500, color: C.textHigh, lineHeight: 1.28, marginBottom: "10px", flex: 1 }}>Research &amp; Side Projects Portfolio</h3>
+                <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12.5px", fontWeight: 300, lineHeight: 1.72, color: C.textMid, marginBottom: "18px" }}>The deeper cut — market research, product one-pagers, and in-progress ideas that don't fit neatly in a repo.</p>
+                <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: C.gold }}>View the Portfolio →</p>
+              </div>
+            </a>
           </div>
         </div>
       </div>

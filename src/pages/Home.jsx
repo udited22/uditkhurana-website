@@ -30,9 +30,11 @@ export default function HomePage() {
       `}</style>
 
       {/* ── SECTION 1: BANNER + IDENTITY (LinkedIn-cover-style) ─── */}
-      <div style={{ width: "100%", height: "clamp(150px, 22vw, 300px)", backgroundImage: `url(${PHOTO.heroLandscape})`, backgroundSize: "cover", backgroundPosition: "center" }} />
+      {/* aspect-ratio matches the source photo (1312:520) exactly, so background-size:cover
+          has nothing to crop — height scales with viewport width instead of a fixed band. */}
+      <div style={{ width: "100%", aspectRatio: "1312 / 520", backgroundImage: `url(${PHOTO.heroLandscape})`, backgroundSize: "cover", backgroundPosition: "center" }} />
       <div style={{ background: C.bgSection, borderBottom: `1px solid ${C.borderSoft}` }}>
-        <div className="hero-inner" style={{ padding: "40px 80px 56px", maxWidth: "1080px", margin: "0 auto" }}>
+        <div className="hero-inner" style={{ padding: "32px 80px 56px", maxWidth: "1080px", margin: "0 auto" }}>
           <div style={{ maxWidth: "860px" }}>
             <div style={{ animation: "fadeUp .6s ease .05s both" }}>
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: C.gold, marginBottom: "10px" }}>Udit Khurana · Living The Eclectic Life</p>
