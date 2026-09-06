@@ -49,6 +49,14 @@ export const SOCIAL = {
   github: "https://github.com/udited22?tab=repositories",
 };
 
+// ─── PER DIEM NEWSLETTER ──────────────────────────────────────────
+// LinkedIn's own "follow this newsletter" action, provided directly by Udit — the
+// entityUrn identifies the Per Diem Newsletter object on LinkedIn. Do not regenerate
+// or guess this URL; if it ever needs to change, get the fresh one from LinkedIn's
+// own share/embed panel for the newsletter.
+export const PER_DIEM_LINKEDIN_URL =
+  "https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7502097177293492225";
+
 // ─── LINKEDIN EMBED HELPER ──────────────────────────────────────
 // LinkedIn doesn't offer a public API to pull a personal profile's
 // activity feed, but it does support embedding a specific known post

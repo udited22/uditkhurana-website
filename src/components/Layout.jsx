@@ -131,7 +131,7 @@ export default function Layout({ children, activePath = "/" }) {
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: C.textLow, marginBottom: "4px" }}>Newsletter</p>
               <a href="/per-diem" onClick={e => { e.preventDefault(); navigate("/per-diem"); }} style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "15px", fontWeight: 500, color: C.gold }}>Per Diem →</a>
-              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", color: C.textLow }}>Coming soon</p>
+              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", color: C.textLow }}>Live on LinkedIn</p>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: C.textLow, marginBottom: "4px" }}>Navigate</p>
