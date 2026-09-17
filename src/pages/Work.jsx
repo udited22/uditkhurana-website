@@ -17,7 +17,7 @@ function Chapter({ j, defaultOpen }) {
     <div style={{ paddingBottom: "32px", marginBottom: "32px", borderBottom: `1px solid ${C.borderSoft}` }}>
       <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: "16px", flexWrap: "wrap", marginBottom: "10px" }}>
         <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 600, color: j.active ? C.accent : C.textLow, letterSpacing: "0.04em" }}>
-          {j.years} · {j.company}
+          {j.years} · {j.role} · {j.company}
         </p>
       </div>
       <h3 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(20px,2.8vw,28px)", fontStyle: "italic", color: C.textHigh, lineHeight: 1.3, marginBottom: list ? "16px" : 0, maxWidth: "22ch" }}>
@@ -26,7 +26,7 @@ function Chapter({ j, defaultOpen }) {
 
       {list && (
         <>
-          <button onClick={() => setOpen(!open)} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.accent, marginBottom: open ? "14px" : 0 }}>
+          <button type="button" onClick={() => setOpen(!open)} aria-expanded={open} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.accent, marginBottom: open ? "14px" : 0 }}>
             {open ? "Hide detail −" : (j.proof ? "Show proof points +" : "Show scope +")}
           </button>
           {open && (
@@ -69,7 +69,7 @@ export default function WorkPage() {
       <div style={{ padding: "72px 80px 40px", background: C.bg }} className="sp">
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <h1 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(30px,5vw,56px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.12, marginBottom: "16px" }}>
-            From enterprise banking <em style={{ fontStyle: "italic", color: C.accent }}>to global investing.</em>
+            From enterprise banking to <span style={{ color: C.accent }}>global investing.</span>
           </h1>
         </div>
       </div>
@@ -111,7 +111,7 @@ export default function WorkPage() {
         <div style={{ maxWidth: "700px", margin: "0 auto" }}>
           <div style={{ width: "140px", aspectRatio: "1/1", borderRadius: "8px", overflow: "hidden", border: `1px solid ${C.border}`, backgroundImage: `url(${PHOTO.product})`, backgroundSize: "cover", backgroundPosition: "center top", marginBottom: "40px" }} />
           {JOURNEY.map((j, i) => j.headline ? (
-            <Reveal key={i} delay={i * 0.04}><Chapter j={j} defaultOpen={i === 0} /></Reveal>
+            <Reveal key={i} delay={i * 0.04}><Chapter j={j} defaultOpen={false} /></Reveal>
           ) : (
             <Reveal key={i} delay={i * 0.04}>
               <div style={{ display: "flex", alignItems: "baseline", gap: "16px", flexWrap: "wrap", padding: "10px 0", borderBottom: `1px solid ${C.borderSoft}` }}>
@@ -125,9 +125,9 @@ export default function WorkPage() {
       </div>
 
       <div className="sp" style={{ padding: "0 80px 72px", background: C.bg, textAlign: "center" }}>
-        <p style={{ fontFamily: "'Instrument Serif',serif", fontSize: "16px", fontStyle: "italic", color: C.textMid }}>
+        <p style={{ fontFamily: "'Instrument Serif',serif", fontSize: "16px", color: C.textMid }}>
           Curious what gets built outside the day job?{" "}
-          <a href="/projects" onClick={e => { e.preventDefault(); navigate("/projects"); }} style={{ color: C.accent, fontStyle: "normal", fontWeight: 500 }}>Selected Work →</a>
+          <a href="/projects" onClick={e => { e.preventDefault(); navigate("/projects"); }} style={{ color: C.accent, fontWeight: 500 }}>Selected Work →</a>
         </p>
       </div>
     </Layout>

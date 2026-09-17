@@ -8,7 +8,7 @@ import Reveal from "../components/Reveal.jsx";
 function ProblemRow({ p, isOpen, onToggle }) {
   return (
     <div style={{ borderBottom: `1px solid ${C.borderSoft}` }}>
-      <button onClick={onToggle} style={{ width: "100%", textAlign: "left", background: "none", border: "none", cursor: "pointer", padding: "22px 0", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "16px" }}>
+      <button type="button" onClick={onToggle} aria-expanded={isOpen} style={{ width: "100%", textAlign: "left", background: "none", border: "none", cursor: "pointer", padding: "22px 0", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "16px" }}>
         <span style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(18px,2.4vw,22px)", color: C.textHigh }}>{p.title}</span>
         <span style={{ color: C.textLow, fontSize: "16px", transform: isOpen ? "rotate(45deg)" : "none", transition: "transform .2s", flexShrink: 0 }}>+</span>
       </button>
@@ -33,7 +33,7 @@ export default function AdvisoryPage() {
       <div className="sp" style={{ background: C.bg }}>
         <div style={{ maxWidth: "700px", margin: "0 auto" }}>
           <Reveal>
-            <h1 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(28px,4.5vw,44px)", fontStyle: "italic", color: C.textHigh, lineHeight: 1.25, marginBottom: "22px" }}>
+            <h1 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(28px,4.5vw,44px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.25, marginBottom: "22px" }}>
               Some problems benefit from another experienced pair of eyes.
             </h1>
             <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "14px", fontWeight: 300, color: C.textMid, lineHeight: 1.8, marginBottom: "48px" }}>
@@ -59,7 +59,7 @@ export default function AdvisoryPage() {
           <Reveal delay={0.14}>
             <div style={{ marginTop: "72px", paddingTop: "32px", borderTop: `1px solid ${C.borderSoft}` }}>
               {!showCases ? (
-                <button onClick={() => setShowCases(true)} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, fontFamily: "'DM Sans',sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: C.textLow }}>
+                <button type="button" onClick={() => setShowCases(true)} aria-expanded={false} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, fontFamily: "'DM Sans',sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: C.textLow }}>
                   See two anonymized case studies →
                 </button>
               ) : (

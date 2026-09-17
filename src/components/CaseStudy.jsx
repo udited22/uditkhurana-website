@@ -94,7 +94,7 @@ export default function CaseStudyCard({ study }) {
   const [open, setOpen] = useState(false);
   return (
     <div style={{ background: C.bgCard, border: `1px solid ${C.borderSoft}`, borderRadius: "8px", overflow: "hidden" }}>
-      <button onClick={() => setOpen(!open)}
+      <button type="button" onClick={() => setOpen(!open)} aria-expanded={open}
         style={{ width: "100%", textAlign: "left", padding: "24px 26px", background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px" }}>
         <div>
           <p style={{ ...label, color: C.accent, marginBottom: "8px" }}>{study.tag}</p>

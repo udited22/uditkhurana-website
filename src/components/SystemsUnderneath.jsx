@@ -12,10 +12,14 @@ export default function SystemsUnderneath({ compact = false }) {
       {LAYERS.map((layer, i) => {
         const isActive = active === i;
         return (
-          <div
+          <button
             key={layer.key}
+            type="button"
             onClick={() => setActive(i)}
+            aria-expanded={isActive}
+            aria-controls={`layer-items-${layer.key}`}
             style={{
+              display: "block", width: "100%", textAlign: "left", font: "inherit",
               cursor: "pointer",
               padding: compact ? "18px 22px" : "26px 28px",
               background: isActive ? C.bgCard : "transparent",
@@ -33,7 +37,7 @@ export default function SystemsUnderneath({ compact = false }) {
                 Layer {i + 1} · {layer.label}
               </p>
             </div>
-            <div style={{
+            <div id={`layer-items-${layer.key}`} style={{
               display: "flex", flexWrap: "wrap", gap: "10px 20px", marginTop: "12px",
               maxHeight: isActive ? "80px" : "0px", opacity: isActive ? 1 : 0,
               overflow: "hidden", transition: "max-height .4s ease, opacity .3s ease",
@@ -42,7 +46,7 @@ export default function SystemsUnderneath({ compact = false }) {
                 <span key={item} style={{ fontFamily: "'Instrument Serif',serif", fontSize: compact ? "17px" : "20px", color: C.textHigh }}>{item}</span>
               ))}
             </div>
-          </div>
+          </button>
         );
       })}
     </div>

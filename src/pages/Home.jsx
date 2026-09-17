@@ -8,12 +8,18 @@ import SystemsUnderneath from "../components/SystemsUnderneath.jsx";
 import ConvergeWords from "../components/ConvergeWords.jsx";
 import Reveal from "../components/Reveal.jsx";
 
+// "Food" omitted for now — no real food photo exists in the repo, and a
+// placeholder gradient isn't acceptable in this signature visual section
+// (per review). Broader Udit Uncovered positioning still mentions food.
+// "Travel" and "Experiments" previously pointed at watermarked photos
+// ("Nubra at Golden Hour", "The Still Frame") — this full-bleed section
+// needs clean photography regardless of what the gallery on /uncovered
+// keeps.
 const UNCOVERED_SCENES = [
-  { label: "Travel", photo: PHOTOS.find(p => p.title === "Nubra at Golden Hour")?.src },
+  { label: "Travel", photo: PHOTOS.find(p => p.title === "Monastery in the Mirror")?.src },
   { label: "Endurance", photo: PHOTO.fitness },
   { label: "Stories", photo: PHOTOS.find(p => p.title === "A Life Fully Lived")?.src },
-  { label: "Food", photo: null },
-  { label: "Experiments", photo: PHOTOS.find(p => p.title === "The Still Frame")?.src },
+  { label: "Experiments", photo: PHOTOS.find(p => p.title === "At the Top, Looking Further")?.src },
 ];
 
 function navigate(href) {
@@ -59,7 +65,7 @@ export default function HomePage() {
       <section ref={scene2Ref} style={{ background: C.bgSection, borderTop: `1px solid ${C.borderSoft}` }} className="sp">
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <Reveal>
-            <h2 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(28px,4.5vw,48px)", fontStyle: "italic", color: C.textHigh, lineHeight: 1.2, marginBottom: "48px", maxWidth: "18ch" }}>
+            <h2 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(28px,4.5vw,48px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.2, marginBottom: "48px", maxWidth: "18ch" }}>
               The interesting product problem is often three layers underneath the screen.
             </h2>
           </Reveal>
@@ -107,7 +113,7 @@ export default function HomePage() {
 
         <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "0 80px 60px" }} className="uncov-scene-pad">
           <div style={{ maxWidth: "720px" }}>
-            <h2 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(28px,5vw,54px)", fontStyle: "italic", color: "#fff", lineHeight: 1.15, marginBottom: "16px" }}>
+            <h2 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(28px,5vw,54px)", fontWeight: 400, color: "#fff", lineHeight: 1.15, marginBottom: "16px" }}>
               Things I wanted to experience for myself.
             </h2>
             <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.8)", marginBottom: "24px" }}>
@@ -139,16 +145,19 @@ export default function HomePage() {
 
       {/* ── SCENE 5 — THE CONNECTION ─────────────────────────────── */}
       <section style={{ background: C.bg }} className="sp">
-        <div onClick={() => navigate("/about")} style={{ cursor: "pointer" }}>
+        <a href="/about" onClick={e => { e.preventDefault(); navigate("/about"); }} style={{ display: "block", cursor: "pointer" }}>
           <ConvergeWords />
-        </div>
+          <p style={{ textAlign: "center", marginTop: "-8px", fontFamily: "'DM Sans',sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: C.accent }}>
+            About the operating system →
+          </p>
+        </a>
       </section>
 
       {/* ── SCENE 6 — QUIET CLOSE ────────────────────────────────── */}
       <section style={{ background: C.bgSection, borderTop: `1px solid ${C.borderSoft}`, padding: "56px 24px", textAlign: "center" }}>
-        <p style={{ fontFamily: "'Instrument Serif',serif", fontSize: "18px", fontStyle: "italic", color: C.textMid }}>
+        <p style={{ fontFamily: "'Instrument Serif',serif", fontSize: "18px", color: C.textMid }}>
           Occasionally, I help founders and teams untangle difficult financial-product problems.{" "}
-          <a href="/advisory" onClick={e => { e.preventDefault(); navigate("/advisory"); }} style={{ color: C.accent, fontStyle: "normal", fontWeight: 500 }}>
+          <a href="/advisory" onClick={e => { e.preventDefault(); navigate("/advisory"); }} style={{ color: C.accent, fontWeight: 500 }}>
             Advisory →
           </a>
         </p>
