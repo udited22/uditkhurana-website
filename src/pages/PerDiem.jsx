@@ -63,6 +63,9 @@ export default function PerDiemPage() {
           <Reveal>
             <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: C.accent, marginBottom: "18px" }}>Latest Issue</p>
             <a href={latest.url} target="_blank" rel="noreferrer" style={{ display: "block" }}>
+              {latest.coverImage && (
+                <div style={{ width: "100%", aspectRatio: "16/9", borderRadius: "6px", overflow: "hidden", marginBottom: "22px", backgroundImage: `url(${latest.coverImage})`, backgroundSize: "cover", backgroundPosition: "center" }} />
+              )}
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "11px", color: C.textLow, marginBottom: "10px" }}>{fmtDate(latest.publishedAt)}{latest.min ? ` · ${latest.min}` : ""}</p>
               <h2 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(24px,3.4vw,36px)", fontWeight: 500, color: C.textHigh, lineHeight: 1.25, marginBottom: "16px" }}>{latest.title}</h2>
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "14.5px", fontWeight: 300, color: C.textMid, lineHeight: 1.8, marginBottom: "20px" }}>{latest.excerpt}</p>
