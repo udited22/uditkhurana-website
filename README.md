@@ -1,41 +1,121 @@
-# uditkhurana.com
+# uditkhurana.in
 
-Personal site and portfolio — a three-pillar personal brand (Product/Advisory, Adventure, Fitness) told through a photo-led editorial design, not a generic template resume.
+Personal site — the public operating system for one person, told through four
+principal identity layers (Work, Per Diem, Advisory, Udit Uncovered) that
+resolve into a single operating philosophy, not a portfolio of unrelated
+interests.
 
 ## The problem
 
-A LinkedIn profile and a PDF resume compress a career into bullet points and can't hold the parts of an identity that don't fit a job title — the Ironman finish, the diving trips, the actual advisory work and how it was reasoned through. This site exists to be the fuller, more honest version: real work (product/fintech career and independent advisory), real case studies with the actual reasoning shown, and the adventure/fitness identity that isn't separate from how the work gets done, just not usually visible in a professional context.
+A LinkedIn profile and a PDF resume compress a career into bullet points and
+can't hold the parts of an identity that don't fit a job title — the Ironman
+finish, the diving trips, the actual advisory work and how it was reasoned
+through. This site exists to be the fuller, more honest version, structured so
+a visitor infers the underlying pattern (curiosity → systems thinking →
+experimentation → difficult execution → reflection → documentation) rather
+than being told about it.
+
+## Brand architecture
+
+- **Work** — what he builds. Career narrative framed by mandate/scope/selected
+  work per chapter, not a chronological résumé.
+- **Per Diem** — how he thinks. A first-class writing property, not buried
+  under a generic "Writing" or "Blog" label.
+- **Advisory** — where accumulated judgement can selectively be applied.
+  Deliberately not a consulting funnel.
+- **Udit Uncovered** — how he lives. The consolidated identity for travel,
+  endurance, adventure, food, and experimentation — Instagram: `@udituncovered`.
+- **About** — the bridge explaining why the first four are one person, not
+  four separate personas.
+
+"Adventure" and "Fitness" are not top-level identities anymore; both live
+inside Udit Uncovered. `/adventure` and `/fitness` 301-redirect to `/uncovered`
+(see `vercel.json`) to preserve any indexed links.
 
 ## What it does
 
-- **Home** — a command-center landing page tying the three pillars (Product, Adventure, Fitness) together through one visual system.
-- **Work / About** — career narrative and professional history.
-- **Advisory** — independent advisory case studies, written out step by step (context → approach → tradeoffs → recommendation), not just outcome bullet points.
-- **Adventure / Fitness** — the non-professional identity pillars, photo-led.
-- **Essay** — a standalone long-form essay page.
-- **Per Diem** — a dedicated page for a specific project/offering.
+- **Home** — hero, Work, Per Diem, Selected Work, Advisory, Udit Uncovered,
+  About bridge, in that sequence.
+- **Work** (`/work`) — the journey, framed by mandate/scope/selected work for
+  the two most recent chapters; recent Per Diem highlights; link to Selected
+  Work (`/projects`).
+- **Per Diem** (`/per-diem`) — the latest issue in an editorial treatment,
+  then the full reverse-chronological archive. See "Per Diem content &
+  publishing" below.
+- **Advisory** (`/advisory`) — positioning plus two full, anonymized case
+  studies written step-by-step (context → approach → tradeoffs →
+  recommendation).
+- **Udit Uncovered** (`/uncovered`) — the curated photo doorway into
+  `@udituncovered`, not a live embed.
+- **About** (`/about`) — the narrative that ties the other four together.
+- **Projects** (`/projects`) — "Selected Work" in full: independent
+  GitHub builds, reachable from Work and Home but not in primary nav.
+
+## Per Diem content & publishing
+
+Per Diem is the site's only property with a real content model:
+`src/content/per-diem.json` (raw data) plus `src/content/per-diem.js` (sorts
+by `publishedAt`, exports `PER_DIEM_ISSUES` / `PER_DIEM_LATEST` /
+`PER_DIEM_RECENT`). The homepage module, the Work page's highlight strip, and
+the full `/per-diem` archive all read from this one source — nothing is
+hardcoded per page.
+
+**LinkedIn remains the canonical publishing surface.** The site is a
+discovery/index layer, not a mirror of full article content.
+
+To publish a new issue after posting it on LinkedIn:
+
+```bash
+npm run perdiem:add <linkedin-article-url>
+```
+
+The script tries to read the URL's public OpenGraph metadata (title,
+description, image) first. LinkedIn's post pages sit behind a login wall for
+most requests, so in practice it usually falls back to a few manual prompts
+(title, excerpt, cover image, tags, read time) — deliberately no headless
+browser, scraping library, or LinkedIn API. It appends the new issue to
+`per-diem.json` with today's date; commit and deploy, and the homepage +
+archive update automatically.
+
+> The five issues migrated from the pre-V2 site didn't have a publish date in
+> the old content model, and LinkedIn doesn't expose one publicly. Their
+> `publishedAt` values in `per-diem.json` are placeholders (spaced out from
+> the original "recent and highlighted first" ordering) — worth a one-time
+> correction against the real dates when convenient. New issues added via the
+> script always get an accurate date.
 
 ## How it was built
 
-**Architecture**: A React SPA (Vite) with client-side routing, a single shared design-token system (`src/constants.js`) driving color/typography across every page, and a small reusable component library (`Layout`, `Reveal` for scroll-triggered animation, `CaseStudy` for structured case-study rendering, `Icons`).
+**Architecture**: A React SPA (Vite) with client-side routing, a single
+shared design-token system (`src/constants.js`) driving color/typography
+across every page, a lightweight content model for Per Diem
+(`src/content/`), and a small reusable component library (`Layout`, `Reveal`
+for scroll-triggered animation, `CaseStudy` for structured case-study
+rendering, `Icons`).
 
 **Key decisions**:
-- **A custom block schema for case studies (`src/case-studies.js`) instead of hardcoded JSX per case study.** Advisory work is written as a sequence of typed blocks (`h3`/`h4` headings, paragraphs, bullet lists, pull-quotes, stage-by-stage flows, pros/cons, recommendations) rendered generically by `CaseStudy.jsx`. Adding a new case study is now a content change, not a layout change — and it keeps every case study visually consistent without copy-pasting markup.
-- **One shared palette/accent system instead of three independently-styled sections.** The three pillars (Product, Adventure, Fitness) need to feel distinct without the site feeling like three different sites stitched together — solved with a single warm neutral base plus a `PILLAR_ACCENTS` map, so each pillar gets its own accent color pulled from its own photography while everything else (spacing, type, motion) stays shared.
-- **Scroll-triggered reveal as a shared primitive, not per-page animation code.** `Reveal.jsx` wraps content and handles intersection-based fade/slide-in once, so every page gets consistent motion without re-implementing it.
-- **Static SPA over a framework with server rendering.** For a personal site with no dynamic backend data, a Vite-built static SPA deployed to Vercel is simpler to build, host, and iterate on than adding SSR machinery the site doesn't need.
-
-**Notable challenges**:
-- Advisory case studies genuinely came from real client engagements — the anonymization pattern (describing engagements by stage/sector/problem, e.g. "a Series A EdTech company," "a startup building a US stocks platform with an AI wealth layer," never by name) had to be baked into the content itself, not bolted on after, so the writing reads naturally rather than like a redacted document.
-- Getting three visually distinct identity pillars to read as one coherent site (not a portfolio-plus-blog-plus-Instagram mashup) took a few iterations on the shared token system before the accent-per-pillar approach landed.
+- **A custom block schema for case studies (`src/case-studies.js`) instead of
+  hardcoded JSX per case study.** Advisory work is written as a sequence of
+  typed blocks (`h3`/`h4` headings, paragraphs, bullet lists, pull-quotes,
+  stage-by-stage flows, pros/cons, recommendations) rendered generically by
+  `CaseStudy.jsx`. Adding a new case study is a content change, not a layout
+  change.
+- **One shared warm-editorial palette, one primary accent** (`C` in
+  `constants.js`) used across Work/Per Diem/Advisory/nav, with a single
+  reserved secondary accent (`C.rust`) for Udit Uncovered only — distinct but
+  coherent, not a rainbow of per-section colors.
+- **A real (if minimal) content model for Per Diem**, so publishing doesn't
+  require touching page components.
+- **Scroll-triggered reveal as a shared primitive.** `Reveal.jsx` respects
+  `prefers-reduced-motion` and wraps content once rather than re-implementing
+  motion per page.
+- **Static SPA over a framework with server rendering.** No dynamic backend
+  data exists yet, so a Vite-built static SPA deployed to Vercel stays the
+  simplest option.
 
 ## Tech stack
 
 React, Vite, plain CSS-in-JS (no framework), deployed on Vercel.
-
-## Impact / results
-
-Went through several full iterations (multi-page architecture rework, homepage restructuring into a "command center," native essay page, custom icon system, motion/consistency pass, and a full personal-brand redesign around the three-pillar information architecture) rather than shipping a first draft — each pass driven by wanting the site to read as more honest and less templated than a standard personal portfolio.
 
 ## Setup & run
 
@@ -43,11 +123,14 @@ Went through several full iterations (multi-page architecture rework, homepage r
 git clone <repo-url>
 cd uditkhurana-website
 npm install
-npm run dev       # local dev server
-npm run build     # production build to dist/
+npm run dev             # local dev server
+npm run build            # production build to dist/
+npm run perdiem:add <url> # publish a new Per Diem issue
 ```
 
-Deployed via Vercel using `vercel.json` (Vite framework preset, SPA rewrite to `index.html`). No environment variables are required — the site has no backend.
+Deployed via Vercel using `vercel.json` (Vite framework preset, SPA rewrite to
+`index.html`, plus 301 redirects for the retired `/adventure` and `/fitness`
+routes). No environment variables are required — the site has no backend.
 
 ## License
 
