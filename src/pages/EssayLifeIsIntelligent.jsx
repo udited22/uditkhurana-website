@@ -17,18 +17,18 @@ export default function EssayLifeIsIntelligentPage() {
   };
 
   return (
-    <Layout activePath="/writing">
+    <Layout activePath="/about">
       <style>{`.sp{padding:80px 80px;} @media(max-width:768px){.sp{padding:64px 24px!important;}}`}</style>
 
       <div style={{ background: C.bgSection, padding: "80px 80px 56px", borderBottom: `1px solid ${C.borderSoft}` }} className="sp">
         <div style={{ maxWidth: "760px", margin: "0 auto" }}>
-          <a href="/writing" onClick={e => { e.preventDefault(); navigate("/writing"); }}
+          <a href="/about" onClick={e => { e.preventDefault(); navigate("/about"); }}
             style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: C.textLow, display: "inline-block", marginBottom: "22px" }}>
-            ← Back to Writing
+            ← Back to About
           </a>
-          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: C.gold, marginBottom: "14px" }}>Essay · Philosophy</p>
+          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: C.accent, marginBottom: "14px" }}>Essay · Philosophy</p>
           <h1 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(30px,4.5vw,52px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.1, marginBottom: "16px" }}>
-            Life is <em style={{ fontStyle: "italic", color: C.gold }}>Intelligent.</em>
+            Life is <em style={{ fontStyle: "italic", color: C.accent }}>Intelligent.</em>
           </h1>
           <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12px", fontWeight: 500, color: C.textLow, letterSpacing: "0.04em" }}>
             Udit Khurana · Published Sep 9, 2019
@@ -49,7 +49,7 @@ export default function EssayLifeIsIntelligentPage() {
 
           <div style={{ marginTop: "48px", paddingTop: "28px", borderTop: `1px solid ${C.borderSoft}`, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "14px" }}>
             <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "11px", color: C.textLow }}>Originally published on LinkedIn, 2019.</p>
-            <a href={SOCIAL.linkedin} target="_blank" rel="noreferrer" style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: C.gold }}>Read on LinkedIn →</a>
+            <a href={SOCIAL.linkedin} target="_blank" rel="noreferrer" style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: C.accent }}>Read on LinkedIn →</a>
           </div>
         </div>
       </div>
