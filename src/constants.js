@@ -107,6 +107,7 @@ export const PROOF_STRIP = [
 // JOURNEY / CAREER_MATRIX below), not the primary axis here.
 export const TIMELINE = [
   { year: "2014", label: "Enterprise financial systems" },
+  { year: "2016", label: "Independent markets practice" },
   { year: "2018", label: "Bank lending & workflow infrastructure" },
   { year: "2020", label: "Core banking product systems" },
   { year: "2021", label: "Retail investing infrastructure" },
@@ -116,18 +117,29 @@ export const TIMELINE = [
 
 // ─── CAREER: SYSTEMS MATRIX ───────────────────────────────────────
 // Company × layer accumulation grid. `filled` aligns positionally with
-// `layers`. smallcase and CoinDCX rows are given directly in the brief;
-// the three earlier rows are a reasonable extrapolation of each role's
-// documented scope (JOURNEY below), showing the accumulation building
-// gradually rather than starting full.
+// `layers`. smallcase and CoinDCX rows are given directly in the brief.
+// The three earlier rows are grounded directly in each chapter's own
+// documented scope in JOURNEY below, dot by dot — not a general
+// extrapolation:
+//   Infosys (SAP FICO for corporate finance ops): Transactions, Operations.
+//   Newgen (BPM-based commercial lending, "regulated banking
+//     infrastructure"): Transactions, Regulation, Operations.
+//   Finacle (owned the loan origination product line — an internal
+//     origination tool for loan officers, not a direct retail-customer
+//     surface, so Experience is deliberately left unmarked): Transactions,
+//     Regulation, Operations.
+// CoinDCX's Distribution is true, not false — the current chapter's own
+// scope includes Launch/GTM, and the earlier-internal-scope note below
+// names retail growth/distribution directly; marking it false would
+// contradict the chapter's own text.
 export const CAREER_MATRIX = {
   layers: ["Experience", "Distribution", "Transactions", "Money Movement", "Market Infrastructure", "Regulation", "Operations / Risk"],
   rows: [
     { company: "Infosys",   period: "2014–2016",    filled: [false, false, true,  false, false, false, true] },
     { company: "Newgen",    period: "2018–2020",    filled: [false, false, true,  false, false, true,  true] },
-    { company: "Finacle",   period: "2020–2021",    filled: [true,  false, true,  false, false, true,  true] },
+    { company: "Finacle",   period: "2020–2021",    filled: [false, false, true,  false, false, true,  true] },
     { company: "smallcase", period: "2021–2025",    filled: [true,  true,  true,  true,  true,  true,  true] },
-    { company: "CoinDCX",   period: "2025–Present", filled: [true,  false, true,  true,  true,  true,  true] },
+    { company: "CoinDCX",   period: "2025–Present", filled: [true,  true,  true,  true,  true,  true,  true] },
   ],
 };
 
@@ -149,7 +161,7 @@ export const JOURNEY = [
       "Operating model", "Launch / GTM",
     ],
     earlier: [
-      { label: "Bahrain", detail: "A delivered proof point for international market entry — live, not projected." },
+      { label: "Bahrain", detail: "Delivered international market entry — the first expansion beyond India's regulatory perimeter." },
       { label: "Core Exchange", detail: "Earlier internal scope: core exchange infrastructure and order flow." },
       { label: "Retail Growth", detail: "Earlier internal scope: retail activation and distribution." },
     ],
