@@ -131,10 +131,10 @@ export const JOURNEY = [
   {
     years: "2025–Present", company: "CoinDCX", role: "Principal Product Manager",
     active: true,
-    mandate: "India's largest crypto exchange, operating at the intersection of retail trust, regulatory uncertainty, and global market expansion.",
+    mandate: "An Indian crypto exchange, operating at the intersection of retail trust, regulatory uncertainty, and global market expansion.",
     scope: "Core exchange infrastructure, retail growth, and international expansion into the GCC — three concurrent charters spanning very different regulatory regimes and user sophistication levels.",
     selectedWork: [
-      "Owning product for core exchange infrastructure — the machinery underneath order flow, custody, and market data that every other feature sits on top of.",
+      "Owning product for core exchange infrastructure — the machinery underneath order flow and market data that every other feature sits on top of.",
       "Standing up the product line for GCC market entry, where the regulatory architecture and user behaviour are both starting from a different baseline than India.",
       "Working the retail growth charter as a distribution and behaviour problem as much as a features problem.",
     ],
@@ -175,12 +175,11 @@ export const JOURNEY = [
 // ─── ADVISORY AREAS ─────────────────────────────────────────────
 // General areas of help — not a fixed engagement menu.
 export const ADVISORY_AREAS = [
-  { icon: "compass",         title: "Product Strategy & Roadmap",    desc: "Cutting through noise to define what matters — sequencing, prioritization, and roadmaps for early-stage teams and product leaders." },
-  { icon: "wallet",          title: "Fintech, Crypto & Wealth",      desc: "General domain guidance across equity investing infrastructure, crypto exchanges, and wealth products." },
-  { icon: "trending-up",     title: "Growth & Activation",           desc: "How products grow, retain, and build durable habits over time." },
-  { icon: "clock",           title: "PM Cadence & Execution",        desc: "Operating rituals and rhythms that make execution consistent across chaos." },
-  { icon: "cpu",             title: "AI-Enabled PM Workflows",       desc: "Using AI to think faster, write better, and ship more — without losing judgment." },
-  { icon: "graduation-cap",  title: "Career & Leadership Mentoring", desc: "General guidance for PMs and product leaders navigating their next move." },
+  { icon: "compass",     title: "Fintech & Financial Product Strategy",         desc: "Positioning, sequencing, and roadmap decisions for teams building fintech and financial products." },
+  { icon: "wallet",      title: "Capital Markets, Wealth & Trading Infrastructure", desc: "Brokerage, investing platforms, and the market infrastructure underneath them." },
+  { icon: "arrows",      title: "Regulated Product Design",                     desc: "Building where regulation is a first-class design constraint, not an afterthought bolted on late." },
+  { icon: "cpu",         title: "Zero-to-One Financial Systems",                desc: "Standing up new financial infrastructure from scratch — the 0→1 build, not the steady-state." },
+  { icon: "trending-up", title: "Product & Operating Architecture",             desc: "Where regulation, technology, and operations intersect — the structural decisions underneath the roadmap." },
 ];
 
 // ─── SIDE PROJECTS (public GitHub builds) ────────────────────────
