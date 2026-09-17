@@ -7,25 +7,25 @@ const SECTIONS = [
   {
     h: "Building at intersections",
     p: [
-      "Markets × technology. Product × infrastructure. Regulation × user experience. Business models × behaviour. And increasingly, traditional finance × the new financial rails being built around the world. Over the last decade, the work has moved across financial services, capital markets, investing, lending, wealth, crypto and global assets — but the common thread has been less about the category and more about the systems underneath it.",
+      "I like building at intersections. Markets × technology. Product × infrastructure. Regulation × user experience. Business models × behaviour. And increasingly, traditional finance × the new financial rails being built around the world. Over the last decade, my work has moved across financial services, capital markets, investing, lending, wealth, crypto, and global assets — but the common thread has been less about the category and more about the systems underneath it.",
     ],
   },
   {
     h: "Seeing the systems underneath",
     p: [
-      "A systems thinker by instinct — someone who enjoys taking a messy, interconnected problem and looking at it through multiple lenses at once: the customer journey, market structure, economics, regulation, technology, operations, risk, and distribution. A lot of that work has lived in the less glamorous but consequential parts of financial products — transaction systems, APIs, order flows, money movement, market infrastructure, compliance architecture, and the machinery required to make regulated products scale.",
+      "I'm a systems thinker by instinct. I enjoy taking a messy, interconnected problem and looking at it through multiple lenses at once: the customer journey, market structure, economics, regulation, technology, operations, risk, and distribution. A lot of my work has lived in the less glamorous but consequential parts of financial products — transaction systems, APIs, order flows, money movement, market infrastructure, compliance architecture, and the machinery required to make regulated products scale.",
     ],
   },
   {
     h: "Moving between machinery and behaviour",
     p: [
-      "Equally interested in what sits above that machinery: how products earn trust, how behaviour changes, where distribution advantages emerge, and why seemingly unrelated industries often end up solving remarkably similar problems. The interesting work usually lives in the traffic between the two — where an infrastructure decision quietly becomes a trust decision, or a behavioural insight turns out to be a business-model decision in disguise.",
+      "I'm equally interested in what sits above that machinery: how products earn trust, how behaviour changes, where distribution advantages emerge, and why seemingly unrelated industries often end up solving remarkably similar problems.",
     ],
   },
   {
     h: "Doing difficult things",
     p: [
-      "An Ironman 70.3 finisher and hybrid athlete, with an unreasonable affection for long games, difficult things, and the idea of compounding — whether applied to fitness, investing, learning, or life. None of it is separate from how the work gets done; it's the same instinct for showing up consistently on something that only pays off over months, applied somewhere the payoff is physical instead of professional.",
+      "Outside work, I'm an Ironman 70.3 finisher and hybrid athlete. I have an unreasonable affection for long games, difficult things, and the idea of compounding — whether applied to fitness, investing, learning, or life.",
     ],
   },
   {
@@ -37,7 +37,7 @@ const SECTIONS = [
   {
     h: "Documenting the connections",
     p: [
-      "That curiosity spills into Per Diem, an ongoing writing experiment on markets, technology, products, and the systems connecting them — mostly an excuse to follow interesting rabbit holes. Everything outside of work — the travel, the training, the food, the experiments — gets documented separately, through Udit Uncovered.",
+      "That curiosity also spills into Per Diem, my ongoing writing experiment on markets, technology, products, and the systems connecting them — mostly an excuse to follow interesting rabbit holes and occasionally connect dots that probably weren't meant to be connected. Everything outside of work — the travel, the training, the food, the experiments — gets documented separately, through Udit Uncovered.",
     ],
   },
 ];
@@ -54,7 +54,7 @@ export default function AboutPage() {
         .sp{padding:80px 80px;}
         .cred-strip{display:flex;justify-content:space-between;flex-wrap:wrap;}
         .facts-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
-        @media(max-width:768px){.sp{padding:64px 24px!important;}.facts-grid{grid-template-columns:1fr!important;gap:32px!important;}}
+        @media(max-width:768px){.sp{padding:64px 24px!important;}.facts-grid{grid-template-columns:1fr!important;gap:32px!important;}.cred-strip{padding:0 24px!important;}}
       `}</style>
 
       {/* Header */}
