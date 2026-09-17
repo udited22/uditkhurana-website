@@ -43,7 +43,7 @@ export default function PerDiemPage() {
       <div style={{ background: C.bgSection, padding: "80px 80px 48px", borderBottom: `1px solid ${C.borderSoft}` }} className="sp">
         <div style={{ maxWidth: "760px", margin: "0 auto" }}>
           <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: C.accent, marginBottom: "20px" }}>Per Diem · Published on LinkedIn</p>
-          <h1 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(28px,4.5vw,50px)", fontStyle: "italic", color: C.textHigh, lineHeight: 1.15, marginBottom: "20px" }}>
+          <h1 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(28px,4.5vw,50px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.15, marginBottom: "20px" }}>
             A daily exercise in connected thinking.
           </h1>
 
