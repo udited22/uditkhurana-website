@@ -70,5 +70,37 @@
     "excerpt": "Twenty-one banks just agreed to build something together. Not compete over.",
     "coverImage": "https://media.licdn.com/dms/image/v2/D5612AQEMb5z3obDC5g/article-cover_image-shrink_720_1280/B56aCGvgh4JUAU-/0/1788966999843?e=2147483647&v=beta&t=Xz6bvW-t8jJ_BHnrLwoCqrEQTo0gHR5j71tSolRHqJw",
     "tags": ["Business"]
+  },
+  {
+    "id": "portfolio-rebalance-attention",
+    "title": "Your Portfolio Doesn't Rebalance on Every Tick. Why Does Your Attention?",
+    "publishedAt": "2026-09-09",
+    "url": "https://www.linkedin.com/pulse/your-portfolio-doesnt-rebalance-every-tick-why-does-udit-khurana-oznqc",
+    "excerpt": "A 60/40 portfolio doesn't rebalance at 60.3/39.7. It waits. It moves only when the drift becomes large enough to matter.",
+    "tags": ["Performance"]
+  },
+  {
+    "id": "anthropic-kyc-tier-ai",
+    "title": "Anthropic Built a KYC Tier for AI, Not a Product Tier",
+    "publishedAt": "2026-09-08",
+    "url": "https://www.linkedin.com/pulse/anthropic-built-kyc-tier-ai-product-udit-khurana-v8eqc",
+    "excerpt": "On September 1, Anthropic shipped two models: Fable 5.1 and Mythos 5.1. Same underlying model. Different safeguards.",
+    "tags": ["Product"]
+  },
+  {
+    "id": "zerodha-groww-margin",
+    "title": "Zerodha and Groww Just Made Opposite Bets on Where the Margin Actually Lives",
+    "publishedAt": "2026-09-07",
+    "url": "https://www.linkedin.com/pulse/zerodha-groww-just-made-opposite-bets-where-margin-actually-khurana-xpvwc",
+    "excerpt": "On September 1, Zerodha's advisory arm got SEBI approval to operate as a merchant banker. Not a headline event — but it landed two months after Nithin Kamath went after Groww in public for almost the opposite move.",
+    "tags": ["Business"]
+  },
+  {
+    "id": "stop-loss-taper",
+    "title": "Your Stop-Loss and Your Taper Are the Same Idea",
+    "publishedAt": "2026-09-06",
+    "url": "https://www.linkedin.com/pulse/your-stop-loss-taper-same-idea-udit-khurana-sqelc",
+    "excerpt": "A stop-loss in trading and a pacing plan in endurance sport look like completely different things. One protects capital. The other protects your body.",
+    "tags": ["Performance"]
   }
 ]
