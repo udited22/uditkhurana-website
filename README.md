@@ -70,19 +70,35 @@ npm run perdiem:add <linkedin-article-url>
 ```
 
 The script tries to read the URL's public OpenGraph metadata (title,
-description, image) first. LinkedIn's post pages sit behind a login wall for
-most requests, so in practice it usually falls back to a few manual prompts
-(title, excerpt, cover image, tags, read time) — deliberately no headless
-browser, scraping library, or LinkedIn API. It appends the new issue to
-`per-diem.json` with today's date; commit and deploy, and the homepage +
-archive update automatically.
+description, image) first. LinkedIn's post/article pages sit behind a login
+wall for most requests, so in practice it usually falls back to a few manual
+prompts (title, excerpt, cover image, tags, read time, publish date) —
+deliberately no headless browser, scraping library, or LinkedIn API. It
+appends the new issue to `per-diem.json`; commit and deploy, and the homepage
++ archive update automatically.
 
-> The five issues migrated from the pre-V2 site didn't have a publish date in
-> the old content model, and LinkedIn doesn't expose one publicly. Their
-> `publishedAt` values in `per-diem.json` are placeholders (spaced out from
-> the original "recent and highlighted first" ordering) — worth a one-time
-> correction against the real dates when convenient. New issues added via the
-> script always get an accurate date.
+To backfill an older issue rather than one published today, pass an explicit
+date:
+
+```bash
+npm run perdiem:add <linkedin-article-url> -- --date 2026-09-10
+```
+
+The publish-date prompt defaults to **today's date in Asia/Kolkata**, not UTC
+or the machine's local timezone — the newsletter and its audience are
+India-based, and near midnight UTC those disagree by a full calendar day. The
+script also refuses to add an issue whose URL or generated id already exists
+in `per-diem.json`, so re-running the command by mistake can't silently
+duplicate an entry.
+
+The seed dataset is the real, current Per Diem run — verified issue-by-issue
+against the article pages' own server-rendered `og:title` / `og:description`
+/ `datePublished` (LinkedIn's login wall blocks a plain fetch of the visible
+article body, but these tags are present without one), not carried over from
+the old site's generic personal-LinkedIn-posts array. Earlier editions
+referenced anecdotally elsewhere weren't linked from the newsletter's own
+index page and couldn't be independently verified, so they were left out
+rather than guessed at.
 
 ## How it was built
 
