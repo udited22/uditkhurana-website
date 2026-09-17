@@ -25,7 +25,7 @@ export default function ProjectsPage() {
       <div className="sp" style={{ padding: "80px 80px 64px", background: C.bgSection, borderBottom: `1px solid ${C.borderSoft}` }}>
         <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
           <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: C.accent, marginBottom: "14px" }}>Projects</p>
-          <h1 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(28px,4vw,50px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.1, marginBottom: "16px" }}>
+          <h1 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(28px,4vw,50px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.1, marginBottom: "16px" }}>
             What gets built <em style={{ fontStyle: "italic", color: C.accent }}>outside the day job.</em>
           </h1>
           <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "14px", fontWeight: 300, color: C.textMid, lineHeight: 1.8, maxWidth: "560px" }}>
@@ -55,7 +55,7 @@ export default function ProjectsPage() {
                         <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "8px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: C.accent, background: C.accentFaint, padding: "3px 9px", borderRadius: "3px" }}>{p.tag}</span>
                         <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", color: C.textLow, fontStyle: early ? "italic" : "normal" }}>{p.stack}</span>
                       </div>
-                      <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "19px", fontWeight: 500, color: C.textHigh, lineHeight: 1.28, marginBottom: "10px", flex: 1 }}>{p.name}</h3>
+                      <h3 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "19px", fontWeight: 500, color: C.textHigh, lineHeight: 1.28, marginBottom: "10px", flex: 1 }}>{p.name}</h3>
                       <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12.5px", fontWeight: 300, lineHeight: 1.72, color: C.textMid, marginBottom: "18px" }}>{p.summary}</p>
                       <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: C.accent }}>View on GitHub →</p>
                     </div>
@@ -86,7 +86,7 @@ export default function ProjectsPage() {
                   <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
                     <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "8px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: C.accent, background: C.accentFaint, padding: "3px 9px", borderRadius: "3px" }}>Notion · Not Code</span>
                   </div>
-                  <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "24px", fontWeight: 500, color: C.textHigh, lineHeight: 1.25, marginBottom: "10px" }}>Research &amp; Side Projects Portfolio</h3>
+                  <h3 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "24px", fontWeight: 500, color: C.textHigh, lineHeight: 1.25, marginBottom: "10px" }}>Research &amp; Side Projects Portfolio</h3>
                   <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "13px", fontWeight: 300, lineHeight: 1.75, color: C.textMid, maxWidth: "60ch" }}>
                     Market research, product one-pagers, and in-progress ideas — the writing and thinking that sits upstream of the repos above, not another codebase.
                   </p>
@@ -103,7 +103,7 @@ export default function ProjectsPage() {
         <div style={{ maxWidth: "600px", margin: "0 auto" }}>
           <Reveal>
             <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: C.accent, marginBottom: "16px" }}>Advisory</p>
-            <h2 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(20px,2.6vw,30px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.25, marginBottom: "24px" }}>
+            <h2 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(20px,2.6vw,30px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.25, marginBottom: "24px" }}>
               Building something in fintech, crypto, or product? Let's talk.
             </h2>
             <button onClick={() => navigate("/advisory")}

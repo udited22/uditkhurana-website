@@ -27,7 +27,7 @@ export default function EssayLifeIsIntelligentPage() {
             ← Back to About
           </a>
           <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: C.accent, marginBottom: "14px" }}>Essay · Philosophy</p>
-          <h1 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(30px,4.5vw,52px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.1, marginBottom: "16px" }}>
+          <h1 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(30px,4.5vw,52px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.1, marginBottom: "16px" }}>
             Life is <em style={{ fontStyle: "italic", color: C.accent }}>Intelligent.</em>
           </h1>
           <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12px", fontWeight: 500, color: C.textLow, letterSpacing: "0.04em" }}>
@@ -38,7 +38,7 @@ export default function EssayLifeIsIntelligentPage() {
 
       <div className="sp" style={{ padding: "72px 80px 100px", background: C.bg }}>
         <div style={{ maxWidth: "700px", margin: "0 auto" }}>
-          <blockquote style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "20px", fontStyle: "italic", color: C.textHigh, lineHeight: 1.6, marginBottom: "40px", borderLeft: `3px solid ${C.border}`, paddingLeft: "24px" }}>
+          <blockquote style={{ fontFamily: "'Instrument Serif',serif", fontSize: "20px", fontStyle: "italic", color: C.textHigh, lineHeight: 1.6, marginBottom: "40px", borderLeft: `3px solid ${C.border}`, paddingLeft: "24px" }}>
             "I believe life is an intelligent thing: that things aren't random."
             <span style={{ display: "block", marginTop: "10px", fontFamily: "'DM Sans',sans-serif", fontSize: "11px", fontStyle: "normal", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: C.textLow }}>— Steve Jobs</span>
           </blockquote>
