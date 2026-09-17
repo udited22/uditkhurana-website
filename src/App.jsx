@@ -35,10 +35,21 @@ const ROUTES = {
   "/per-diem":    PerDiemPage,
 };
 
-// Per-route <title>/description — the site is a hand-rolled SPA with no
-// server-rendered head, so this is the one place that needs to stay in
-// sync when a route's positioning changes. Falls back to the index.html
-// defaults (home) when a path has no entry.
+// Per-route title/description/canonical/OG/Twitter tags — the site is a
+// hand-rolled SPA with no server-rendered head, so this is the one place
+// that needs to stay in sync when a route's positioning changes.
+//
+// PRECISE LIMITATION: this only helps clients that execute JavaScript
+// before reading <head> — real browsers, and crawlers that render JS
+// (Googlebot does). It does NOT help the large class of social-preview
+// unfurlers that fetch raw HTML without executing JS (Slack, iMessage,
+// WhatsApp, and most of Twitter/X's and LinkedIn's own link-preview
+// fetchers) — those will always see index.html's static homepage OG tags
+// regardless of which route was shared. Solving that properly needs
+// prerendering or SSR, which is a larger architecture change outside this
+// pass. Falls back to the index.html defaults (home) when a path has no
+// entry below.
+const SEO_DEFAULTS = { canonical: "https://uditkhurana.in" };
 const SEO = {
   "/":            { title: "Udit Khurana — Product, Markets, Systems & Per Diem", desc: "Building financial products and the systems underneath them. Writer of Per Diem. Selective advisory. Living the eclectic life through Udit Uncovered." },
   "/work":        { title: "Work — Udit Khurana", desc: "Product leadership across financial services, capital markets, and crypto — the systems underneath how people invest, spend, and move money." },
@@ -65,11 +76,22 @@ export default function App() {
   useEffect(() => {
     window.scrollTo(0, 0);
     const meta = SEO[path];
-    if (meta) {
-      document.title = meta.title;
-      const tag = document.querySelector('meta[name="description"]');
-      if (tag) tag.setAttribute("content", meta.desc);
-    }
+    if (!meta) return;
+
+    document.title = meta.title;
+    const setMeta = (selector, attr, value) => {
+      const tag = document.querySelector(selector);
+      if (tag) tag.setAttribute(attr, value);
+    };
+    const canonicalUrl = SEO_DEFAULTS.canonical + (path === "/" ? "" : path);
+
+    setMeta('meta[name="description"]', "content", meta.desc);
+    setMeta('link[rel="canonical"]', "href", canonicalUrl);
+    setMeta('meta[property="og:url"]', "content", canonicalUrl);
+    setMeta('meta[property="og:title"]', "content", meta.title);
+    setMeta('meta[property="og:description"]', "content", meta.desc);
+    setMeta('meta[name="twitter:title"]', "content", meta.title);
+    setMeta('meta[name="twitter:description"]', "content", meta.desc);
   }, [path]);
 
   const Page = ROUTES[path] || NotFoundPage;
