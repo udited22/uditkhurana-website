@@ -1,10 +1,8 @@
 // ─── PALETTE ────────────────────────────────────────────────────
-// Editorial × institutional × personal: a warm off-white base with
-// near-black type and one restrained deep-peacock accent, instead of
-// the previous dark-charcoal-and-gold treatment. Kept the `gold` key
-// name's siblings renamed to `accent` (the value is no longer gold),
-// but the token *shape* is unchanged so every page still reads off
-// this single object — repaint the site by editing values here.
+// Warm off-white base, near-black type, one restrained deep-peacock accent.
+// V3: Udit Uncovered no longer leans on its own rust UI color for most of
+// its surface — photography carries the color there now. `rust` is kept,
+// used sparingly (a label, a hairline), not as a competing site identity.
 export const C = {
   bg:         "#FAF7F1",
   bgCard:     "#FFFFFF",
@@ -19,15 +17,12 @@ export const C = {
   onAccent:   "#FAF7F1",
   border:     "rgba(14,107,116,0.22)",
   borderSoft: "rgba(24,25,26,0.10)",
-  // Reserved for Udit Uncovered only — the one deliberate departure from
-  // the single-accent rule, so that pillar reads as distinct-but-coherent
-  // rather than another teal section.
   rust:       "#A85736",
   rustFaint:  "rgba(168,87,54,0.10)",
   rustBorder: "rgba(168,87,54,0.35)",
 };
 
-// ─── PHOTOS (drop the real files here) ───────────────────────────
+// ─── PHOTOS ───────────────────────────────────────────────────────
 export const PHOTO = {
   heroLandscape: "/photos/hero-adventure-landscape.jpg", // Nubra Valley, Ladakh — golden hour
   product:       "/photos/headshot-professional.jpg",     // professional headshot
@@ -39,9 +34,6 @@ export const PHOTO = {
 export const CONTACT_EMAIL = "writetouditkhurana@gmail.com";
 
 // ─── SOCIAL ─────────────────────────────────────────────────────
-// Instagram is @udituncovered — the consolidated identity for travel,
-// endurance, adventure, food and everything outside the work pillar.
-// Do not point this back at the old @livingtheeclecticlife handle.
 export const SOCIAL = {
   linkedin: "https://linkedin.com/in/uditkhurana",
   instagram: "https://www.instagram.com/udituncovered/",
@@ -49,32 +41,18 @@ export const SOCIAL = {
 };
 
 // ─── PER DIEM NEWSLETTER ──────────────────────────────────────────
-// LinkedIn's own "follow this newsletter" action, provided directly by Udit — the
-// entityUrn identifies the Per Diem Newsletter object on LinkedIn. Do not regenerate
-// or guess this URL; if it ever needs to change, get the fresh one from LinkedIn's
-// own share/embed panel for the newsletter.
+// LinkedIn's own "follow this newsletter" action, provided directly by Udit —
+// do not regenerate or guess this URL.
 export const PER_DIEM_LINKEDIN_URL =
   "https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7502097177293492225";
 
-// ─── LINKEDIN EMBED HELPER ──────────────────────────────────────
-// LinkedIn doesn't offer a public API to pull a personal profile's
-// activity feed, but it does support embedding a specific known post
-// via a public iframe keyed on the post's numeric share id — present in
-// linkedin.com/posts/...-share-<id>-... URLs. No API key needed.
-// Only the "share-" URL pattern reliably resolves to a valid embed —
-// "activity-" and "ugcPost-" ids point at feed/document objects that
-// render LinkedIn's own "Page not found" inside the iframe, so those
-// fall back to a plain outbound link instead of a broken-looking embed.
 export function linkedInEmbedSrc(url) {
   const match = url.match(/share-(\d+)/);
   if (!match) return null;
   return `https://www.linkedin.com/embed/feed/update/urn:li:share:${match[1]}`;
 }
 
-// ─── NAV LINKS (source of truth for the IA) ──────────────────────
-// Four principal identity layers, plus About as the bridge between them.
-// "Adventure" and "Fitness" are deliberately not top-level anymore — both
-// now live inside Udit Uncovered. "Projects" lives beneath Work.
+// ─── NAV LINKS ────────────────────────────────────────────────────
 export const NAV_LINKS = [
   { label: "Work",            href: "/work"      },
   { label: "Per Diem",        href: "/per-diem"  },
@@ -83,109 +61,135 @@ export const NAV_LINKS = [
   { label: "About",           href: "/about"     },
 ];
 
-// ─── HERO INTERSECTIONS ───────────────────────────────────────────
-// Rendered as a single restrained static list, never a rotating carousel.
+// ─── INTERSECTIONS ────────────────────────────────────────────────
+// The hero's signature interaction. Each pair drives an adjacent evidence
+// panel on hover (desktop) / swipe (mobile) — see IntersectionEngine.jsx.
 export const INTERSECTIONS = [
-  "Markets × Technology",
-  "Product × Infrastructure",
-  "Regulation × User Experience",
-  "Business Models × Behaviour",
-  "Traditional Finance × New Financial Rails",
+  { a: "Markets", b: "Technology", evidence: "Trading systems and market infrastructure — where execution speed becomes a product decision." },
+  { a: "Product", b: "Infrastructure", evidence: "The customer screen is one layer. Underneath: APIs, flows, and rails most users never see." },
+  { a: "Regulation", b: "Experience", evidence: "Onboarding journeys shaped as much by regulatory architecture as by design." },
+  { a: "Business Models", b: "Behaviour", evidence: "Per Diem — an ongoing writing experiment on why these two are never really separate." },
+  { a: "Traditional Finance", b: "New Rails", evidence: "Global assets, crypto, and the GIFT City evolution of how capital crosses borders." },
 ];
 
-// ─── MULTI-LENS SYSTEMS THINKING ──────────────────────────────────
-// The lenses a problem gets examined through — rendered as a plain
-// typographic list on the Work page, never as coloured tag-soup.
-export const LENSES = [
-  "Customer journey", "Market structure", "Economics", "Regulation",
-  "Technology", "Operations", "Risk", "Distribution",
+// ─── SYSTEMS UNDERNEATH ───────────────────────────────────────────
+// Used on Home (Scene 2) and Work — the three-layer visual. See
+// SystemsUnderneath.jsx.
+export const LAYERS = [
+  { key: "experience", label: "Experience", items: ["Onboarding", "Trading", "Portfolio", "Discovery"] },
+  { key: "machinery",  label: "Product machinery", items: ["Order flow", "Money movement", "Market data", "Reconciliation", "Identity"] },
+  { key: "systems",    label: "System underneath", items: ["Market structure", "Regulation", "Infrastructure", "Risk", "Operations"] },
 ];
 
-// ─── CRED STRIP ──────────────────────────────────────────────────
-export const CRED = [
-  { val: "10+",       sub: "Years Across Financial Systems"  },
-  { val: "CoinDCX",   sub: "Principal PM · Current"      },
-  { val: "Ironman",   sub: "70.3 Finisher · Goa 2024"    },
-  { val: "PADI",      sub: "Advanced Open Water Diver"   },
-  { val: "Bengaluru", sub: "Building in public"          },
+// ─── OPERATING LOOP ───────────────────────────────────────────────
+// The About page's spine: a six-state loop the visitor scrolls through.
+export const OPERATING_LOOP = [
+  { key: "curiosity",  label: "Curiosity",  text: "I tend to follow questions further than necessary." },
+  { key: "systems",    label: "Systems",    text: "Eventually I want to know what is actually underneath the thing." },
+  { key: "experiment", label: "Experiment", text: "Understanding gets more interesting once something is tested." },
+  { key: "do",         label: "Do",         text: "Some ideas are only useful after they survive discomfort." },
+  { key: "reflect",    label: "Reflect",    text: "Experience without reflection is mostly just activity." },
+  { key: "document",   label: "Document",   text: "Writing forces the connections to become explicit." },
 ];
 
-// ─── COMPANIES ────────────────────────────────────────────────────
-export const COMPANIES = [
-  { name: "CoinDCX",           era: "2025–Present" },
-  { name: "smallcase & Tickertape", era: "2021–2025" },
-  { name: "EdgeVerve · Finacle", era: "2020–2021" },
-  { name: "Newgen Software",   era: "2018–2020" },
-  { name: "Infosys",           era: "2014–2016" },
+// ─── ABOUT PROOF STRIP ────────────────────────────────────────────
+// Plain typography, no cards, no icons — see About.jsx.
+export const PROOF_STRIP = [
+  "10+ years in financial systems",
+  "Ironman 70.3",
+  "PADI Advanced Open Water",
+  "Per Diem",
+  "Bengaluru",
 ];
+
+// ─── CAREER: PROBLEM-SPACE TIMELINE ───────────────────────────────
+// The intellectual journey — used on Work. Companies are metadata (see
+// JOURNEY / CAREER_MATRIX below), not the primary axis here.
+export const TIMELINE = [
+  { year: "2014", label: "Enterprise financial systems" },
+  { year: "2018", label: "Bank lending & workflow infrastructure" },
+  { year: "2020", label: "Core banking product systems" },
+  { year: "2021", label: "Retail investing infrastructure" },
+  { year: "2025", label: "Crypto, market infrastructure & global assets" },
+  { year: "Now",  label: "Regulated global investing infrastructure, via GIFT City" },
+];
+
+// ─── CAREER: SYSTEMS MATRIX ───────────────────────────────────────
+// Company × layer accumulation grid. `filled` aligns positionally with
+// `layers`. smallcase and CoinDCX rows are given directly in the brief;
+// the three earlier rows are a reasonable extrapolation of each role's
+// documented scope (JOURNEY below), showing the accumulation building
+// gradually rather than starting full.
+export const CAREER_MATRIX = {
+  layers: ["Experience", "Distribution", "Transactions", "Money Movement", "Market Infrastructure", "Regulation", "Operations / Risk"],
+  rows: [
+    { company: "Infosys",   period: "2014–2016",    filled: [false, false, true,  false, false, false, true] },
+    { company: "Newgen",    period: "2018–2020",    filled: [false, false, true,  false, false, true,  true] },
+    { company: "Finacle",   period: "2020–2021",    filled: [true,  false, true,  false, false, true,  true] },
+    { company: "smallcase", period: "2021–2025",    filled: [true,  true,  true,  true,  true,  true,  true] },
+    { company: "CoinDCX",   period: "2025–Present", filled: [true,  false, true,  true,  true,  true,  true] },
+  ],
+};
 
 // ─── THE JOURNEY ───────────────────────────────────────────────────
-// The real span, per résumé — newest to oldest. The two most recent
-// chapters carry the full mandate/scope/selectedWork treatment (the
-// class of problem, the systems involved, and 2–3 concrete examples);
-// earlier chapters are framed by scope alone. No delivered-impact
-// metrics anywhere here — none have been independently verified, and
-// the site should show breadth of systems and problems, not a
-// highlight reel of numbers.
+// Newest to oldest. The two most recent chapters carry real substance
+// (current mandate + scope for CoinDCX, proof points for smallcase);
+// earlier chapters are one sentence each until deliberately expanded.
+// No projected/unlaunched-scope numbers, no derivatives or Bahrain-volume
+// projections — Bahrain is a delivered proof point, not the current
+// chapter's centerpiece.
 export const JOURNEY = [
   {
-    years: "2025–Present", company: "CoinDCX", role: "Principal Product Manager",
-    active: true,
-    mandate: "An Indian crypto exchange, operating at the intersection of retail trust, regulatory uncertainty, and global market expansion.",
-    scope: "Core exchange infrastructure, retail growth, and international expansion into the GCC — three concurrent charters spanning very different regulatory regimes and user sophistication levels.",
-    selectedWork: [
-      "Owning product for core exchange infrastructure — the machinery underneath order flow and market data that every other feature sits on top of.",
-      "Standing up the product line for GCC market entry, where the regulatory architecture and user behaviour are both starting from a different baseline than India.",
-      "Working the retail growth charter as a distribution and behaviour problem as much as a features problem.",
+    years: "Dec 2025–Present", company: "CoinDCX", role: "Principal Product Manager", active: true,
+    headline: "Building regulated global investing infrastructure through GIFT City.",
+    scope: [
+      "Global Assets / US investing", "Product proposition", "Regulated onboarding",
+      "Brokerage infrastructure", "Money movement / LRS", "Trading systems",
+      "Market data", "Portfolio infrastructure", "Compliance architecture",
+      "Operating model", "Launch / GTM",
+    ],
+    earlier: [
+      { label: "Bahrain", detail: "A delivered proof point for international market entry — live, not projected." },
+      { label: "Core Exchange", detail: "Earlier internal scope: core exchange infrastructure and order flow." },
+      { label: "Retail Growth", detail: "Earlier internal scope: retail activation and distribution." },
     ],
   },
   {
-    years: "2021–2025", company: "smallcase & Tickertape", role: "Senior Product Manager",
-    active: false,
-    mandate: "Regulated retail investing infrastructure, at a moment when Indian retail investing was scaling faster than most of the systems built to serve it.",
-    scope: "Mutual funds, US equities, and broker integrations — four years leading a team of product managers across concurrent, regulator-adjacent product lines.",
-    selectedWork: [
-      "Led the product line connecting Indian retail investors to US equities — a case study in reconciling two regulatory regimes inside one user journey.",
-      "Built out mutual fund infrastructure where compliance requirements, not UI decisions, set the real constraints on the experience.",
-      "Managed broker integrations where the hard problem was operational reliability, not the integration surface itself.",
+    years: "Sep 2021–Dec 2025", company: "smallcase & Tickertape", role: "Senior Product Manager", active: false,
+    headline: "Scaling investing infrastructure across brokers, AMCs, and asset classes.",
+    proof: [
+      "7 PMs led",
+      "40+ AMCs through the EOP ecosystem",
+      "₹250Cr+ mutual-fund transactions",
+      "₹10,000–15,000Cr equity flows",
+      "Major broker integrations — Zerodha, Groww, ICICI Direct, Dhan, and others",
+      "US investing / GIFT City work",
     ],
   },
-  {
-    years: "2020–2021", company: "EdgeVerve (Finacle)", role: "Associate Product Manager",
-    active: false,
-    scope: "First product role — owned the loan origination product line for retail and commercial lending on Infosys' enterprise banking platform.",
-  },
-  {
-    years: "2018–2020", company: "Newgen Software", role: "Banking COE Consultant",
-    active: false,
-    scope: "Consulted global banks on BPM-based commercial lending, including large-scale loan digitisation — the first deep immersion in regulated banking infrastructure.",
-  },
-  {
-    years: "2016–2017", company: "Akshada Investment Solutions", role: "Proprietor",
-    active: false,
-    scope: "Independently managed portfolios across equities, F&O, real estate, and insurance — a market practitioner's chapter before becoming a product builder.",
-  },
-  {
-    years: "2014–2016", company: "Infosys", role: "Systems Engineer",
-    active: false,
-    scope: "Enterprise financial systems — implementing SAP FICO for large corporate finance operations. The technical grounding everything since has built on.",
-  },
+  { years: "2020–2021", company: "EdgeVerve (Finacle)",       role: "Associate Product Manager", active: false, sentence: "Enterprise lending product systems." },
+  { years: "2018–2020", company: "Newgen Software",            role: "Banking COE Consultant",     active: false, sentence: "Commercial lending and banking transformation." },
+  { years: "2016–2017", company: "Akshada Investment Solutions", role: "Proprietor",                active: false, sentence: "A practitioner chapter: markets before product." },
+  { years: "2014–2016", company: "Infosys",                     role: "Systems Engineer",           active: false, sentence: "Enterprise financial systems foundation." },
 ];
 
-// ─── ADVISORY AREAS ─────────────────────────────────────────────
-// General areas of help — not a fixed engagement menu.
-export const ADVISORY_AREAS = [
-  { icon: "compass",     title: "Fintech & Financial Product Strategy",         desc: "Positioning, sequencing, and roadmap decisions for teams building fintech and financial products." },
-  { icon: "wallet",      title: "Capital Markets, Wealth & Trading Infrastructure", desc: "Brokerage, investing platforms, and the market infrastructure underneath them." },
-  { icon: "arrows",      title: "Regulated Product Design",                     desc: "Building where regulation is a first-class design constraint, not an afterthought bolted on late." },
-  { icon: "cpu",         title: "Zero-to-One Financial Systems",                desc: "Standing up new financial infrastructure from scratch — the 0→1 build, not the steady-state." },
-  { icon: "trending-up", title: "Product & Operating Architecture",             desc: "Where regulation, technology, and operations intersect — the structural decisions underneath the roadmap." },
+// ─── ADVISORY: PROBLEM TYPES ──────────────────────────────────────
+// Exactly three, per V3 — click reveals 2–3 lines. Not a service menu.
+export const ADVISORY_PROBLEMS = [
+  {
+    title: "Financial product strategy",
+    detail: "Positioning, sequencing, and roadmap decisions for teams building fintech and financial products.",
+  },
+  {
+    title: "Market, brokerage & wealth infrastructure",
+    detail: "Brokerage, investing platforms, and the market infrastructure underneath them.",
+  },
+  {
+    title: "Regulated zero-to-one systems",
+    detail: "Standing up new, regulated financial infrastructure from scratch — where regulation is a first-class design constraint, not an afterthought.",
+  },
 ];
 
 // ─── SIDE PROJECTS (public GitHub builds) ────────────────────────
-// Kept in sync with github.com/udited22 — one-line status tags on the
-// two early-stage scaffolds (Exposure Dashboard, Morpheus Rapid Ring)
-// are honest about where they are, not padded to look further along.
 export const PROJECTS = [
   {
     name: "Aegis",
@@ -241,8 +245,6 @@ export const PROJECTS = [
 export const RESEARCH_PORTFOLIO_URL = "https://app.notion.com/p/theeclecticlife/Side-Projects-Product-Portfolio-1438f1766bce8074af71e29411b1afbd?source=copy_link";
 
 // ─── PERSONAL ESSAYS ──────────────────────────────────────────────
-// Native long-form writing that predates Per Diem and isn't part of the
-// newsletter identity — referenced from About, not from the Per Diem archive.
 export const ESSAYS = [
   { title: "Life is Intelligent", tag: "Philosophy", url: "/writing/life-is-intelligent", min: "3 min" },
 ];

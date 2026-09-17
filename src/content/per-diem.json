@@ -6,7 +6,12 @@
     "url": "https://www.linkedin.com/pulse/cost-being-right-too-early-udit-khurana-swplf",
     "excerpt": "Being wrong gets most of the attention in forecasting. We dissect bad assumptions, bad theses and bad decisions.",
     "coverImage": "https://media.licdn.com/dms/image/v2/D4D12AQH9aSltfxBhBw/article-cover_image-shrink_720_1280/B4DaCq4mGWGUAU-/0/1789573361691?e=2147483647&v=beta&t=x4YqLz0mu3twI_eAh3SCWZD_CLfOOX5DDpQIUEVmgQU",
-    "tags": ["Performance"]
+    "tags": [
+      "Performance"
+    ],
+    "connectionA": "Markets",
+    "connectionB": "Psychology",
+    "thesis": "Being right and being wrong cost the same P&L if your timing is off."
   },
   {
     "id": "attribution-problem-team-win",
@@ -15,7 +20,12 @@
     "url": "https://www.linkedin.com/pulse/attribution-problem-hiding-inside-every-team-win-udit-khurana-tti4f",
     "excerpt": "Ten thousand AI agents reportedly worked together on a proposed solution to one of mathematics' hardest open problems: The Navier–Stokes Millennium Prize Problem. Understanding the problem matters before getting to the AI.",
     "coverImage": "https://media.licdn.com/dms/image/v2/D4D12AQF4b8vNCKtdxQ/article-cover_image-shrink_720_1280/B4DaCl2vXUKEAU-/0/1789488987022?e=2147483647&v=beta&t=q4m3edK6A8dzMAvxw9Y4eU8YQGz_2pgTEqLnQbAzVNs",
-    "tags": ["Psychology"]
+    "tags": [
+      "Psychology"
+    ],
+    "connectionA": "Teams",
+    "connectionB": "Incentives",
+    "thesis": "Ten thousand AI agents solved a hard problem together. Who gets the credit?"
   },
   {
     "id": "ethereums-2029-deadline",
@@ -24,7 +34,12 @@
     "url": "https://www.linkedin.com/pulse/ethereums-2029-deadline-training-taper-fixed-race-day-udit-khurana-aekif",
     "excerpt": "Ethereum does not really have a quantum-computing deadline in the way most headlines make it sound. It has a planning target, and the distinction matters.",
     "coverImage": "https://media.licdn.com/dms/image/v2/D5612AQERLGfQnTjuRA/article-cover_image-shrink_720_1280/B56aCMWC1jHEAQ-/0/1789060984539?e=2147483647&v=beta&t=p0oMpTBg3FCATMjxrBuHn05zhaBiDaM4jPSK26Me5_c",
-    "tags": ["Markets"]
+    "tags": [
+      "Markets"
+    ],
+    "connectionA": "Technology",
+    "connectionB": "Planning",
+    "thesis": "Ethereum's 2029 deadline isn't a deadline. It's a training taper with no fixed race day."
   },
   {
     "id": "stablecoins-oldest-problem",
@@ -33,7 +48,12 @@
     "url": "https://www.linkedin.com/pulse/stablecoins-just-ran-one-finances-oldest-problems-udit-khurana-kjh0f",
     "excerpt": "Singapore's central bank proposed a new set of stablecoin rules this month. Issuers would need to maintain reserves of at least 100%, keep those assets appropriately segregated, and — this is the part worth sitting with — would not be allowed to offer holders interest or other benefits simply for holding.",
     "coverImage": "https://media.licdn.com/dms/image/v2/D4D12AQHkUHtfz70aKw/article-cover_image-shrink_720_1280/B4DaCgkGmBKIAU-/0/1789400221343?e=2147483647&v=beta&t=klxmt9Mx9wspJhenNT5kp0wI0nDHRO1Xy9fwlCnKi24",
-    "tags": ["Markets"]
+    "tags": [
+      "Markets"
+    ],
+    "connectionA": "Regulation",
+    "connectionB": "Money",
+    "thesis": "Stablecoin reserves are getting stricter. Interest on holdings is the line regulators won't cross."
   },
   {
     "id": "perimeter-follows-customer",
@@ -42,7 +62,12 @@
     "url": "https://www.linkedin.com/pulse/perimeter-follows-customer-udit-khurana-kqkpc",
     "excerpt": "On September 9, India's Financial Intelligence Unit issued non-compliance notices to 15 crypto platforms. It also sought takedowns of their apps and URLs in India.",
     "coverImage": "https://media.licdn.com/dms/image/v2/D5612AQGiM1-TG4g5lQ/article-cover_image-shrink_720_1280/B56aCYf79pG0AQ-/0/1789264909066?e=2147483647&v=beta&t=3Z3M4MyQB3m98Loh-HBxF9-UoXgaIjPlOmZ8TN_-AO0",
-    "tags": ["Business"]
+    "tags": [
+      "Business"
+    ],
+    "connectionA": "Regulation",
+    "connectionB": "Distribution",
+    "thesis": "Fifteen crypto platforms got non-compliance notices. The perimeter moved to where the customer is."
   },
   {
     "id": "upi-crypto-wallet",
@@ -51,7 +76,12 @@
     "url": "https://www.linkedin.com/pulse/upi-just-became-more-like-crypto-wallet-than-anyone-udit-khurana-7049f",
     "excerpt": "From September 4, UPI stopped showing your full phone number to the person you're paying. Only the last four digits are visible in places where the mobile number previously appeared.",
     "coverImage": "https://media.licdn.com/dms/image/v2/D4D12AQGljOubjNcLag/article-cover_image-shrink_720_1280/B4DaCRQH43IQAQ-/0/1789143321659?e=2147483647&v=beta&t=C2Z4qLQUZVc67pio--o0sw_S8BUxIVsVUhd3Ez0Yux8",
-    "tags": ["Product"]
+    "tags": [
+      "Product"
+    ],
+    "connectionA": "Payments",
+    "connectionB": "Identity",
+    "thesis": "UPI stopped showing your full phone number. Payments are quietly becoming more like wallets."
   },
   {
     "id": "auction-built-to-stop-manipulation",
@@ -60,7 +90,12 @@
     "url": "https://www.linkedin.com/pulse/auction-built-stop-manipulation-got-manipulated-first-udit-khurana-yi1qc",
     "excerpt": "When India's Closing Auction Session went live in August, I wrote about it before Per Diem existed as a newsletter. The first few sessions looked strange.",
     "coverImage": "https://media.licdn.com/dms/image/v2/D5612AQH7YNklkjQSrw/article-cover_image-shrink_720_1280/B56aBzUT.wGQAY-/0/1788641099936?e=2147483647&v=beta&t=AE7qL2faBN2A1f_I79jweM7G-3G100RO380fDOHLecQ",
-    "tags": ["Markets"]
+    "tags": [
+      "Markets"
+    ],
+    "connectionA": "Infrastructure",
+    "connectionB": "Competition",
+    "thesis": "The auction built to stop manipulation got manipulated first."
   },
   {
     "id": "21-competing-banks",
@@ -69,7 +104,12 @@
     "url": "https://www.linkedin.com/pulse/21-competing-banks-just-agreed-what-compete-over-udit-khurana-h0dkc",
     "excerpt": "Twenty-one banks just agreed to build something together. Not compete over.",
     "coverImage": "https://media.licdn.com/dms/image/v2/D5612AQEMb5z3obDC5g/article-cover_image-shrink_720_1280/B56aCGvgh4JUAU-/0/1788966999843?e=2147483647&v=beta&t=Xz6bvW-t8jJ_BHnrLwoCqrEQTo0gHR5j71tSolRHqJw",
-    "tags": ["Business"]
+    "tags": [
+      "Business"
+    ],
+    "connectionA": "Technology",
+    "connectionB": "Coordination",
+    "thesis": "Twenty-one competing banks just agreed on what not to compete over."
   },
   {
     "id": "portfolio-rebalance-attention",
@@ -77,7 +117,12 @@
     "publishedAt": "2026-09-09",
     "url": "https://www.linkedin.com/pulse/your-portfolio-doesnt-rebalance-every-tick-why-does-udit-khurana-oznqc",
     "excerpt": "A 60/40 portfolio doesn't rebalance at 60.3/39.7. It waits. It moves only when the drift becomes large enough to matter.",
-    "tags": ["Performance"]
+    "tags": [
+      "Performance"
+    ],
+    "connectionA": "Markets",
+    "connectionB": "Psychology",
+    "thesis": "Your portfolio doesn't rebalance on every tick. Why does your attention?"
   },
   {
     "id": "anthropic-kyc-tier-ai",
@@ -85,7 +130,12 @@
     "publishedAt": "2026-09-08",
     "url": "https://www.linkedin.com/pulse/anthropic-built-kyc-tier-ai-product-udit-khurana-v8eqc",
     "excerpt": "On September 1, Anthropic shipped two models: Fable 5.1 and Mythos 5.1. Same underlying model. Different safeguards.",
-    "tags": ["Product"]
+    "tags": [
+      "Product"
+    ],
+    "connectionA": "Technology",
+    "connectionB": "Regulation",
+    "thesis": "Anthropic shipped two identical models with different safeguards — a KYC tier, not a product tier."
   },
   {
     "id": "zerodha-groww-margin",
@@ -93,7 +143,12 @@
     "publishedAt": "2026-09-07",
     "url": "https://www.linkedin.com/pulse/zerodha-groww-just-made-opposite-bets-where-margin-actually-khurana-xpvwc",
     "excerpt": "On September 1, Zerodha's advisory arm got SEBI approval to operate as a merchant banker. Not a headline event — but it landed two months after Nithin Kamath went after Groww in public for almost the opposite move.",
-    "tags": ["Business"]
+    "tags": [
+      "Business"
+    ],
+    "connectionA": "Business Models",
+    "connectionB": "Competition",
+    "thesis": "Zerodha and Groww just made opposite bets on where the margin actually lives."
   },
   {
     "id": "stop-loss-taper",
@@ -101,6 +156,11 @@
     "publishedAt": "2026-09-06",
     "url": "https://www.linkedin.com/pulse/your-stop-loss-taper-same-idea-udit-khurana-sqelc",
     "excerpt": "A stop-loss in trading and a pacing plan in endurance sport look like completely different things. One protects capital. The other protects your body.",
-    "tags": ["Performance"]
+    "tags": [
+      "Performance"
+    ],
+    "connectionA": "Training",
+    "connectionB": "Risk",
+    "thesis": "A stop-loss in trading and a pacing plan in endurance sport protect the same thing, differently."
   }
 ]
