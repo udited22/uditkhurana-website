@@ -6,7 +6,9 @@ import Reveal from "../components/Reveal.jsx";
 
 const LI = () => <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>;
 
-// See the comment in UditUncovered.jsx — these three are the watermark-free subset.
+// A 3-photo curatorial pick for the compact homepage teaser — the full
+// 9-photo gallery (including the four with the old-handle watermark, kept
+// per Udit's direction — see UditUncovered.jsx) lives on /uncovered.
 const UNCOVERED_TEASER_TITLES = ["Nubra at Golden Hour", "A Life Fully Lived", "Monastery in the Mirror"];
 
 function fmtDate(iso) {
@@ -101,7 +103,7 @@ export default function HomePage() {
                 <div>
                   <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: C.accent, marginBottom: "12px" }}>Work</p>
                   <h2 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(22px,3vw,32px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.25, marginBottom: "14px" }}>
-                    {current.role} at {current.company}, after a decade moving through <em style={{ fontStyle: "italic", color: C.accent }}>every layer of financial infrastructure.</em>
+                    {current.role} at {current.company}, after a decade moving across <em style={{ fontStyle: "italic", color: C.accent }}>multiple layers of financial infrastructure.</em>
                   </h2>
                   <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "13.5px", fontWeight: 300, color: C.textMid, lineHeight: 1.75, maxWidth: "56ch", marginBottom: "18px" }}>
                     The category has changed — enterprise banking, independent markets practice, regulated retail investing, now crypto. The recurring interest has been the systems underneath it.
@@ -139,11 +141,16 @@ export default function HomePage() {
           <div className="pd-grid">
             <Reveal>
               <a href={PER_DIEM_LATEST.url} target="_blank" rel="noreferrer" style={{ display: "block" }}>
-                <div style={{ background: C.bgCard, border: `1px solid ${C.border}`, borderRadius: "8px", padding: "34px 32px" }}>
-                  <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: C.accent, marginBottom: "14px" }}>Latest Issue · {fmtDate(PER_DIEM_LATEST.publishedAt)}</p>
-                  <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(20px,2.6vw,28px)", fontWeight: 500, color: C.textHigh, lineHeight: 1.28, marginBottom: "14px" }}>{PER_DIEM_LATEST.title}</h3>
-                  <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "13px", fontWeight: 300, color: C.textMid, lineHeight: 1.75, marginBottom: "20px" }}>{PER_DIEM_LATEST.excerpt}</p>
-                  <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: C.accent }}>Read on LinkedIn →</p>
+                <div style={{ background: C.bgCard, border: `1px solid ${C.border}`, borderRadius: "8px", overflow: "hidden" }}>
+                  {PER_DIEM_LATEST.coverImage && (
+                    <div style={{ width: "100%", aspectRatio: "16/9", backgroundImage: `url(${PER_DIEM_LATEST.coverImage})`, backgroundSize: "cover", backgroundPosition: "center" }} />
+                  )}
+                  <div style={{ padding: "30px 32px 34px" }}>
+                    <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: C.accent, marginBottom: "14px" }}>Latest Issue · {fmtDate(PER_DIEM_LATEST.publishedAt)}</p>
+                    <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(20px,2.6vw,28px)", fontWeight: 500, color: C.textHigh, lineHeight: 1.28, marginBottom: "14px" }}>{PER_DIEM_LATEST.title}</h3>
+                    <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "13px", fontWeight: 300, color: C.textMid, lineHeight: 1.75, marginBottom: "20px" }}>{PER_DIEM_LATEST.excerpt}</p>
+                    <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: C.accent }}>Read on LinkedIn →</p>
+                  </div>
                 </div>
               </a>
             </Reveal>
