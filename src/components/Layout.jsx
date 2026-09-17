@@ -10,10 +10,10 @@ export function PerDiemWordmark({ size = "md" }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: big ? "14px" : "10px" }}>
       <div style={{ width: big ? "42px" : "30px", height: big ? "42px" : "30px", background: C.accentFaint, border: `1.5px solid ${C.border}`, borderRadius: "6px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-        <span style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: big ? "18px" : "13px", fontWeight: 600, color: C.accent }}>P</span>
+        <span style={{ fontFamily: "'Instrument Serif',serif", fontSize: big ? "18px" : "13px", fontWeight: 600, color: C.accent }}>P</span>
       </div>
       <div>
-        <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: big ? "26px" : "18px", fontWeight: 500, color: C.textHigh, letterSpacing: "0.03em", lineHeight: 1 }}>Per Diem</p>
+        <p style={{ fontFamily: "'Instrument Serif',serif", fontSize: big ? "26px" : "18px", fontWeight: 500, color: C.textHigh, letterSpacing: "0.03em", lineHeight: 1 }}>Per Diem</p>
         {big && <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: C.accentDim, marginTop: "4px" }}>An Ongoing Writing Experiment</p>}
       </div>
     </div>
@@ -46,7 +46,6 @@ export default function Layout({ children, activePath = "/" }) {
            both the full link row and the hamburger render at every width. */
         .nav-hamburger{display:none;}
         .site-nav{padding:0 52px;}
-        .connect-label{display:inline;}
         @media(max-width:980px){
           .nav-desktop{display:none!important;}
           .nav-hamburger{display:flex!important;}
@@ -55,10 +54,6 @@ export default function Layout({ children, activePath = "/" }) {
           .site-nav{padding:0 20px!important;}
           .mobile-menu{padding:8px 20px 24px!important;}
           .site-footer{padding:32px 20px!important;}
-        }
-        @media(max-width:400px){
-          .connect-label{display:none!important;}
-          .connect-btn{padding:8px 10px!important;}
         }
       `}</style>
 
@@ -73,10 +68,10 @@ export default function Layout({ children, activePath = "/" }) {
         transition: "all 0.3s ease",
       }}>
         <a href="/" onClick={e => { e.preventDefault(); navigate("/"); }} style={{ display: "flex", flexDirection: "column", gap: "2px", lineHeight: 1, minWidth: 0 }}>
-          <span style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "19px", fontWeight: 500, letterSpacing: "0.03em", color: C.textHigh, whiteSpace: "nowrap" }}>Udit Khurana</span>
+          <span style={{ fontFamily: "'Instrument Serif',serif", fontSize: "19px", fontWeight: 500, letterSpacing: "0.03em", color: C.textHigh, whiteSpace: "nowrap" }}>Udit Khurana</span>
         </a>
 
-        <div className="nav-desktop" style={{ display: "flex", gap: "26px", alignItems: "center" }}>
+        <div className="nav-desktop" style={{ display: "flex", gap: "30px", alignItems: "center" }}>
           {NAV_LINKS.map(l => (
             <a key={l.label} href={l.href}
               onClick={e => { e.preventDefault(); navigate(l.href); }}
@@ -92,19 +87,12 @@ export default function Layout({ children, activePath = "/" }) {
           ))}
         </div>
 
-        <div style={{ display: "flex", gap: "8px", alignItems: "center", flexShrink: 0 }}>
-          <a
-            href={SOCIAL.linkedin} target="_blank" rel="noreferrer" aria-label="Connect on LinkedIn" className="connect-btn"
-            style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "8px 18px", background: C.accent, color: C.onAccent, fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", cursor: "pointer", border: "none", borderRadius: "3px", textDecoration: "none", whiteSpace: "nowrap" }}>
-            <LI /> <span className="connect-label">Connect</span>
-          </a>
-          <button className="nav-hamburger" onClick={() => setMenu(!menu)} aria-label="Menu" aria-expanded={menu}
-            style={{ background: "none", border: "none", cursor: "pointer", padding: "6px", flexDirection: "column", gap: "5px", flexShrink: 0 }}>
-            <span style={{ width: "18px", height: "1.5px", background: C.textMid, display: "block", transition: "all .25s", transform: menu ? "rotate(45deg) translateY(6px)" : "none" }} />
-            <span style={{ width: "18px", height: "1.5px", background: C.textMid, display: "block", opacity: menu ? 0 : 1 }} />
-            <span style={{ width: "18px", height: "1.5px", background: C.textMid, display: "block", transition: "all .25s", transform: menu ? "rotate(-45deg) translateY(-6px)" : "none" }} />
-          </button>
-        </div>
+        <button className="nav-hamburger" onClick={() => setMenu(!menu)} aria-label="Menu" aria-expanded={menu}
+          style={{ background: "none", border: "none", cursor: "pointer", padding: "6px", flexDirection: "column", gap: "5px", flexShrink: 0 }}>
+          <span style={{ width: "18px", height: "1.5px", background: C.textMid, display: "block", transition: "all .25s", transform: menu ? "rotate(45deg) translateY(6px)" : "none" }} />
+          <span style={{ width: "18px", height: "1.5px", background: C.textMid, display: "block", opacity: menu ? 0 : 1 }} />
+          <span style={{ width: "18px", height: "1.5px", background: C.textMid, display: "block", transition: "all .25s", transform: menu ? "rotate(-45deg) translateY(-6px)" : "none" }} />
+        </button>
       </nav>
 
       {/* Mobile menu */}
@@ -130,7 +118,7 @@ export default function Layout({ children, activePath = "/" }) {
         <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "40px", flexWrap: "wrap" }}>
             <div style={{ maxWidth: "340px" }}>
-              <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "16px", fontWeight: 500, color: C.textHigh, marginBottom: "6px" }}>Udit Khurana</p>
+              <p style={{ fontFamily: "'Instrument Serif',serif", fontSize: "16px", fontWeight: 500, color: C.textHigh, marginBottom: "6px" }}>Udit Khurana</p>
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12px", color: C.textLow, lineHeight: 1.6 }}>Building systems. Connecting ideas. Living the eclectic life.</p>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
