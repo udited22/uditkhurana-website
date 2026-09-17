@@ -1,0 +1,47 @@
+[
+  {
+    "id": "broking-industry-data",
+    "title": "What Decades of Indian Broking Data Actually Tells You",
+    "publishedAt": "2026-08-20",
+    "url": "https://www.linkedin.com/posts/uditkhurana_indian-broking-industry-research-report-ugcPost-7396808985280073730-5r36",
+    "excerpt": "A deep-dive into India's broking landscape — market structure, players, growth drivers, and what it means for product builders.",
+    "tags": ["Fintech"],
+    "min": "12 min"
+  },
+  {
+    "id": "markets-faster-than-backlog",
+    "title": "Markets Move Faster Than Your Backlog",
+    "publishedAt": "2026-06-15",
+    "url": "https://www.linkedin.com/posts/uditkhurana_markets-move-faster-than-your-backlog-it-share-7392407198410350592-Bjeh",
+    "excerpt": "Why fintech product teams need a different operating rhythm — and how to build a backlog that can actually keep up with market velocity.",
+    "tags": ["Product"],
+    "min": "5 min"
+  },
+  {
+    "id": "compliance-write-your-ux",
+    "title": "Don't Let Compliance Write Your UX",
+    "publishedAt": "2026-04-10",
+    "url": "https://www.linkedin.com/posts/uditkhurana_most-teams-discover-this-the-hard-way-you-activity-7371399542723944448-WSP-",
+    "excerpt": "The hard-learned lesson most fintech teams discover too late — how to design for regulation without ruining the product experience.",
+    "tags": ["Fintech"],
+    "min": "4 min"
+  },
+  {
+    "id": "data-is-never-perfect",
+    "title": "Data Is Never Perfect",
+    "publishedAt": "2026-01-25",
+    "url": "https://www.linkedin.com/posts/uditkhurana_fintech-productthinking-systemdesign-share-7356236354931904514-_3qf",
+    "excerpt": "Waiting for clean data means waiting forever. A framework for making confident decisions with imperfect information.",
+    "tags": ["Systems"],
+    "min": "5 min"
+  },
+  {
+    "id": "where-product-sense-comes-from",
+    "title": "Where Does Product Sense Come From?",
+    "publishedAt": "2025-11-05",
+    "url": "https://www.linkedin.com/posts/uditkhurana_where-does-product-sense-come-from-at-some-share-7290690643297812480-PSlF",
+    "excerpt": "Product intuition is not a trait — it's a practice. Notes on how experienced PMs develop judgment.",
+    "tags": ["Career"],
+    "min": "6 min"
+  }
+]
