@@ -60,7 +60,7 @@ export default function HomePage() {
                 I build at the <em style={{ fontStyle: "italic", color: C.accent }}>intersections</em> of markets, technology, and regulated finance.
               </h1>
               <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "15px", fontWeight: 400, color: C.textMid, lineHeight: 1.65, maxWidth: "46ch", marginBottom: "40px" }}>
-                The rest of the time, I'm exploring the other systems that interest me — investing, writing, endurance, travel, and the occasional hard thing.
+                Outside work, that curiosity spills into investing, writing, endurance, travel, and the occasional hard thing.
               </p>
               <button
                 onClick={() => scene2Ref.current?.scrollIntoView({ behavior: "smooth" })}
@@ -79,7 +79,7 @@ export default function HomePage() {
                   width={1122}
                   height={1402}
                   loading="eager"
-                  fetchpriority="high"
+                  fetchPriority="high"
                   decoding="async"
                   style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
                 />

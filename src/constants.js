@@ -72,7 +72,7 @@ export const INTERSECTIONS = [
   { a: "Regulation", b: "Experience", evidence: "Onboarding journeys shaped as much by regulatory architecture as by design." },
   { a: "Business Models", b: "Behaviour", evidence: "Per Diem — an ongoing writing experiment on why these two are never really separate." },
   { a: "Traditional Finance", b: "New Rails", evidence: "Global assets, crypto, and the GIFT City evolution of how capital crosses borders." },
-  { a: "Endurance", b: "Mindset", evidence: "Race-day pacing and a hard product sprint turned out to be the same discipline, learned twice." },
+  { a: "Endurance", b: "Mindset", evidence: "Long-distance sport has been my longest experiment in consistency, discomfort and patience." },
   { a: "Travel", b: "Stories", evidence: "Udit Uncovered — the same instinct that documents an edge case, pointed at a mountain instead." },
 ];
 
@@ -108,13 +108,9 @@ export const PROOF_STRIP = [
 
 // ─── DO HARD THINGS (Home) ─────────────────────────────────────────
 // Photography-led, not icon cards. Ironman is the featured/primary story;
-// scuba and the snow photo are supporting. The Ironman CTA points at the
-// closest verified match for "an article about what I learnt completing
-// Ironman" found anywhere in the repo/content — a Per Diem issue that
-// explicitly connects race-day pacing to trading risk management. It is
-// not a dedicated finisher retrospective, so the label names what the
-// piece actually is (a Training ↔ Risk connection) rather than overclaiming.
-// No other Ironman-specific article/URL exists in this codebase.
+// scuba and the snow photo are supporting. Ironman CTA is Udit's own
+// supplied canonical URL for his Ironman-learnings article — do not
+// substitute or regenerate this link.
 export const DO_HARD_THINGS = [
   {
     key: "ironman",
@@ -123,7 +119,7 @@ export const DO_HARD_THINGS = [
     photo: PHOTO.fitness,
     alt: "Udit Khurana holding an IRONMAN 70.3 India finisher towel on the beach in Goa",
     copy: "Months of training, three disciplines, one very long day — and lessons that lasted a lot longer.",
-    cta: { label: "Read: Training ↔ Risk →", url: "https://www.linkedin.com/pulse/your-stop-loss-taper-same-idea-udit-khurana-sqelc" },
+    cta: { label: "Lessons from IRONMAN →", url: "https://lnkd.in/p/deiTGN5w" },
     featured: true,
   },
   {
@@ -136,11 +132,11 @@ export const DO_HARD_THINGS = [
   },
   {
     key: "adventure",
-    title: "Adventure & Discomfort",
+    title: "Into the Unfamiliar",
     tag: "Exploration",
     photo: PHOTO.iceAdventure,
     alt: "Udit Khurana lying on a snow-covered mountain slope with arms outstretched",
-    copy: "Sometimes the point is simply to go towards the unfamiliar.",
+    copy: "Sometimes the point is simply to go somewhere you haven't been before.",
   },
 ];
 

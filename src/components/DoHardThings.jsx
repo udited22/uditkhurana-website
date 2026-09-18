@@ -5,7 +5,11 @@ import { C, DO_HARD_THINGS } from "../constants.js";
 // identical SaaS-style cards. Ironman is portrait-shaped and spans two rows
 // as the featured story; the landscape scuba shot and the portrait snow
 // shot fill the two supporting cells, each cropped only at the edges its
-// own aspect ratio doesn't already fit.
+// own aspect ratio doesn't already fit. On mobile, each of the three keeps
+// an aspect ratio close to its own source photo (3/4 for the two portrait
+// shots, 4/3 for the landscape scuba shot) rather than a uniform crop — the
+// snow photo in particular needs its portrait shape to keep the slope and
+// the full outstretched pose visible.
 function Module({ item }) {
   return (
     <div style={{ position: "relative", height: "100%", overflow: "hidden", borderRadius: "6px" }}>
@@ -56,8 +60,9 @@ export default function DoHardThings() {
         @media(max-width:700px){
           .dht-grid{grid-template-columns:1fr!important;grid-auto-rows:auto!important;}
           .dht-grid>div{grid-column:1!important;grid-row:auto!important;}
-          .dht-grid>div:first-child{aspect-ratio:3/4;}
-          .dht-grid>div:not(:first-child){aspect-ratio:4/3;}
+          .dht-grid>div:nth-child(1){aspect-ratio:3/4;}
+          .dht-grid>div:nth-child(2){aspect-ratio:4/3;}
+          .dht-grid>div:nth-child(3){aspect-ratio:3/4;}
         }
       `}</style>
     </>
