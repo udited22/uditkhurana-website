@@ -241,18 +241,24 @@ export const JOURNEY = [
 
 // ─── ADVISORY: PROBLEM TYPES ──────────────────────────────────────
 // Exactly three, per V3 — click reveals 2–3 lines. Not a service menu.
+// V4: 4 modules (was 3) for a clean 2x2 "Where I'm Most Useful" grid,
+// exact copy from the Advisory rebuild brief.
 export const ADVISORY_PROBLEMS = [
   {
-    title: "Financial product strategy",
-    detail: "Positioning, sequencing, and roadmap decisions for teams building fintech and financial products.",
+    title: "0→1 regulated financial products",
+    detail: "From proposition and operating model through onboarding, KYC/compliance architecture, partner dependencies and launch sequencing.",
   },
   {
-    title: "Market, brokerage & wealth infrastructure",
-    detail: "Brokerage, investing platforms, and the market infrastructure underneath them.",
+    title: "Brokerage, investing & market infrastructure",
+    detail: "Broker integrations, order flows, OMS/RMS boundaries, market data, portfolio infrastructure, corporate actions and reconciliation.",
   },
   {
-    title: "Regulated zero-to-one systems",
-    detail: "Standing up new, regulated financial infrastructure from scratch — where regulation is a first-class design constraint, not an afterthought.",
+    title: "Money movement & cross-border rails",
+    detail: "Bank and PSP integrations, funds flow architecture, LRS/remittance, ledgers, reconciliation and exception operations.",
+  },
+  {
+    title: "Product architecture & decision pressure-testing",
+    detail: "PRD reviews, build-vs-buy decisions, vendor evaluation, system maps, roadmap sequencing, dependencies and operational risk.",
   },
 ];
 
