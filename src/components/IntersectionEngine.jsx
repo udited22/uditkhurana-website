@@ -1,77 +1,104 @@
 import { useState } from "react";
 import { C, INTERSECTIONS } from "../constants.js";
 
-// The site's signature interaction. Desktop: hovering a relationship
-// updates an adjacent evidence panel (a reusable interaction, not a
-// decorative animation). Mobile: no hover dependency — a horizontally
-// swipeable, scroll-snapped strip with the same evidence built in per card,
-// so nothing is lost to touch devices.
-function Mark({ active }) {
+// V4 rebuild. Previous version was a 50/50 hover-to-reveal split — a full
+// screen that delivered one sentence only after the visitor guessed to
+// hover. Every module here shows its name + evidence by default; hover/
+// focus adds exactly one more layer (the two-circle mark converges, and a
+// link chip resolves where a genuine on-site destination exists). Mobile
+// gets the same complete content with no hover dependency — the link chip
+// just renders inline instead of waiting for a gesture that doesn't exist.
+function Mark({ hovered }) {
   return (
-    <svg width="44" height="32" viewBox="0 0 44 32" style={{ flexShrink: 0 }}>
-      <circle cx="16" cy="16" r="13" fill="none" stroke={C.accent} strokeWidth="1.3" opacity={active ? 0.9 : 0.35} style={{ transition: "opacity .35s ease" }} />
-      <circle cx="28" cy="16" r="13" fill="none" stroke={C.rust} strokeWidth="1.3" opacity={active ? 0.9 : 0.35} style={{ transition: "opacity .35s ease" }} />
+    <svg width="40" height="26" viewBox="0 0 40 26" style={{ flexShrink: 0 }}>
+      <circle cx={hovered ? 15 : 13} cy="13" r="10.5" fill="none" stroke={C.accent} strokeWidth="1.3" style={{ transition: "cx .18s ease-out" }} />
+      <circle cx={hovered ? 25 : 27} cy="13" r="10.5" fill="none" stroke={C.rust} strokeWidth="1.3" style={{ transition: "cx .18s ease-out" }} />
     </svg>
   );
 }
 
-export default function IntersectionEngine() {
-  const [active, setActive] = useState(0);
-  const current = INTERSECTIONS[active];
+function Chip({ link }) {
+  if (!link) return null;
+  const isAnchor = link.href.startsWith("#");
+  return (
+    <a
+      href={link.href}
+      onClick={isAnchor ? (e) => {
+        e.preventDefault();
+        document.querySelector(link.href)?.scrollIntoView({ behavior: "smooth" });
+      } : (e) => {
+        e.preventDefault();
+        window.history.pushState({}, "", link.href);
+        window.dispatchEvent(new PopStateEvent("popstate"));
+      }}
+      className="ie-chip"
+      style={{
+        display: "inline-flex", alignItems: "center", gap: "5px", marginTop: "12px",
+        fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "10.5px", fontWeight: 600,
+        letterSpacing: "0.06em", textTransform: "uppercase", color: C.accent,
+      }}
+    >
+      {link.label} <span aria-hidden="true">→</span>
+    </a>
+  );
+}
 
+function Module({ item, index, hovered, setHovered }) {
+  const isWide = index === INTERSECTIONS.length - 1;
+  const isHovered = hovered === index;
+  return (
+    <div
+      className="ie-module"
+      style={{
+        gridColumn: isWide ? "1 / -1" : "auto",
+        padding: isWide ? "26px 30px" : "22px 24px",
+        background: isHovered ? C.bgCard : "transparent",
+        border: `1px solid ${isHovered ? C.border : C.borderSoft}`,
+        borderRadius: "8px",
+        transition: "background .2s ease, border-color .2s ease",
+      }}
+      onMouseEnter={() => setHovered(index)}
+      onMouseLeave={() => setHovered(null)}
+      onFocus={() => setHovered(index)}
+      onBlur={() => setHovered(null)}
+      tabIndex={0}
+    >
+      <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px" }}>
+        <Mark hovered={isHovered} />
+        <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: isWide ? "16px" : "14.5px", fontWeight: 600, color: C.textHigh }}>
+          {item.a} <span style={{ color: C.accent, fontWeight: 400 }}>×</span> {item.b}
+        </p>
+      </div>
+      <p style={{
+        fontFamily: "'IBM Plex Sans',sans-serif", fontSize: isWide ? "15px" : "13.5px", fontWeight: 400,
+        color: C.textMid, lineHeight: 1.55, maxWidth: isWide ? "62ch" : "34ch",
+      }}>
+        {item.evidence}
+      </p>
+      {/* Desktop: link chip only appears with the hovered/focused module.
+          Mobile: always rendered (see .ie-chip-wrap rule below) — no hover to gate it behind. */}
+      <div className="ie-chip-wrap" style={{ opacity: isHovered ? 1 : 0, height: isHovered ? "auto" : 0, overflow: "hidden", transition: "opacity .15s ease" }}>
+        <Chip link={item.link} />
+      </div>
+    </div>
+  );
+}
+
+export default function IntersectionEngine() {
+  const [hovered, setHovered] = useState(null);
   return (
     <div>
-      {/* Desktop: list + adjacent evidence panel */}
-      <div className="ie-desktop" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "56px", alignItems: "start" }}>
-        <div>
-          {INTERSECTIONS.map((it, i) => (
-            <button
-              key={i}
-              onMouseEnter={() => setActive(i)}
-              onFocus={() => setActive(i)}
-              style={{
-                display: "flex", alignItems: "center", gap: "14px", width: "100%",
-                textAlign: "left", background: "none", border: "none", cursor: "pointer",
-                padding: "13px 0", borderBottom: `1px solid ${C.borderSoft}`,
-                fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "14px", fontWeight: 500,
-                color: active === i ? C.textHigh : C.textMid, transition: "color .2s ease",
-              }}
-            >
-              <Mark active={active === i} />
-              <span>{it.a} <em style={{ color: C.accent, fontStyle: "normal" }}>×</em> {it.b}</span>
-            </button>
-          ))}
-        </div>
-
-        <div style={{ paddingTop: "8px", minHeight: "140px" }}>
-          <p key={active} style={{
-            fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(20px,2.4vw,28px)", fontStyle: "italic",
-            color: C.textHigh, lineHeight: 1.4, animation: "ieFade .4s ease both",
-          }}>
-            {current.evidence}
-          </p>
-        </div>
-      </div>
-
-      {/* Mobile: swipeable, scroll-snapped strip — no hover, no JS touch handling */}
-      <div className="ie-mobile" style={{ display: "none", gap: "14px", overflowX: "auto", scrollSnapType: "x mandatory", paddingBottom: "6px", margin: "0 -24px", padding: "0 24px 6px" }}>
-        {INTERSECTIONS.map((it, i) => (
-          <div key={i} style={{
-            scrollSnapAlign: "start", flexShrink: 0, width: "84%", background: C.bgCard,
-            border: `1px solid ${C.borderSoft}`, borderRadius: "8px", padding: "22px 20px",
-          }}>
-            <div style={{ marginBottom: "12px" }}><Mark active /></div>
-            <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "13px", fontWeight: 600, color: C.textHigh, marginBottom: "10px" }}>
-              {it.a} <em style={{ color: C.accent, fontStyle: "normal" }}>×</em> {it.b}
-            </p>
-            <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "18px", fontStyle: "italic", color: C.textMid, lineHeight: 1.4 }}>{it.evidence}</p>
-          </div>
+      <div className="ie-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "12px" }}>
+        {INTERSECTIONS.map((item, i) => (
+          <Module key={i} item={item} index={i} hovered={hovered} setHovered={setHovered} />
         ))}
       </div>
-
       <style>{`
-        @keyframes ieFade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
-        @media(max-width:820px){.ie-desktop{display:none!important;}.ie-mobile{display:flex!important;}}
+        @media(max-width:820px){
+          .ie-grid{grid-template-columns:1fr!important;}
+          .ie-module{grid-column:1!important;}
+          .ie-chip-wrap{opacity:1!important;height:auto!important;}
+        }
       `}</style>
     </div>
   );

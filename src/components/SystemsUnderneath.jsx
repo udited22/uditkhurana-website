@@ -1,52 +1,63 @@
 import { useState } from "react";
 import { C, LAYERS } from "../constants.js";
 
-// The layered-product visual: click a layer, the items in it illuminate and
-// the rest recede. Click-driven (not hover-only) so it works identically on
-// touch and mouse — no separate mobile fallback needed.
-export default function SystemsUnderneath({ compact = false }) {
-  const [active, setActive] = useState(0);
+// V4 rebuild. Previous version hid two of three layers behind a click,
+// leaving two collapsed rows with nothing in them until interacted with —
+// the exact "hidden behind hover/click without enough reason to interact"
+// failure named in the brief. All three layers now render fully expanded,
+// connected by a single rail that threads through them (the visual claim:
+// these aren't separate lists, they're one stack). Hover/focus highlights
+// one layer without hiding the other two — the complete mental model is
+// legible before any interaction.
+export default function SystemsUnderneath() {
+  const [active, setActive] = useState(null);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+    <div className="su-stack" style={{ position: "relative", display: "flex", flexDirection: "column", gap: "14px" }}>
+      <div className="su-rail" aria-hidden="true" style={{
+        position: "absolute", left: "13px", top: "22px", bottom: "22px", width: "2px",
+        background: C.borderSoft, borderRadius: "1px",
+      }} />
       {LAYERS.map((layer, i) => {
         const isActive = active === i;
+        const dimmed = active !== null && !isActive;
         return (
-          <button
+          <div
             key={layer.key}
-            type="button"
-            onClick={() => setActive(i)}
-            aria-expanded={isActive}
-            aria-controls={`layer-items-${layer.key}`}
+            role="button"
+            tabIndex={0}
+            onMouseEnter={() => setActive(i)}
+            onMouseLeave={() => setActive(null)}
+            onFocus={() => setActive(i)}
+            onBlur={() => setActive(null)}
             style={{
-              display: "block", width: "100%", textAlign: "left", font: "inherit",
-              cursor: "pointer",
-              padding: compact ? "18px 22px" : "26px 28px",
+              position: "relative", paddingLeft: "34px", padding: "18px 20px 18px 34px",
               background: isActive ? C.bgCard : "transparent",
               border: `1px solid ${isActive ? C.border : "transparent"}`,
-              borderRadius: "8px",
-              transition: "background .35s ease, border-color .35s ease",
+              borderRadius: "8px", cursor: "pointer",
+              opacity: dimmed ? 0.62 : 1,
+              transition: "opacity .25s ease, background .25s ease, border-color .25s ease",
             }}
           >
-            <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: "12px", flexWrap: "wrap" }}>
-              <p style={{
-                fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9px", fontWeight: 700,
-                letterSpacing: "0.24em", textTransform: "uppercase",
-                color: isActive ? C.accent : C.textLow, transition: "color .3s ease",
-              }}>
-                Layer {i + 1} · {layer.label}
-              </p>
-            </div>
-            <div id={`layer-items-${layer.key}`} style={{
-              display: "flex", flexWrap: "wrap", gap: "10px 20px", marginTop: "12px",
-              maxHeight: isActive ? "80px" : "0px", opacity: isActive ? 1 : 0,
-              overflow: "hidden", transition: "max-height .4s ease, opacity .3s ease",
+            <div aria-hidden="true" style={{
+              position: "absolute", left: "8px", top: "22px", width: "10px", height: "10px",
+              borderRadius: "50%", background: isActive ? C.accent : C.bg,
+              border: `2px solid ${isActive ? C.accent : C.borderSoft}`,
+              transition: "background .25s ease, border-color .25s ease",
+            }} />
+            <p style={{
+              fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9.5px", fontWeight: 700,
+              letterSpacing: "0.22em", textTransform: "uppercase",
+              color: isActive ? C.accent : C.textLow, marginBottom: "10px", transition: "color .25s ease",
             }}>
+              Layer {i + 1} · {layer.label}
+            </p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "8px 16px" }}>
               {layer.items.map((item) => (
-                <span key={item} style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: compact ? "17px" : "20px", color: C.textHigh }}>{item}</span>
+                <span key={item} style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "15px", fontWeight: 500, color: C.textHigh }}>{item}</span>
               ))}
             </div>
-          </button>
+          </div>
         );
       })}
     </div>
