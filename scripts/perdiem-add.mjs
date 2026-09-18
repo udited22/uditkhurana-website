@@ -128,13 +128,16 @@ async function main() {
   }
 
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-  const { title, excerpt, coverImage, tagsRaw, min, publishedAt } = await askAll(rl, [
+  const { title, excerpt, coverImage, tagsRaw, min, publishedAt, connectionA, connectionB, thesis } = await askAll(rl, [
     ["title", "Title:", meta?.title ?? ""],
     ["excerpt", "Excerpt (one or two sentences):", meta?.description ?? ""],
     ["coverImage", "Cover image URL (optional):", meta?.image ?? ""],
     ["tagsRaw", "Tags (comma-separated, optional):", ""],
     ["min", "Read time (optional, e.g. \"5 min\"):", ""],
     ["publishedAt", "Publish date (YYYY-MM-DD, Asia/Kolkata):", explicitDate ?? todayInKolkata()],
+    ["connectionA", "Connection A (optional, e.g. \"Markets\"):", ""],
+    ["connectionB", "Connection B (optional, e.g. \"Psychology\"):", ""],
+    ["thesis", "One-line thesis for the homepage/Connections view (optional):", ""],
   ]);
   rl.close();
 
@@ -157,6 +160,9 @@ async function main() {
   const entry = { id, title, publishedAt, url, excerpt, tags: tagsRaw ? tagsRaw.split(",").map((t) => t.trim()).filter(Boolean) : [] };
   if (coverImage) entry.coverImage = coverImage;
   if (min) entry.min = min;
+  if (connectionA) entry.connectionA = connectionA;
+  if (connectionB) entry.connectionB = connectionB;
+  if (thesis) entry.thesis = thesis;
 
   issues.unshift(entry);
   await writeFile(CONTENT_PATH, JSON.stringify(issues, null, 2) + "\n");
