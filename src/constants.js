@@ -25,9 +25,11 @@ export const C = {
 // ─── PHOTOS ───────────────────────────────────────────────────────
 export const PHOTO = {
   heroLandscape: "/photos/hero-adventure-landscape.jpg", // Nubra Valley, Ladakh — golden hour
+  heroPortrait:  "/photos/hero-portrait.jpg",             // AI-generated full-body portrait — homepage hero (1122×1402)
   product:       "/photos/headshot-professional.jpg",     // professional headshot
   adventure:     "/photos/adventure-diving.jpg",           // PADI advanced dive, wreck
   fitness:       "/photos/fitness-ironman.jpg",            // Ironman 70.3 Goa 2024, finisher
+  iceAdventure:  "/photos/adventure-ice.jpg",              // snow slope, Do Hard Things (960×1280)
 };
 
 // ─── CONTACT ────────────────────────────────────────────────────
@@ -70,6 +72,8 @@ export const INTERSECTIONS = [
   { a: "Regulation", b: "Experience", evidence: "Onboarding journeys shaped as much by regulatory architecture as by design." },
   { a: "Business Models", b: "Behaviour", evidence: "Per Diem — an ongoing writing experiment on why these two are never really separate." },
   { a: "Traditional Finance", b: "New Rails", evidence: "Global assets, crypto, and the GIFT City evolution of how capital crosses borders." },
+  { a: "Endurance", b: "Mindset", evidence: "Long-distance sport has been my longest experiment in consistency, discomfort and patience." },
+  { a: "Travel", b: "Stories", evidence: "Udit Uncovered — the same instinct that documents an edge case, pointed at a mountain instead." },
 ];
 
 // ─── SYSTEMS UNDERNEATH ───────────────────────────────────────────
@@ -100,6 +104,40 @@ export const PROOF_STRIP = [
   "PADI Advanced Open Water",
   "Per Diem",
   "Bengaluru",
+];
+
+// ─── DO HARD THINGS (Home) ─────────────────────────────────────────
+// Photography-led, not icon cards. Ironman is the featured/primary story;
+// scuba and the snow photo are supporting. Ironman CTA is Udit's own
+// supplied canonical URL for his Ironman-learnings article — do not
+// substitute or regenerate this link.
+export const DO_HARD_THINGS = [
+  {
+    key: "ironman",
+    title: "IRONMAN 70.3",
+    tag: "Finisher",
+    photo: PHOTO.fitness,
+    alt: "Udit Khurana holding an IRONMAN 70.3 India finisher towel on the beach in Goa",
+    copy: "Months of training, three disciplines, one very long day — and lessons that lasted a lot longer.",
+    cta: { label: "Lessons from IRONMAN →", url: "https://lnkd.in/p/deiTGN5w" },
+    featured: true,
+  },
+  {
+    key: "scuba",
+    title: "PADI Certified Diver",
+    tag: "Scuba",
+    photo: PHOTO.adventure,
+    alt: "Udit Khurana scuba diving over a wreck underwater, breathing bubbles rising above him",
+    copy: "Learning to get comfortable in an environment we weren't designed for.",
+  },
+  {
+    key: "adventure",
+    title: "Into the Unfamiliar",
+    tag: "Exploration",
+    photo: PHOTO.iceAdventure,
+    alt: "Udit Khurana lying on a snow-covered mountain slope with arms outstretched",
+    copy: "Sometimes the point is simply to go somewhere you haven't been before.",
+  },
 ];
 
 // ─── CAREER: PROBLEM-SPACE TIMELINE ───────────────────────────────
