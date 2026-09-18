@@ -122,7 +122,7 @@ export default function HomePage() {
                   width={1122}
                   height={1402}
                   loading="eager"
-                  fetchPriority="high"
+                  fetchpriority="high"
                   decoding="async"
                   style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
                 />
