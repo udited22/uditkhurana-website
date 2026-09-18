@@ -6,6 +6,7 @@ import { PHOTOS } from "../photos.js";
 import IntersectionEngine from "../components/IntersectionEngine.jsx";
 import SystemsUnderneath from "../components/SystemsUnderneath.jsx";
 import ConvergeWords from "../components/ConvergeWords.jsx";
+import DoHardThings from "../components/DoHardThings.jsx";
 import Reveal from "../components/Reveal.jsx";
 
 // "Food" omitted for now — no real food photo exists in the repo, and a
@@ -38,26 +39,60 @@ export default function HomePage() {
       <style>{`
         .sp{padding:100px 80px;}
         @media(max-width:768px){.sp{padding:64px 24px!important;}.uncov-scene-pad{padding:0 24px 40px!important;}}
+        .hero-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:start;}
+        .hero-portrait-frame{width:100%;aspect-ratio:1122/1402;background:${C.bgSection};border:1px solid ${C.borderSoft};border-radius:6px;padding:14px;box-sizing:border-box;}
+        @media(max-width:900px){
+          .hero-grid{grid-template-columns:1fr!important;gap:40px!important;}
+          .hero-portrait-frame{max-width:380px;margin:0 auto;}
+        }
       `}</style>
 
       {/* ── SCENE 1 — IDENTITY ──────────────────────────────────── */}
       <section style={{ minHeight: "94vh", display: "flex", flexDirection: "column", justifyContent: "center", background: C.bg }} className="sp">
-        <div style={{ maxWidth: "1080px", margin: "0 auto", width: "100%" }}>
-          <h1 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(38px,7vw,84px)", fontWeight: 400, lineHeight: 1.05, color: C.textHigh, letterSpacing: "-0.01em", marginBottom: "20px" }}>
-            I like building <em style={{ fontStyle: "italic", color: C.accent }}>at intersections.</em>
-          </h1>
-          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "14px", fontWeight: 500, color: C.textMid, marginBottom: "56px" }}>
-            Financial systems. Connected ideas. Difficult things. An eclectic life.
-          </p>
+        <div style={{ maxWidth: "1120px", margin: "0 auto", width: "100%" }}>
+          <div className="hero-grid">
+            {/* Copy column */}
+            <div>
+              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: C.accent, marginBottom: "18px" }}>
+                Product · Markets · Systems
+              </p>
+              <h1 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(32px,4.6vw,58px)", fontWeight: 400, lineHeight: 1.15, color: C.textHigh, letterSpacing: "-0.01em", marginBottom: "22px" }}>
+                I build at the <em style={{ fontStyle: "italic", color: C.accent }}>intersections</em> of markets, technology, and regulated finance.
+              </h1>
+              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "15px", fontWeight: 400, color: C.textMid, lineHeight: 1.65, maxWidth: "46ch", marginBottom: "40px" }}>
+                The rest of the time, I'm exploring the other systems that interest me — investing, writing, endurance, travel, and the occasional hard thing.
+              </p>
+              <button
+                onClick={() => scene2Ref.current?.scrollIntoView({ behavior: "smooth" })}
+                style={{ background: "none", border: "none", cursor: "pointer", padding: 0, fontFamily: "'DM Sans',sans-serif", fontSize: "11px", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", color: C.textLow }}
+              >
+                Explore ↓
+              </button>
+            </div>
 
-          <IntersectionEngine />
+            {/* Portrait column */}
+            <div>
+              <div className="hero-portrait-frame">
+                <img
+                  src={PHOTO.heroPortrait}
+                  alt="Portrait of Udit Khurana (AI-generated)"
+                  width={1122}
+                  height={1402}
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                  style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
+                />
+              </div>
+              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", color: C.textLow, textAlign: "center", marginTop: "10px", letterSpacing: "0.02em" }}>
+                AI-generated portrait.
+              </p>
+            </div>
+          </div>
 
-          <button
-            onClick={() => scene2Ref.current?.scrollIntoView({ behavior: "smooth" })}
-            style={{ marginTop: "56px", background: "none", border: "none", cursor: "pointer", fontFamily: "'DM Sans',sans-serif", fontSize: "11px", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", color: C.textLow }}
-          >
-            Explore ↓
-          </button>
+          <div style={{ marginTop: "72px" }}>
+            <IntersectionEngine />
+          </div>
         </div>
       </section>
 
@@ -98,6 +133,26 @@ export default function HomePage() {
                 Per Diem · Read the argument →
               </p>
             </a>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── SCENE 3.5 — DO HARD THINGS ───────────────────────────── */}
+      <section style={{ background: C.bgSection, borderTop: `1px solid ${C.borderSoft}` }} className="sp">
+        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+          <Reveal>
+            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: C.accent, marginBottom: "18px" }}>
+              Do Hard Things
+            </p>
+            <h2 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(26px,4vw,42px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.25, marginBottom: "14px", maxWidth: "22ch" }}>
+              Some things are worth doing precisely because they're difficult.
+            </h2>
+            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "14px", fontWeight: 300, color: C.textMid, lineHeight: 1.7, maxWidth: "56ch", marginBottom: "40px" }}>
+              Endurance, adventure and discomfort have shaped how I think about consistency, resilience and growth.
+            </p>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <DoHardThings />
           </Reveal>
         </div>
       </section>

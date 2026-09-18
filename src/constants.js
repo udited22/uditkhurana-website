@@ -25,9 +25,11 @@ export const C = {
 // ─── PHOTOS ───────────────────────────────────────────────────────
 export const PHOTO = {
   heroLandscape: "/photos/hero-adventure-landscape.jpg", // Nubra Valley, Ladakh — golden hour
+  heroPortrait:  "/photos/hero-portrait.jpg",             // AI-generated full-body portrait — homepage hero (1122×1402)
   product:       "/photos/headshot-professional.jpg",     // professional headshot
   adventure:     "/photos/adventure-diving.jpg",           // PADI advanced dive, wreck
   fitness:       "/photos/fitness-ironman.jpg",            // Ironman 70.3 Goa 2024, finisher
+  iceAdventure:  "/photos/adventure-ice.jpg",              // snow slope, Do Hard Things (960×1280)
 };
 
 // ─── CONTACT ────────────────────────────────────────────────────
@@ -70,6 +72,8 @@ export const INTERSECTIONS = [
   { a: "Regulation", b: "Experience", evidence: "Onboarding journeys shaped as much by regulatory architecture as by design." },
   { a: "Business Models", b: "Behaviour", evidence: "Per Diem — an ongoing writing experiment on why these two are never really separate." },
   { a: "Traditional Finance", b: "New Rails", evidence: "Global assets, crypto, and the GIFT City evolution of how capital crosses borders." },
+  { a: "Endurance", b: "Mindset", evidence: "Race-day pacing and a hard product sprint turned out to be the same discipline, learned twice." },
+  { a: "Travel", b: "Stories", evidence: "Udit Uncovered — the same instinct that documents an edge case, pointed at a mountain instead." },
 ];
 
 // ─── SYSTEMS UNDERNEATH ───────────────────────────────────────────
@@ -100,6 +104,44 @@ export const PROOF_STRIP = [
   "PADI Advanced Open Water",
   "Per Diem",
   "Bengaluru",
+];
+
+// ─── DO HARD THINGS (Home) ─────────────────────────────────────────
+// Photography-led, not icon cards. Ironman is the featured/primary story;
+// scuba and the snow photo are supporting. The Ironman CTA points at the
+// closest verified match for "an article about what I learnt completing
+// Ironman" found anywhere in the repo/content — a Per Diem issue that
+// explicitly connects race-day pacing to trading risk management. It is
+// not a dedicated finisher retrospective, so the label names what the
+// piece actually is (a Training ↔ Risk connection) rather than overclaiming.
+// No other Ironman-specific article/URL exists in this codebase.
+export const DO_HARD_THINGS = [
+  {
+    key: "ironman",
+    title: "IRONMAN 70.3",
+    tag: "Finisher",
+    photo: PHOTO.fitness,
+    alt: "Udit Khurana holding an IRONMAN 70.3 India finisher towel on the beach in Goa",
+    copy: "Months of training, three disciplines, one very long day — and lessons that lasted a lot longer.",
+    cta: { label: "Read: Training ↔ Risk →", url: "https://www.linkedin.com/pulse/your-stop-loss-taper-same-idea-udit-khurana-sqelc" },
+    featured: true,
+  },
+  {
+    key: "scuba",
+    title: "PADI Certified Diver",
+    tag: "Scuba",
+    photo: PHOTO.adventure,
+    alt: "Udit Khurana scuba diving over a wreck underwater, breathing bubbles rising above him",
+    copy: "Learning to get comfortable in an environment we weren't designed for.",
+  },
+  {
+    key: "adventure",
+    title: "Adventure & Discomfort",
+    tag: "Exploration",
+    photo: PHOTO.iceAdventure,
+    alt: "Udit Khurana lying on a snow-covered mountain slope with arms outstretched",
+    copy: "Sometimes the point is simply to go towards the unfamiliar.",
+  },
 ];
 
 // ─── CAREER: PROBLEM-SPACE TIMELINE ───────────────────────────────
