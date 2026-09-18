@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Layout from "../components/Layout.jsx";
-import { C, TIMELINE, JOURNEY, PHOTO } from "../constants.js";
+import { C, LAYOUT, TIMELINE, JOURNEY, PHOTO } from "../constants.js";
 import CareerMatrix from "../components/CareerMatrix.jsx";
 import Reveal from "../components/Reveal.jsx";
 
@@ -60,14 +60,14 @@ export default function WorkPage() {
   return (
     <Layout activePath="/work">
       <style>{`
-        .sp{padding:80px 80px;}
+        .sp{padding:72px 56px;}
         .tl-row{display:flex;align-items:center;gap:0;flex-wrap:wrap;}
         @media(max-width:768px){.sp{padding:56px 24px!important;}}
       `}</style>
 
       {/* Header */}
-      <div style={{ padding: "72px 80px 40px", background: C.bg }} className="sp">
-        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+      <div style={{ padding: "72px 56px 40px", background: C.bg }} className="sp">
+        <div style={{ maxWidth: LAYOUT.contentMax, margin: "0 auto" }}>
           <h1 style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(30px,5vw,56px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.12, marginBottom: "16px" }}>
             From enterprise banking to <span style={{ color: C.accent }}>global investing.</span>
           </h1>
@@ -75,8 +75,8 @@ export default function WorkPage() {
       </div>
 
       {/* Problem-space timeline */}
-      <div className="sp" style={{ padding: "24px 80px 56px", background: C.bg }}>
-        <div style={{ maxWidth: "1000px", margin: "0 auto", overflowX: "auto" }}>
+      <div className="sp" style={{ padding: "24px 56px 56px", background: C.bg }}>
+        <div style={{ maxWidth: LAYOUT.contentMax, margin: "0 auto", overflowX: "auto" }}>
           <Reveal>
             <div className="tl-row" style={{ minWidth: "760px" }}>
               {TIMELINE.map((t, i) => (
@@ -94,8 +94,8 @@ export default function WorkPage() {
       </div>
 
       {/* Career Systems Matrix */}
-      <div className="sp" style={{ padding: "48px 80px 72px", background: C.bgSection, borderTop: `1px solid ${C.borderSoft}`, borderBottom: `1px solid ${C.borderSoft}` }}>
-        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+      <div className="sp" style={{ padding: "48px 56px 72px", background: C.bgSection, borderTop: `1px solid ${C.borderSoft}`, borderBottom: `1px solid ${C.borderSoft}` }}>
+        <div style={{ maxWidth: LAYOUT.contentMax, margin: "0 auto" }}>
           <Reveal>
             <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: C.accent, marginBottom: "18px" }}>The Systems Matrix</p>
             <CareerMatrix />
@@ -107,8 +107,8 @@ export default function WorkPage() {
       </div>
 
       {/* Chapters */}
-      <div className="sp" style={{ padding: "64px 80px", background: C.bg }}>
-        <div style={{ maxWidth: "700px", margin: "0 auto" }}>
+      <div className="sp" style={{ padding: "64px 56px", background: C.bg }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           <div style={{ width: "140px", aspectRatio: "1/1", borderRadius: "8px", overflow: "hidden", border: `1px solid ${C.border}`, backgroundImage: `url(${PHOTO.product})`, backgroundSize: "cover", backgroundPosition: "center top", marginBottom: "40px" }} />
           {JOURNEY.map((j, i) => j.headline ? (
             <Reveal key={i} delay={i * 0.04}><Chapter j={j} defaultOpen={false} /></Reveal>
@@ -124,7 +124,7 @@ export default function WorkPage() {
         </div>
       </div>
 
-      <div className="sp" style={{ padding: "0 80px 72px", background: C.bg, textAlign: "center" }}>
+      <div className="sp" style={{ padding: "0 56px 72px", background: C.bg, textAlign: "center" }}>
         <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "16px", color: C.textMid }}>
           Curious what gets built outside the day job?{" "}
           <a href="/projects" onClick={e => { e.preventDefault(); navigate("/projects"); }} style={{ color: C.accent, fontWeight: 500 }}>Selected Work →</a>

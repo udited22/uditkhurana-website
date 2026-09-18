@@ -1,5 +1,5 @@
 import Layout from "../components/Layout.jsx";
-import { C, SOCIAL } from "../constants.js";
+import { C, LAYOUT, SOCIAL } from "../constants.js";
 import { PHOTOS } from "../photos.js";
 import Reveal from "../components/Reveal.jsx";
 
@@ -37,7 +37,7 @@ export default function UditUncoveredPage() {
     <Layout activePath="/uncovered">
       <style>{`
         .unc-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:10px;}
-        .sp{padding:64px 80px;}
+        .sp{padding:${LAYOUT.padDesktop} 56px;}
         @media(max-width:900px){.unc-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:220px;}}
         @media(max-width:768px){.sp{padding:48px 24px!important;}}
         @media(max-width:480px){.unc-grid{grid-template-columns:1fr!important;}.unc-grid>div{grid-column:span 1!important;grid-row:span 1!important;height:280px;}}
@@ -47,7 +47,7 @@ export default function UditUncoveredPage() {
       <section style={{ position: "relative", height: "82vh", minHeight: "480px", overflow: "hidden", background: "#111" }}>
         {hero && <img src={hero.src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%)" }} />
-        <div className="uncov-hero-pad" style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "0 80px 56px" }}>
+        <div className="uncov-hero-pad" style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "0 56px 48px" }}>
           <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.75)", marginBottom: "14px" }}>@udituncovered</p>
           <h1 style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(30px,5.5vw,58px)", fontWeight: 400, color: "#fff", lineHeight: 1.15, maxWidth: "16ch", marginBottom: "14px" }}>
             Things I wanted to experience for myself.
