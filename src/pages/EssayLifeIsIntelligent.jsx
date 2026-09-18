@@ -17,20 +17,20 @@ export default function EssayLifeIsIntelligentPage() {
   };
 
   return (
-    <Layout activePath="/about">
+    <Layout activePath="/">
       <style>{`.sp{padding:80px 80px;} @media(max-width:768px){.sp{padding:64px 24px!important;}}`}</style>
 
       <div style={{ background: C.bgSection, padding: "80px 80px 56px", borderBottom: `1px solid ${C.borderSoft}` }} className="sp">
         <div style={{ maxWidth: "760px", margin: "0 auto" }}>
-          <a href="/about" onClick={e => { e.preventDefault(); navigate("/about"); }}
-            style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: C.textLow, display: "inline-block", marginBottom: "22px" }}>
-            ← Back to About
+          <a href="/" onClick={e => { e.preventDefault(); navigate("/"); }}
+            style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: C.textLow, display: "inline-block", marginBottom: "22px" }}>
+            ← Back home
           </a>
-          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: C.accent, marginBottom: "14px" }}>Essay · Philosophy</p>
-          <h1 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(30px,4.5vw,52px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.1, marginBottom: "16px" }}>
+          <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: C.accent, marginBottom: "14px" }}>Essay · Philosophy</p>
+          <h1 style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(30px,4.5vw,52px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.1, marginBottom: "16px" }}>
             Life is <em style={{ fontStyle: "italic", color: C.accent }}>Intelligent.</em>
           </h1>
-          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12px", fontWeight: 500, color: C.textLow, letterSpacing: "0.04em" }}>
+          <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "12px", fontWeight: 500, color: C.textLow, letterSpacing: "0.04em" }}>
             Udit Khurana · Published Sep 9, 2019
           </p>
         </div>
@@ -38,18 +38,18 @@ export default function EssayLifeIsIntelligentPage() {
 
       <div className="sp" style={{ padding: "72px 80px 100px", background: C.bg }}>
         <div style={{ maxWidth: "700px", margin: "0 auto" }}>
-          <blockquote style={{ fontFamily: "'Instrument Serif',serif", fontSize: "20px", fontStyle: "italic", color: C.textHigh, lineHeight: 1.6, marginBottom: "40px", borderLeft: `3px solid ${C.border}`, paddingLeft: "24px" }}>
+          <blockquote style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "20px", fontStyle: "italic", color: C.textHigh, lineHeight: 1.6, marginBottom: "40px", borderLeft: `3px solid ${C.border}`, paddingLeft: "24px" }}>
             "I believe life is an intelligent thing: that things aren't random."
-            <span style={{ display: "block", marginTop: "10px", fontFamily: "'DM Sans',sans-serif", fontSize: "11px", fontStyle: "normal", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: C.textLow }}>— Steve Jobs</span>
+            <span style={{ display: "block", marginTop: "10px", fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "11px", fontStyle: "normal", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: C.textLow }}>— Steve Jobs</span>
           </blockquote>
 
           {PARAGRAPHS.map((p, i) => (
-            <p key={i} style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "15px", fontWeight: 300, lineHeight: 1.9, color: C.textMid, marginBottom: "22px" }}>{p}</p>
+            <p key={i} style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "15px", fontWeight: 300, lineHeight: 1.9, color: C.textMid, marginBottom: "22px" }}>{p}</p>
           ))}
 
           <div style={{ marginTop: "48px", paddingTop: "28px", borderTop: `1px solid ${C.borderSoft}`, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "14px" }}>
-            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "11px", color: C.textLow }}>Originally published on LinkedIn, 2019.</p>
-            <a href={SOCIAL.linkedin} target="_blank" rel="noreferrer" style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: C.accent }}>Read on LinkedIn →</a>
+            <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "11px", color: C.textLow }}>Originally published on LinkedIn, 2019.</p>
+            <a href={SOCIAL.linkedin} target="_blank" rel="noreferrer" style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: C.accent }}>Read on LinkedIn →</a>
           </div>
         </div>
       </div>

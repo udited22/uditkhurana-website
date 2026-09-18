@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import HomePage        from "./pages/Home.jsx";
-import AboutPage       from "./pages/About.jsx";
 import WorkPage        from "./pages/Work.jsx";
 import ProjectsPage    from "./pages/Projects.jsx";
 import EssayLifeIsIntelligentPage from "./pages/EssayLifeIsIntelligent.jsx";
@@ -10,23 +9,22 @@ import PerDiemPage     from "./pages/PerDiem.jsx";
 import NotFoundPage    from "./pages/NotFound.jsx";
 
 const GLOBAL_STYLES = `
-  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap');
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;}}
-  body{background:#FAF7F1;}
+  body{background:#FAF7F1;font-family:'IBM Plex Sans',-apple-system,sans-serif;}
   ::selection{background:rgba(14,107,116,0.16);}
   ::-webkit-scrollbar{width:3px;}
   ::-webkit-scrollbar-track{background:#FAF7F1;}
   ::-webkit-scrollbar-thumb{background:#0E6B74;border-radius:3px;}
   a{color:inherit;text-decoration:none;}
-  button{font-family:'DM Sans',sans-serif;}
+  button{font-family:'IBM Plex Sans',sans-serif;}
   :focus-visible{outline:2px solid #0E6B74;outline-offset:2px;}
 `;
 
 const ROUTES = {
   "/":            HomePage,
-  "/about":       AboutPage,
   "/work":        WorkPage,
   "/projects":    ProjectsPage,
   "/writing/life-is-intelligent": EssayLifeIsIntelligentPage,
@@ -56,7 +54,6 @@ const SEO = {
   "/per-diem":    { title: "Per Diem — Udit Khurana", desc: "An ongoing writing experiment on markets, technology, products, and the systems connecting them." },
   "/advisory":    { title: "Advisory — Udit Khurana", desc: "Selective advisory for founders and product leaders building in fintech, crypto, and regulated financial products." },
   "/uncovered":   { title: "Udit Uncovered — Udit Khurana", desc: "Travel, endurance, adventure, and the eclectic life outside of work. The curated doorway to @udituncovered." },
-  "/about":       { title: "About — Udit Khurana", desc: "How building at intersections, seeing the systems underneath, and doing difficult things all add up to one operating philosophy." },
   "/projects":    { title: "Selected Work — Udit Khurana", desc: "Independent builds outside the day job — mostly crypto-exchange infrastructure and AI agents." },
 };
 

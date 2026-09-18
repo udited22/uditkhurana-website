@@ -12,15 +12,15 @@ export default function CareerMatrix() {
         <div />
         {layers.map((l) => (
           <div key={l} style={{ padding: "0 6px 14px", textAlign: "center" }}>
-            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: C.textLow, lineHeight: 1.4 }}>{l}</p>
+            <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: C.textLow, lineHeight: 1.4 }}>{l}</p>
           </div>
         ))}
 
         {rows.map((row) => (
           <Fragment key={row.company}>
             <div style={{ padding: "14px 12px 14px 0", borderTop: `1px solid ${C.borderSoft}`, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-              <p style={{ fontFamily: "'Instrument Serif',serif", fontSize: "18px", color: C.textHigh }}>{row.company}</p>
-              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", color: C.textLow, marginTop: "2px" }}>{row.period}</p>
+              <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "18px", color: C.textHigh }}>{row.company}</p>
+              <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9px", color: C.textLow, marginTop: "2px" }}>{row.period}</p>
             </div>
             {row.filled.map((isFilled, ci) => (
               <div key={ci} style={{ borderTop: `1px solid ${C.borderSoft}`, display: "flex", alignItems: "center", justifyContent: "center" }}>

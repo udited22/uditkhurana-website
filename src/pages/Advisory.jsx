@@ -9,11 +9,11 @@ function ProblemRow({ p, isOpen, onToggle }) {
   return (
     <div style={{ borderBottom: `1px solid ${C.borderSoft}` }}>
       <button type="button" onClick={onToggle} aria-expanded={isOpen} style={{ width: "100%", textAlign: "left", background: "none", border: "none", cursor: "pointer", padding: "22px 0", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "16px" }}>
-        <span style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(18px,2.4vw,22px)", color: C.textHigh }}>{p.title}</span>
+        <span style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(18px,2.4vw,22px)", color: C.textHigh }}>{p.title}</span>
         <span style={{ color: C.textLow, fontSize: "16px", transform: isOpen ? "rotate(45deg)" : "none", transition: "transform .2s", flexShrink: 0 }}>+</span>
       </button>
       {isOpen && (
-        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "13.5px", fontWeight: 300, color: C.textMid, lineHeight: 1.8, paddingBottom: "24px", maxWidth: "56ch" }}>{p.detail}</p>
+        <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "13.5px", fontWeight: 300, color: C.textMid, lineHeight: 1.8, paddingBottom: "24px", maxWidth: "56ch" }}>{p.detail}</p>
       )}
     </div>
   );
@@ -33,10 +33,10 @@ export default function AdvisoryPage() {
       <div className="sp" style={{ background: C.bg }}>
         <div style={{ maxWidth: "700px", margin: "0 auto" }}>
           <Reveal>
-            <h1 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(28px,4.5vw,44px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.25, marginBottom: "22px" }}>
+            <h1 style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(28px,4.5vw,44px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.25, marginBottom: "22px" }}>
               Some problems benefit from another experienced pair of eyes.
             </h1>
-            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "14px", fontWeight: 300, color: C.textMid, lineHeight: 1.8, marginBottom: "48px" }}>
+            <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "14px", fontWeight: 300, color: C.textMid, lineHeight: 1.8, marginBottom: "48px" }}>
               I occasionally work with founders and product leaders when the hard part sits at the intersection of financial product, regulation, infrastructure, and operating model.
             </p>
           </Reveal>
@@ -51,7 +51,7 @@ export default function AdvisoryPage() {
 
           <Reveal delay={0.1}>
             <a href={`mailto:${CONTACT_EMAIL}`}
-              style={{ display: "inline-flex", alignItems: "center", gap: "8px", marginTop: "40px", padding: "14px 30px", background: C.accent, color: C.onAccent, fontFamily: "'DM Sans',sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", cursor: "pointer", border: "none", borderRadius: "4px", textDecoration: "none" }}>
+              style={{ display: "inline-flex", alignItems: "center", gap: "8px", marginTop: "40px", padding: "14px 30px", background: C.accent, color: C.onAccent, fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", cursor: "pointer", border: "none", borderRadius: "4px", textDecoration: "none" }}>
               Start a Conversation →
             </a>
           </Reveal>
@@ -59,7 +59,7 @@ export default function AdvisoryPage() {
           <Reveal delay={0.14}>
             <div style={{ marginTop: "72px", paddingTop: "32px", borderTop: `1px solid ${C.borderSoft}` }}>
               {!showCases ? (
-                <button type="button" onClick={() => setShowCases(true)} aria-expanded={false} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, fontFamily: "'DM Sans',sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: C.textLow }}>
+                <button type="button" onClick={() => setShowCases(true)} aria-expanded={false} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: C.textLow }}>
                   See two anonymized case studies →
                 </button>
               ) : (

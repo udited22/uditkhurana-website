@@ -10,11 +10,11 @@ export function PerDiemWordmark({ size = "md" }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: big ? "14px" : "10px" }}>
       <div style={{ width: big ? "42px" : "30px", height: big ? "42px" : "30px", background: C.accentFaint, border: `1.5px solid ${C.border}`, borderRadius: "6px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-        <span style={{ fontFamily: "'Instrument Serif',serif", fontSize: big ? "18px" : "13px", fontWeight: 600, color: C.accent }}>P</span>
+        <span style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: big ? "18px" : "13px", fontWeight: 600, color: C.accent }}>P</span>
       </div>
       <div>
-        <p style={{ fontFamily: "'Instrument Serif',serif", fontSize: big ? "26px" : "18px", fontWeight: 500, color: C.textHigh, letterSpacing: "0.03em", lineHeight: 1 }}>Per Diem</p>
-        {big && <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: C.accentDim, marginTop: "4px" }}>An Ongoing Writing Experiment</p>}
+        <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: big ? "26px" : "18px", fontWeight: 500, color: C.textHigh, letterSpacing: "0.03em", lineHeight: 1 }}>Per Diem</p>
+        {big && <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: C.accentDim, marginTop: "4px" }}>An Ongoing Writing Experiment</p>}
       </div>
     </div>
   );
@@ -39,7 +39,7 @@ export default function Layout({ children, activePath = "/" }) {
   };
 
   return (
-    <div style={{ background: C.bg, color: C.textHigh, minHeight: "100vh", fontFamily: "'DM Sans',sans-serif" }}>
+    <div style={{ background: C.bg, color: C.textHigh, minHeight: "100vh", fontFamily: "'IBM Plex Sans',sans-serif" }}>
       <style>{`
         /* nav-desktop has no natural wrap point (flex row, no flex-wrap) and the
            hamburger button below has no default hidden state — without this,
@@ -68,7 +68,7 @@ export default function Layout({ children, activePath = "/" }) {
         transition: "all 0.3s ease",
       }}>
         <a href="/" onClick={e => { e.preventDefault(); navigate("/"); }} style={{ display: "flex", flexDirection: "column", gap: "2px", lineHeight: 1, minWidth: 0 }}>
-          <span style={{ fontFamily: "'Instrument Serif',serif", fontSize: "19px", fontWeight: 500, letterSpacing: "0.03em", color: C.textHigh, whiteSpace: "nowrap" }}>Udit Khurana</span>
+          <span style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "19px", fontWeight: 500, letterSpacing: "0.03em", color: C.textHigh, whiteSpace: "nowrap" }}>Udit Khurana</span>
         </a>
 
         <div className="nav-desktop" style={{ display: "flex", gap: "30px", alignItems: "center" }}>
@@ -76,7 +76,7 @@ export default function Layout({ children, activePath = "/" }) {
             <a key={l.label} href={l.href}
               onClick={e => { e.preventDefault(); navigate(l.href); }}
               style={{
-                fontFamily: "'DM Sans',sans-serif",
+                fontFamily: "'IBM Plex Sans',sans-serif",
                 fontSize: "11px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase",
                 color: activePath === l.href ? C.accent : C.textMid,
                 transition: "color .2s", cursor: "pointer", whiteSpace: "nowrap",
@@ -101,7 +101,7 @@ export default function Layout({ children, activePath = "/" }) {
           {NAV_LINKS.map(l => (
             <a key={l.label} href={l.href}
               onClick={e => { e.preventDefault(); navigate(l.href); }}
-              style={{ display: "block", padding: "16px 0", borderBottom: `1px solid ${C.borderSoft}`, fontFamily: "'DM Sans',sans-serif", fontSize: "13px", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: activePath === l.href ? C.accent : C.textMid }}>
+              style={{ display: "block", padding: "16px 0", borderBottom: `1px solid ${C.borderSoft}`, fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "13px", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: activePath === l.href ? C.accent : C.textMid }}>
               {l.label}
             </a>
           ))}
@@ -118,11 +118,11 @@ export default function Layout({ children, activePath = "/" }) {
         <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "40px", flexWrap: "wrap" }}>
             <div style={{ maxWidth: "340px" }}>
-              <p style={{ fontFamily: "'Instrument Serif',serif", fontSize: "16px", fontWeight: 500, color: C.textHigh, marginBottom: "6px" }}>Udit Khurana</p>
-              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12px", color: C.textLow, lineHeight: 1.6 }}>Building systems. Connecting ideas. Living the eclectic life.</p>
+              <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "16px", fontWeight: 500, color: C.textHigh, marginBottom: "6px" }}>Udit Khurana</p>
+              <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "12px", color: C.textLow, lineHeight: 1.6 }}>Building systems. Connecting ideas. Living the eclectic life.</p>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: C.textLow, marginBottom: "4px" }}>Connect</p>
+              <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: C.textLow, marginBottom: "4px" }}>Connect</p>
               <a href={SOCIAL.linkedin} target="_blank" rel="noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: C.textMid }}><LI /> LinkedIn</a>
               <a href="/per-diem" onClick={e => { e.preventDefault(); navigate("/per-diem"); }} style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: C.textMid }}>Per Diem</a>
               <a href={SOCIAL.instagram} target="_blank" rel="noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: C.textMid }}><IG /> Instagram</a>
@@ -130,7 +130,7 @@ export default function Layout({ children, activePath = "/" }) {
             </div>
           </div>
           <div style={{ marginTop: "32px", paddingTop: "20px", borderTop: `1px solid ${C.borderSoft}` }}>
-            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", color: C.textLow }}>© {new Date().getFullYear()} Udit Khurana</p>
+            <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "10px", color: C.textLow }}>© {new Date().getFullYear()} Udit Khurana</p>
           </div>
         </div>
       </footer>

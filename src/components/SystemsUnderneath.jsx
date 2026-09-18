@@ -30,7 +30,7 @@ export default function SystemsUnderneath({ compact = false }) {
           >
             <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: "12px", flexWrap: "wrap" }}>
               <p style={{
-                fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700,
+                fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9px", fontWeight: 700,
                 letterSpacing: "0.24em", textTransform: "uppercase",
                 color: isActive ? C.accent : C.textLow, transition: "color .3s ease",
               }}>
@@ -43,7 +43,7 @@ export default function SystemsUnderneath({ compact = false }) {
               overflow: "hidden", transition: "max-height .4s ease, opacity .3s ease",
             }}>
               {layer.items.map((item) => (
-                <span key={item} style={{ fontFamily: "'Instrument Serif',serif", fontSize: compact ? "17px" : "20px", color: C.textHigh }}>{item}</span>
+                <span key={item} style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: compact ? "17px" : "20px", color: C.textHigh }}>{item}</span>
               ))}
             </div>
           </button>

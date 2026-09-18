@@ -33,7 +33,7 @@ export default function IntersectionEngine() {
                 display: "flex", alignItems: "center", gap: "14px", width: "100%",
                 textAlign: "left", background: "none", border: "none", cursor: "pointer",
                 padding: "13px 0", borderBottom: `1px solid ${C.borderSoft}`,
-                fontFamily: "'DM Sans',sans-serif", fontSize: "14px", fontWeight: 500,
+                fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "14px", fontWeight: 500,
                 color: active === i ? C.textHigh : C.textMid, transition: "color .2s ease",
               }}
             >
@@ -45,7 +45,7 @@ export default function IntersectionEngine() {
 
         <div style={{ paddingTop: "8px", minHeight: "140px" }}>
           <p key={active} style={{
-            fontFamily: "'Instrument Serif',serif", fontSize: "clamp(20px,2.4vw,28px)", fontStyle: "italic",
+            fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(20px,2.4vw,28px)", fontStyle: "italic",
             color: C.textHigh, lineHeight: 1.4, animation: "ieFade .4s ease both",
           }}>
             {current.evidence}
@@ -61,10 +61,10 @@ export default function IntersectionEngine() {
             border: `1px solid ${C.borderSoft}`, borderRadius: "8px", padding: "22px 20px",
           }}>
             <div style={{ marginBottom: "12px" }}><Mark active /></div>
-            <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "13px", fontWeight: 600, color: C.textHigh, marginBottom: "10px" }}>
+            <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "13px", fontWeight: 600, color: C.textHigh, marginBottom: "10px" }}>
               {it.a} <em style={{ color: C.accent, fontStyle: "normal" }}>×</em> {it.b}
             </p>
-            <p style={{ fontFamily: "'Instrument Serif',serif", fontSize: "18px", fontStyle: "italic", color: C.textMid, lineHeight: 1.4 }}>{it.evidence}</p>
+            <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "18px", fontStyle: "italic", color: C.textMid, lineHeight: 1.4 }}>{it.evidence}</p>
           </div>
         ))}
       </div>

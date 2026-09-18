@@ -20,7 +20,7 @@ function SystemsEvidence() {
     <div style={{ display: "flex", flexDirection: "column", gap: "6px", width: "100%" }}>
       {LAYERS.map((l) => (
         <div key={l.key} style={{ padding: "8px 10px", background: C.bgCard, border: `1px solid ${C.borderSoft}`, borderRadius: "5px" }}>
-          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 600, color: C.textMid }}>{l.label}</p>
+          <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9px", fontWeight: 600, color: C.textMid }}>{l.label}</p>
         </div>
       ))}
     </div>
@@ -30,9 +30,9 @@ function SystemsEvidence() {
 function ExperimentEvidence() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "8px", width: "100%" }}>
-      <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.textLow }}>Shipped side builds</p>
+      <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.textLow }}>Shipped side builds</p>
       {PROJECTS.slice(0, 4).map((p) => (
-        <p key={p.name} style={{ fontFamily: "'Instrument Serif',serif", fontSize: "15px", color: C.textHigh }}>{p.name}</p>
+        <p key={p.name} style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "15px", color: C.textHigh }}>{p.name}</p>
       ))}
     </div>
   );
@@ -42,7 +42,7 @@ function DocumentEvidence() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "14px", width: "100%" }}>
       <PerDiemWordmark />
-      <p style={{ fontFamily: "'Instrument Serif',serif", fontSize: "16px", color: C.textHigh }}>Udit Uncovered</p>
+      <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "16px", color: C.textHigh }}>Udit Uncovered</p>
     </div>
   );
 }
@@ -100,7 +100,7 @@ export default function OperatingLoop() {
         }}>
           {OPERATING_LOOP.map((s, i) => (
             <span key={s.key} style={{
-              fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 700,
+              fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "10px", fontWeight: 700,
               letterSpacing: "0.14em", textTransform: "uppercase",
               color: !reduced && active === i ? C.accent : C.textLow, transition: "color .3s ease",
             }}>
@@ -134,10 +134,10 @@ export default function OperatingLoop() {
                 </div>
               )}
               <div>
-                <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: C.accent, marginBottom: "16px" }}>
+                <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: C.accent, marginBottom: "16px" }}>
                   {String(i + 1).padStart(2, "0")} · {s.label}
                 </p>
-                <p style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(26px,4vw,44px)", fontStyle: "italic", color: C.textHigh, lineHeight: 1.3, maxWidth: "18ch" }}>
+                <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(26px,4vw,44px)", fontStyle: "italic", color: C.textHigh, lineHeight: 1.3, maxWidth: "18ch" }}>
                   {s.text}
                 </p>
               </div>
@@ -147,8 +147,8 @@ export default function OperatingLoop() {
       </div>
 
       <div style={{ textAlign: "center", padding: "40px 0 20px" }}>
-        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: C.textLow, marginBottom: "10px" }}>Back to the start</p>
-        <p style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(26px,4vw,40px)", fontStyle: "italic", color: C.accent }}>Curiosity.</p>
+        <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: C.textLow, marginBottom: "10px" }}>Back to the start</p>
+        <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(26px,4vw,40px)", fontStyle: "italic", color: C.accent }}>Curiosity.</p>
       </div>
 
       <style>{`

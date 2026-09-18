@@ -48,11 +48,11 @@ export default function UditUncoveredPage() {
         {hero && <img src={hero.src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%)" }} />
         <div className="uncov-hero-pad" style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "0 80px 56px" }}>
-          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.75)", marginBottom: "14px" }}>@udituncovered</p>
-          <h1 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(30px,5.5vw,58px)", fontWeight: 400, color: "#fff", lineHeight: 1.15, maxWidth: "16ch", marginBottom: "14px" }}>
+          <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.75)", marginBottom: "14px" }}>@udituncovered</p>
+          <h1 style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(30px,5.5vw,58px)", fontWeight: 400, color: "#fff", lineHeight: 1.15, maxWidth: "16ch", marginBottom: "14px" }}>
             Things I wanted to experience for myself.
           </h1>
-          <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.8)" }}>
+          <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.8)" }}>
             A running record of curiosity outside work.
           </p>
         </div>
@@ -69,7 +69,7 @@ export default function UditUncoveredPage() {
                   <div style={{ position: "relative", height: "100%", overflow: "hidden", borderRadius: "4px" }}>
                     <img src={ph.src} alt={ph.title} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                     <div style={{ position: "absolute", left: "10px", bottom: "8px", right: "10px" }}>
-                      <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9.5px", color: "rgba(255,255,255,0.85)", textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}>{ph.location}</p>
+                      <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9.5px", color: "rgba(255,255,255,0.85)", textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}>{ph.location}</p>
                     </div>
                   </div>
                 </Reveal>
@@ -82,7 +82,7 @@ export default function UditUncoveredPage() {
       {/* Follow */}
       <div className="sp" style={{ background: C.bgSection, borderTop: `1px solid ${C.borderSoft}`, textAlign: "center" }}>
         <a href={SOCIAL.instagram} target="_blank" rel="noreferrer"
-          style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.rust }}>
+          style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "12px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.rust }}>
           Follow @udituncovered →
         </a>
       </div>

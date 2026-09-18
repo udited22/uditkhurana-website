@@ -47,7 +47,7 @@ export default function ConvergeWords() {
             transform: `translateX(${triggered ? 0 : START_OFFSET[i]}px) translateX(-50%)`,
             opacity: triggered ? (i === 0 ? 1 : 0) : 1,
             transition: `transform .7s cubic-bezier(.22,.68,.36,1) ${i * 0.06}s, opacity .5s ease ${0.4 + i * 0.06}s`,
-            fontFamily: "'DM Sans',sans-serif", fontSize: "13px", fontWeight: 700, letterSpacing: "0.3em",
+            fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "13px", fontWeight: 700, letterSpacing: "0.3em",
             color: C.textLow, whiteSpace: "nowrap",
           }}>
             {w}
@@ -56,8 +56,8 @@ export default function ConvergeWords() {
       </div>
 
       <div style={{ opacity: settled ? 1 : 0, transform: settled ? "none" : "translateY(8px)", transition: "opacity .6s ease, transform .6s ease" }}>
-        <p style={{ fontFamily: "'Instrument Serif',serif", fontSize: "clamp(36px,6vw,64px)", fontStyle: "italic", color: C.accent, marginBottom: "14px" }}>Curiosity.</p>
-        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12px", fontWeight: 500, letterSpacing: "0.08em", color: C.textMid }}>Different arenas. Same operating system.</p>
+        <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(36px,6vw,64px)", fontStyle: "italic", color: C.accent, marginBottom: "14px" }}>Curiosity.</p>
+        <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "12px", fontWeight: 500, letterSpacing: "0.08em", color: C.textMid }}>Different arenas. Same operating system.</p>
       </div>
     </div>
   );
