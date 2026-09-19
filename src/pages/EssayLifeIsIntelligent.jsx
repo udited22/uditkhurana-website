@@ -44,7 +44,7 @@ export default function EssayLifeIsIntelligentPage() {
           </blockquote>
 
           {PARAGRAPHS.map((p, i) => (
-            <p key={i} style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "15px", fontWeight: 300, lineHeight: 1.9, color: C.textMid, marginBottom: "22px" }}>{p}</p>
+            <p key={i} style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "15px", fontWeight: 400, lineHeight: 1.9, color: C.textMid, marginBottom: "22px" }}>{p}</p>
           ))}
 
           <div style={{ marginTop: "48px", paddingTop: "28px", borderTop: `1px solid ${C.borderSoft}`, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "14px" }}>

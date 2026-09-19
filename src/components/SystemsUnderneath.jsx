@@ -6,9 +6,17 @@ import { C, LAYERS } from "../constants.js";
 // the exact "hidden behind hover/click without enough reason to interact"
 // failure named in the brief. All three layers now render fully expanded,
 // connected by a single rail that threads through them (the visual claim:
-// these aren't separate lists, they're one stack). Hover/focus highlights
-// one layer without hiding the other two — the complete mental model is
-// legible before any interaction.
+// these aren't separate lists, they're one stack). Hovering a layer
+// highlights it without hiding the other two — the complete mental model
+// is legible before any interaction.
+//
+// This highlight is decorative, not actionable — nothing toggles, nothing
+// navigates, there's no "activation." An earlier pass gave these divs
+// role="button" + tabIndex={0} with no click handler and no keyboard
+// activation, which is false semantics and a keyboard trap: screen reader
+// users would land on something announced as a button that does nothing
+// when pressed, and keyboard users would tab through 3 stops that serve no
+// purpose. Plain hover-only divs, no ARIA role, no tab stop.
 export default function SystemsUnderneath() {
   const [active, setActive] = useState(null);
 
@@ -24,17 +32,13 @@ export default function SystemsUnderneath() {
         return (
           <div
             key={layer.key}
-            role="button"
-            tabIndex={0}
             onMouseEnter={() => setActive(i)}
             onMouseLeave={() => setActive(null)}
-            onFocus={() => setActive(i)}
-            onBlur={() => setActive(null)}
             style={{
               position: "relative", paddingLeft: "34px", padding: "18px 20px 18px 34px",
               background: isActive ? C.bgCard : "transparent",
               border: `1px solid ${isActive ? C.border : "transparent"}`,
-              borderRadius: "8px", cursor: "pointer",
+              borderRadius: "8px",
               opacity: dimmed ? 0.62 : 1,
               transition: "opacity .25s ease, background .25s ease, border-color .25s ease",
             }}

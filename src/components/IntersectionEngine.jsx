@@ -46,6 +46,17 @@ function Chip({ link }) {
 function Module({ item, index, hovered, setHovered }) {
   const isWide = index === INTERSECTIONS.length - 1;
   const isHovered = hovered === index;
+  // A tab stop only earns its place here if focusing it reveals something a
+  // keyboard user can then reach — the link chip. For the 3 modules with no
+  // link, the hover state is purely decorative (a converging-circles
+  // flourish over already-fully-visible text), so they get no tabIndex and
+  // no focus handlers — nothing for a keyboard user to activate, so nothing
+  // to stop on. This mirrors the SystemsUnderneath fix above.
+  const focusProps = item.link ? {
+    tabIndex: 0,
+    onFocus: () => setHovered(index),
+    onBlur: () => setHovered(null),
+  } : {};
   return (
     <div
       className="ie-module"
@@ -59,9 +70,7 @@ function Module({ item, index, hovered, setHovered }) {
       }}
       onMouseEnter={() => setHovered(index)}
       onMouseLeave={() => setHovered(null)}
-      onFocus={() => setHovered(index)}
-      onBlur={() => setHovered(null)}
-      tabIndex={0}
+      {...focusProps}
     >
       <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px" }}>
         <Mark hovered={isHovered} />

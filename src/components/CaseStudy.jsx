@@ -2,7 +2,7 @@ import { useState } from "react";
 import { C } from "../constants.js";
 
 const label = { fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" };
-const body  = { fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "13.5px", fontWeight: 300, lineHeight: 1.8, color: C.textMid };
+const body  = { fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "13.5px", fontWeight: 400, lineHeight: 1.8, color: C.textMid };
 
 function Block({ b }) {
   switch (b.t) {

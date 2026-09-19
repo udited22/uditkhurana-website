@@ -8,8 +8,10 @@ import AdvisoryPage    from "./pages/Advisory.jsx";
 import PerDiemPage     from "./pages/PerDiem.jsx";
 import NotFoundPage    from "./pages/NotFound.jsx";
 
+// Font loading lives in index.html now (a real <link>, discovered by the
+// browser immediately on HTML parse) rather than a CSS @import here, which
+// would only be discovered after this stylesheet itself loads and parses.
 const GLOBAL_STYLES = `
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap');
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;}}

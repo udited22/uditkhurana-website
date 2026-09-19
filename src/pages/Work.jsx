@@ -32,7 +32,7 @@ function Chapter({ j, defaultOpen }) {
           {open && (
             <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: "8px" }}>
               {list.map((s, k) => (
-                <li key={k} style={{ display: "flex", gap: "10px", fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "13px", fontWeight: 300, color: C.textMid, lineHeight: 1.7, maxWidth: "56ch" }}>
+                <li key={k} style={{ display: "flex", gap: "10px", fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "13px", fontWeight: 400, color: C.textMid, lineHeight: 1.7, maxWidth: "56ch" }}>
                   <span style={{ color: C.accent, flexShrink: 0 }}>—</span>{s}
                 </li>
               ))}
