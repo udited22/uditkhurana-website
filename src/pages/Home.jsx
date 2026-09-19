@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Layout, { PerDiemWordmark, LinkedInIcon, InstagramIcon, MailIcon } from "../components/Layout.jsx";
 import { C, PHOTO, LAYOUT, SOCIAL, CONTACT_EMAIL, OPERATING_LOOP, PROOF_STRIP } from "../constants.js";
 import { PER_DIEM_LATEST, PER_DIEM_RECENT } from "../content/per-diem.js";

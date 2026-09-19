@@ -33,7 +33,7 @@
 //   left unset — that's a judgment call this script has no basis to
 //   make up, and per-diem.js already falls back gracefully when they're
 //   absent. Add them by hand afterward, or via `npm run perdiem:add`.
-import { readFile, writeFile, appendFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
@@ -153,10 +153,9 @@ async function main() {
   const updated = [...added, ...issues];
   await writeFile(CONTENT_PATH, JSON.stringify(updated, null, 2) + "\n");
   console.log(`[perdiem-sync] Wrote ${added.length} new issue(s) to per-diem.json.`);
-
-  if (process.env.GITHUB_OUTPUT) {
-    await appendFile(process.env.GITHUB_OUTPUT, "changed=true\n");
-  }
+  // The workflow determines whether anything changed itself (a plain
+  // `git diff` on per-diem.json after this script runs), so this script
+  // doesn't need to report its own changed-state via $GITHUB_OUTPUT.
 }
 
 main();
