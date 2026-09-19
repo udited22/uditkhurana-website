@@ -55,10 +55,16 @@ export function linkedInEmbedSrc(url) {
 }
 
 // ─── NAV LINKS ────────────────────────────────────────────────────
+// "Do Hard Things" is a primary navigation identity pillar that anchors to
+// a homepage section (#do-hard-things) rather than owning a standalone
+// route — deliberate, not an oversight. Do not give it its own page/route
+// unless explicitly asked to. See Layout.jsx's navigate()/scrollToHash()
+// for how a hash href like this one is handled from every page.
 export const NAV_LINKS = [
   { label: "Work",            href: "/work"      },
   { label: "Per Diem",        href: "/per-diem"  },
   { label: "Advisory",        href: "/advisory"  },
+  { label: "Do Hard Things",  href: "/#do-hard-things" },
   { label: "Udit Uncovered",  href: "/uncovered" },
 ];
 

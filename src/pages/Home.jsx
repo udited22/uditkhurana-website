@@ -1,6 +1,6 @@
-import { useState } from "react";
-import Layout, { PerDiemWordmark, LinkedInIcon, InstagramIcon, MailIcon } from "../components/Layout.jsx";
-import { C, PHOTO, LAYOUT, SOCIAL, CONTACT_EMAIL, OPERATING_LOOP, PROOF_STRIP } from "../constants.js";
+import { useState, useEffect } from "react";
+import Layout, { PerDiemWordmark, scrollToHash } from "../components/Layout.jsx";
+import { C, PHOTO, LAYOUT, OPERATING_LOOP, PROOF_STRIP } from "../constants.js";
 import { PER_DIEM_LATEST, PER_DIEM_RECENT } from "../content/per-diem.js";
 import { PHOTOS } from "../photos.js";
 import IntersectionEngine from "../components/IntersectionEngine.jsx";
@@ -29,34 +29,6 @@ function navigate(href) {
   window.dispatchEvent(new PopStateEvent("popstate"));
 }
 
-function SocialRow() {
-  const items = [
-    { Icon: LinkedInIcon, label: "LinkedIn", href: SOCIAL.linkedin, external: true },
-    { Icon: InstagramIcon, label: "Instagram", href: SOCIAL.instagram, external: true },
-    { Icon: MailIcon, label: "Email", href: `mailto:${CONTACT_EMAIL}` },
-  ];
-  return (
-    <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "26px" }}>
-      <span style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "13px", fontWeight: 600, color: C.textHigh }}>Udit Khurana</span>
-      <div style={{ display: "flex", gap: "6px" }}>
-        {items.map(({ Icon, label, href, external }) => (
-          <a key={label} href={href} title={label} aria-label={label}
-            target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined}
-            style={{
-              display: "flex", alignItems: "center", justifyContent: "center", width: "26px", height: "26px",
-              borderRadius: "50%", color: C.textLow, transition: "color .15s ease, background .15s ease",
-            }}
-            onMouseEnter={e => { e.currentTarget.style.color = C.accent; e.currentTarget.style.background = C.accentFaint; }}
-            onMouseLeave={e => { e.currentTarget.style.color = C.textLow; e.currentTarget.style.background = "transparent"; }}
-          >
-            <Icon size={14} />
-          </a>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function PerDiemCard({ issue }) {
   return (
     <a href={issue.url} target="_blank" rel="noreferrer" style={{ display: "block", padding: "16px 0", borderTop: `1px solid ${C.borderSoft}` }}>
@@ -71,6 +43,23 @@ function PerDiemCard({ issue }) {
 export default function HomePage() {
   const [uncoveredIdx, setUncoveredIdx] = useState(0);
   const scene = UNCOVERED_SCENES[uncoveredIdx];
+
+  // Direct load/refresh of a URL like /#do-hard-things: the hash is already
+  // in window.location on first mount, before any nav click ever happens.
+  // React commits this component's full DOM synchronously before this
+  // effect runs, so the target section is guaranteed to exist by now.
+  useEffect(() => {
+    if (!window.location.hash) return;
+    // A fresh top-level load (vs. a client-side transition from another
+    // page) can reach this effect before the browser has finished its
+    // first layout pass — scrollIntoView silently no-ops against a
+    // not-yet-laid-out target in that case. Two rAFs reliably wait past
+    // both this paint and the one after it, which is enough for layout to
+    // settle; this is the standard fix for this exact class of bug, not
+    // an arbitrary timing guess.
+    const hash = window.location.hash;
+    requestAnimationFrame(() => requestAnimationFrame(() => scrollToHash(hash)));
+  }, []);
 
   return (
     <Layout activePath="/">
@@ -96,16 +85,28 @@ export default function HomePage() {
         <div style={{ maxWidth: LAYOUT.contentMax, margin: "0 auto", width: "100%" }}>
           <div className="hero-grid">
             <div>
-              <SocialRow />
               <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: C.accent, marginBottom: "18px" }}>
                 Product · Markets · Systems
               </p>
               <h1 style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(32px,4.4vw,56px)", fontWeight: 600, lineHeight: 1.1, color: C.textHigh, letterSpacing: "-0.01em", marginBottom: "22px" }}>
                 I build at the <em style={{ fontStyle: "italic", fontWeight: 600, color: C.accent }}>intersections</em> of markets, technology, and regulated finance.
               </h1>
-              <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "16px", fontWeight: 400, color: C.textMid, lineHeight: 1.6, maxWidth: "48ch", marginBottom: "36px" }}>
-                Outside work, that curiosity spills into investing, writing, endurance, travel, and the occasional hard thing.
+              <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "16px", fontWeight: 400, color: C.textMid, lineHeight: 1.6, maxWidth: "48ch", marginBottom: "18px" }}>
+                Outside work, that curiosity gets physical too — IRONMAN 70.3, diving, travel, writing, and the occasional hard thing.
               </p>
+              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "8px", marginBottom: "28px" }}>
+                <span style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "10.5px", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: C.textLow }}>Ironman 70.3 Finisher</span>
+                <span style={{ color: C.textLow, fontSize: "10.5px" }}>·</span>
+                <span style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "10.5px", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: C.textLow }}>PADI Advanced Open Water</span>
+                <span style={{ color: C.textLow, fontSize: "10.5px" }}>·</span>
+                <a
+                  href="/#do-hard-things"
+                  onClick={e => { e.preventDefault(); scrollToHash("#do-hard-things"); }}
+                  style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "10.5px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: C.accent }}
+                >
+                  Do Hard Things →
+                </a>
+              </div>
               <button
                 onClick={() => document.getElementById("intersections")?.scrollIntoView({ behavior: "smooth" })}
                 style={{ background: "none", border: "none", cursor: "pointer", padding: 0, fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "11px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: C.textLow }}

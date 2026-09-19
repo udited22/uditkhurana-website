@@ -1,9 +1,9 @@
 # uditkhurana.in
 
 Personal site — the public operating system for one person, told through
-three principal identity layers (Work, Per Diem, Advisory) plus the
-photographic personal record (Udit Uncovered), that read as one coherent
-person rather than a portfolio of unrelated interests.
+five primary navigation pillars (Work, Per Diem, Advisory, Do Hard Things,
+Udit Uncovered) that read as one coherent person rather than a portfolio of
+unrelated interests.
 
 ## The problem
 
@@ -26,6 +26,13 @@ from the homepage, rather than needing a separate "About" page to explain it.
   Deliberately not a consulting-agency website: no pricing, four concrete
   problem areas instead of a service menu, real case-study previews instead
   of a vague link.
+- **Do Hard Things** — a primary nav identity pillar that anchors to
+  `/#do-hard-things`, a homepage section, rather than owning a standalone
+  route. Deliberate: Ironman, scuba, and adventure photography already have
+  the right home on the homepage; a separate page would just repeat it. See
+  `Layout.jsx`'s `navigate()`/`scrollToHash()` for how the hash link works
+  correctly from every page, including a direct load/refresh of the hash
+  URL and browser back. Do not create a standalone page for this pillar.
 - **Udit Uncovered** — how he lives. The consolidated identity for travel,
   endurance, adventure, and experimentation — Instagram: `@udituncovered`.
 
