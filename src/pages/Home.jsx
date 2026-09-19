@@ -100,7 +100,7 @@ export default function HomePage() {
         <div style={{ maxWidth: LAYOUT.contentMax, margin: "0 auto", width: "100%" }}>
           <div className="hero-grid">
             <div>
-              <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.22em", textTransform: "uppercase", color: C.accent, marginBottom: "18px" }}>
+              <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(14px,2vw,18px)", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: C.accent, marginBottom: "18px" }}>
                 Product · Markets · Systems
               </p>
               <h1 style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(32px,4.4vw,56px)", fontWeight: 600, lineHeight: 1.1, color: C.textHigh, letterSpacing: "-0.01em", marginBottom: "22px" }}>
@@ -155,7 +155,7 @@ export default function HomePage() {
       <section id="intersections" style={{ background: C.bgSection, borderTop: `1px solid ${C.borderSoft}` }} className="sp">
         <div style={{ maxWidth: LAYOUT.contentMax, margin: "0 auto" }}>
           <Reveal>
-            <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: C.accent, marginBottom: "14px" }}>
+            <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(14px,2vw,18px)", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: C.accent, marginBottom: "16px" }}>
               Where I Connect The Dots
             </p>
             <h2 style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(24px,3.2vw,36px)", fontWeight: 600, color: C.textHigh, marginBottom: "32px", maxWidth: "26ch" }}>
@@ -172,7 +172,7 @@ export default function HomePage() {
       <section id="do-hard-things" style={{ background: C.bg }} className="sp">
         <div style={{ maxWidth: LAYOUT.contentMax, margin: "0 auto" }}>
           <Reveal>
-            <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: C.accent, marginBottom: "14px" }}>
+            <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(14px,2vw,18px)", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", color: C.accent, marginBottom: "16px" }}>
               Do Hard Things
             </p>
             <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "15px", fontWeight: 400, color: C.textMid, maxWidth: "62ch", marginBottom: "28px" }}>

@@ -30,20 +30,22 @@ export function scrollToHash(hash) {
 
 // Small, subordinate icon row next to the header name — "Udit Khurana [in]
 // [ig] [mail]", not a social toolbar. No background/circle, muted color at
-// rest, existing accent on hover/focus. Reused as-is (just a className
-// swap) for the mobile-menu placement below 480px, where the header
-// version hides because there isn't room next to the hamburger.
-function HeaderSocial({ className }) {
+// rest, existing accent on hover/focus. Stays beside the name at every
+// width, including narrow mobile — see the .header-name/.header-social
+// CSS below for the small responsive size/gap adjustments that keep it
+// fitting next to the hamburger down to 320px, rather than hiding it.
+function HeaderSocial() {
   const items = [
     { Icon: LinkedInIcon, label: "LinkedIn", href: SOCIAL.linkedin, external: true },
     { Icon: InstagramIcon, label: "Instagram", href: SOCIAL.instagram, external: true },
     { Icon: MailIcon, label: "Email", href: `mailto:${CONTACT_EMAIL}` },
   ];
   return (
-    <div className={className} style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+    <div className="header-social" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
       {items.map(({ Icon, label, href, external }) => (
         <a key={label} href={href} title={label} aria-label={label}
           target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined}
+          className="header-social-icon"
           style={{ display: "flex", color: C.textMid, transition: "color .15s ease" }}
           onMouseEnter={e => { e.currentTarget.style.color = C.accent; }}
           onMouseLeave={e => { e.currentTarget.style.color = C.textMid; }}
@@ -68,7 +70,7 @@ export function PerDiemWordmark({ size = "md" }) {
         decoding="async"
         style={{ height: big ? "40px" : "26px", width: "auto", borderRadius: "3px", flexShrink: 0 }}
       />
-      {big && <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9px", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", color: C.accentDim }}>An Ongoing Writing Experiment</p>}
+      {big && <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(12px,3vw,14px)", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", color: C.accentDim }}>An Ongoing Writing Experiment</p>}
     </div>
   );
 }
@@ -104,22 +106,28 @@ export default function Layout({ children, activePath = "/" }) {
            both the full link row and the hamburger render at every width. */
         .nav-hamburger{display:none;}
         .site-nav{padding:0 52px;}
-        .mobile-social{display:none;margin-top:20px;padding-top:20px;border-top:1px solid ${C.borderSoft};}
+        .header-identity{display:flex;align-items:center;gap:18px;min-width:0;}
+        .header-name{font-size:19px;}
+        .header-social{gap:10px;}
         @media(max-width:980px){
           .nav-desktop{display:none!important;}
           .nav-hamburger{display:flex!important;}
         }
-        /* Below 480px there isn't comfortable room for the name + 3 icons +
-           hamburger together — the header hides its icon row and the same
-           row reappears at the bottom of the opened mobile menu instead. */
-        @media(max-width:480px){
-          .header-social{display:none!important;}
-          .mobile-social{display:flex!important;}
-        }
         @media(max-width:600px){
-          .site-nav{padding:0 20px!important;}
+          .site-nav{padding:0 18px!important;}
           .mobile-menu{padding:8px 20px 24px!important;}
           .site-footer{padding:32px 20px!important;}
+        }
+        /* The name + 3 icons + hamburger need to fit in one row down to
+           320px. Keep all of it visible (never hide the icons into the
+           menu) — just tighten sizing/gaps a little at the narrowest
+           widths, per the explicit "no shrinking into illegibility" /
+           "keep visible beside the name" requirement. */
+        @media(max-width:400px){
+          .header-identity{gap:12px!important;}
+          .header-name{font-size:17px!important;}
+          .header-social{gap:8px!important;}
+          .header-social-icon svg{width:14px!important;height:14px!important;}
         }
       `}</style>
 
@@ -133,11 +141,11 @@ export default function Layout({ children, activePath = "/" }) {
         backdropFilter: scrolled ? "blur(20px)" : "none",
         transition: "all 0.3s ease",
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "18px", minWidth: 0 }}>
+        <div className="header-identity">
           <a href="/" onClick={e => { e.preventDefault(); navigate("/"); }} style={{ lineHeight: 1, flexShrink: 0 }}>
-            <span style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "19px", fontWeight: 500, letterSpacing: "0.03em", color: C.textHigh, whiteSpace: "nowrap" }}>Udit Khurana</span>
+            <span className="header-name" style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontWeight: 500, letterSpacing: "0.03em", color: C.textHigh, whiteSpace: "nowrap" }}>Udit Khurana</span>
           </a>
-          <HeaderSocial className="header-social" />
+          <HeaderSocial />
         </div>
 
         <div className="nav-desktop" style={{ display: "flex", gap: "30px", alignItems: "center" }}>
@@ -174,10 +182,6 @@ export default function Layout({ children, activePath = "/" }) {
               {l.label}
             </a>
           ))}
-          {/* Only visible below 480px (see .mobile-social rule) — the same
-              width the header's own icon row hides at, since there's no
-              room left beside the name and hamburger down there. */}
-          <HeaderSocial className="mobile-social" />
         </div>
       )}
 
