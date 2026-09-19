@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { C } from "../constants.js";
 
-const label = { fontFamily: "'DM Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" };
-const body  = { fontFamily: "'DM Sans',sans-serif", fontSize: "13.5px", fontWeight: 300, lineHeight: 1.8, color: C.textMid };
+const label = { fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase" };
+const body  = { fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "13.5px", fontWeight: 400, lineHeight: 1.8, color: C.textMid };
 
 function Block({ b }) {
   switch (b.t) {
     case "h3":
-      return <h3 style={{ fontFamily: "'Instrument Serif',serif", fontSize: "20px", fontWeight: 500, color: C.textHigh, margin: "30px 0 12px" }}>{b.text}</h3>;
+      return <h3 style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "20px", fontWeight: 500, color: C.textHigh, margin: "30px 0 12px" }}>{b.text}</h3>;
     case "h4":
       return <p style={{ ...label, color: C.accent, margin: "22px 0 10px" }}>{b.text}</p>;
     case "p":
@@ -24,7 +24,7 @@ function Block({ b }) {
       );
     case "quote":
       return (
-        <blockquote style={{ margin: "16px 0", padding: "14px 20px", borderLeft: `2px solid ${C.border}`, fontFamily: "'Instrument Serif',serif", fontSize: "17px", fontStyle: "italic", color: C.textHigh, lineHeight: 1.6 }}>
+        <blockquote style={{ margin: "16px 0", padding: "14px 20px", borderLeft: `2px solid ${C.border}`, fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "17px", fontStyle: "italic", color: C.textHigh, lineHeight: 1.6 }}>
           {b.text}
         </blockquote>
       );
@@ -37,7 +37,7 @@ function Block({ b }) {
                 <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: C.accent, flexShrink: 0 }} />
                 {i < b.items.length - 1 && <span style={{ width: "1px", flex: 1, minHeight: "18px", background: C.border }} />}
               </div>
-              <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "12.5px", fontWeight: 500, color: C.textHigh, padding: "0 0 12px" }}>{it}</p>
+              <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "12.5px", fontWeight: 500, color: C.textHigh, padding: "0 0 12px" }}>{it}</p>
             </div>
           ))}
         </div>
@@ -45,7 +45,7 @@ function Block({ b }) {
     case "proscons":
       return (
         <div style={{ margin: "16px 0", background: C.bgCard, border: `1px solid ${C.borderSoft}`, borderRadius: "6px", padding: "18px 20px" }}>
-          <p style={{ fontFamily: "'Instrument Serif',serif", fontSize: "16px", fontWeight: 500, color: C.textHigh, marginBottom: "12px" }}>{b.label}</p>
+          <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "16px", fontWeight: 500, color: C.textHigh, marginBottom: "12px" }}>{b.label}</p>
           <div style={{ display: "flex", gap: "28px", flexWrap: "wrap", marginBottom: "12px" }}>
             <div>
               <p style={{ ...label, color: C.textLow, marginBottom: "6px" }}>Pros</p>
@@ -62,7 +62,7 @@ function Block({ b }) {
     case "reco":
       return (
         <div style={{ margin: "16px 0", background: C.bgCard, border: `1px solid ${C.borderSoft}`, borderRadius: "6px", padding: "18px 20px" }}>
-          <p style={{ fontFamily: "'Instrument Serif',serif", fontSize: "16px", fontWeight: 500, color: C.textHigh, marginBottom: "6px" }}>{b.label}</p>
+          <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "16px", fontWeight: 500, color: C.textHigh, marginBottom: "6px" }}>{b.label}</p>
           <p style={{ ...body, fontSize: "12.5px", marginBottom: b.items ? "10px" : "12px" }}>{b.lead}</p>
           {b.items && (
             <ul style={{ margin: "0 0 12px", paddingLeft: "0", listStyle: "none", display: "flex", flexDirection: "column", gap: "5px" }}>
@@ -81,7 +81,7 @@ function Block({ b }) {
         <div style={{ margin: "26px 0 4px", padding: "22px 24px", background: C.accentFaint, border: `1px solid ${C.border}`, borderRadius: "6px" }}>
           <p style={{ ...label, color: C.accent, marginBottom: "10px" }}>Strategic Outcome</p>
           <p style={{ ...body, marginBottom: "10px" }}>{b.lead}</p>
-          <p style={{ fontFamily: "'Instrument Serif',serif", fontSize: "19px", fontStyle: "italic", color: C.textHigh, lineHeight: 1.5, marginBottom: "10px" }}>{b.quote}</p>
+          <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "19px", fontStyle: "italic", color: C.textHigh, lineHeight: 1.5, marginBottom: "10px" }}>{b.quote}</p>
           <p style={{ ...body }}>{b.body}</p>
         </div>
       );
@@ -98,7 +98,7 @@ export default function CaseStudyCard({ study }) {
         style={{ width: "100%", textAlign: "left", padding: "24px 26px", background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px" }}>
         <div>
           <p style={{ ...label, color: C.accent, marginBottom: "8px" }}>{study.tag}</p>
-          <p style={{ fontFamily: "'Instrument Serif',serif", fontSize: "19px", fontWeight: 500, color: C.textHigh, lineHeight: 1.3 }}>{study.title}</p>
+          <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "19px", fontWeight: 500, color: C.textHigh, lineHeight: 1.3 }}>{study.title}</p>
         </div>
         <span style={{ color: C.textLow, fontSize: "13px", flexShrink: 0, transform: open ? "rotate(90deg)" : "none", transition: "transform .2s" }}>▸</span>
       </button>

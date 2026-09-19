@@ -5,3 +5,14 @@ dist
 .env.local
 .vercel
 *.zip
+
+# Locally-installed community agent skills (npx skills) — tooling for this
+# session, not site content. The project's own skills under .claude/skills/
+# (design-brand-review, content-strategy-review, integration-tech-plan) stay tracked.
+.agents/
+.claude/skills/find-skills
+.claude/skills/impeccable
+.claude/skills/web-design-guidelines
+.claude/skills/vercel-react-best-practices
+.claude/skills/emil-design-eng
+skills-lock.json

@@ -1,0 +1,55 @@
+name: Per Diem sync
+
+# Best-effort freshness, not a live feed — see scripts/perdiem-sync.mjs for
+# the full explanation of what this can/can't guarantee. A blocked or
+# no-op run is expected behavior, not a failure: the job only commits
+# when the script actually found and wrote something new.
+on:
+  schedule:
+    - cron: "17 */6 * * *" # every 6 hours, offset from the hour to avoid GitHub's on-the-hour scheduling congestion
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run sync
+        run: node scripts/perdiem-sync.mjs
+
+      - name: Check for changes
+        id: diff
+        run: |
+          if git diff --quiet -- src/content/per-diem.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Only reached when the sync actually wrote something. A newly-added
+      # issue is untrusted-ish input (scraped from a page, not hand-typed) —
+      # verifying the site still builds before committing means a malformed
+      # entry (bad JSON shape, a title with characters that break something
+      # downstream) gets caught here instead of shipping to production.
+      - name: Verify build before committing
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          npm ci
+          npm run build
+
+      - name: Commit if changed
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "perdiem-sync-bot"
+          git config user.email "actions@github.com"
+          git add src/content/per-diem.json
+          git commit -m "Per Diem: auto-sync new issue(s) from LinkedIn"
+          git push

@@ -22,18 +22,18 @@ function Module({ item }) {
       />
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.7) 100%)" }} />
       <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: item.featured ? "28px" : "20px" }}>
-        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "9.5px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", marginBottom: "8px" }}>
+        <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9.5px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)", marginBottom: "8px" }}>
           {item.tag}
         </p>
-        <h3 style={{ fontFamily: "'Instrument Serif',serif", fontSize: item.featured ? "clamp(24px,3vw,32px)" : "19px", fontWeight: 400, color: "#fff", lineHeight: 1.15, marginBottom: "10px" }}>
+        <h3 style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: item.featured ? "clamp(24px,3vw,32px)" : "19px", fontWeight: 400, color: "#fff", lineHeight: 1.15, marginBottom: "10px" }}>
           {item.title}
         </h3>
-        <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: item.featured ? "13px" : "12px", color: "rgba(255,255,255,0.82)", lineHeight: 1.55, maxWidth: "34ch", marginBottom: item.cta ? "14px" : 0 }}>
+        <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: item.featured ? "13px" : "12px", color: "rgba(255,255,255,0.82)", lineHeight: 1.55, maxWidth: "34ch", marginBottom: item.cta ? "14px" : 0 }}>
           {item.copy}
         </p>
         {item.cta && (
           <a href={item.cta.url} target="_blank" rel="noreferrer"
-            style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#fff", borderBottom: "1px solid rgba(255,255,255,0.5)", paddingBottom: "2px" }}>
+            style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "11px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#fff", borderBottom: "1px solid rgba(255,255,255,0.5)", paddingBottom: "2px" }}>
             {item.cta.label}
           </a>
         )}

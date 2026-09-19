@@ -60,20 +60,37 @@ export const NAV_LINKS = [
   { label: "Per Diem",        href: "/per-diem"  },
   { label: "Advisory",        href: "/advisory"  },
   { label: "Udit Uncovered",  href: "/uncovered" },
-  { label: "About",           href: "/about"     },
 ];
 
+// ─── LAYOUT TOKENS ──────────────────────────────────────────────────
+// V4: replaces the ad-hoc per-page maxWidth (700/760/900/1000px) and
+// uniform .sp{padding:100px 80px} pattern. contentMax is the working
+// canvas for full compositions; proseMax stays narrow for genuine
+// long-form reading only (essay body, case-study prose) — never a
+// whole section.
+export const LAYOUT = {
+  contentMax: "1240px",
+  proseMax: "680px",
+  padDesktop: "72px",
+  padDesktopLoose: "88px",
+  padMobile: "48px",
+};
+
 // ─── INTERSECTIONS ────────────────────────────────────────────────
-// The hero's signature interaction. Each pair drives an adjacent evidence
-// panel on hover (desktop) / swipe (mobile) — see IntersectionEngine.jsx.
+// V4: rebuilt as a self-contained grid — every module shows its name +
+// evidence by default (no hover required to understand why it exists).
+// `link` is optional and only added where a genuine on-site destination
+// exists; hover/focus reveals it as one additional layer, but on mobile
+// it renders inline by default since there's no hover to gate it behind.
+// Last item renders as the wide tile — see IntersectionEngine.jsx.
 export const INTERSECTIONS = [
-  { a: "Markets", b: "Technology", evidence: "Trading systems and market infrastructure — where execution speed becomes a product decision." },
+  { a: "Markets", b: "Technology", evidence: "Trading systems and market infrastructure — where execution speed becomes a product decision.", link: { label: "See in Work", href: "/work" } },
   { a: "Product", b: "Infrastructure", evidence: "The customer screen is one layer. Underneath: APIs, flows, and rails most users never see." },
   { a: "Regulation", b: "Experience", evidence: "Onboarding journeys shaped as much by regulatory architecture as by design." },
-  { a: "Business Models", b: "Behaviour", evidence: "Per Diem — an ongoing writing experiment on why these two are never really separate." },
+  { a: "Business Models", b: "Behaviour", evidence: "Per Diem — an ongoing writing experiment on why these two are never really separate.", link: { label: "Read Per Diem", href: "/per-diem" } },
   { a: "Traditional Finance", b: "New Rails", evidence: "Global assets, crypto, and the GIFT City evolution of how capital crosses borders." },
-  { a: "Endurance", b: "Mindset", evidence: "Long-distance sport has been my longest experiment in consistency, discomfort and patience." },
-  { a: "Travel", b: "Stories", evidence: "Udit Uncovered — the same instinct that documents an edge case, pointed at a mountain instead." },
+  { a: "Endurance", b: "Mindset", evidence: "Long-distance sport has been my longest experiment in consistency, discomfort and patience.", link: { label: "Do Hard Things", href: "#do-hard-things" } },
+  { a: "Travel", b: "Stories", evidence: "Udit Uncovered — the same instinct that documents an edge case, pointed at a mountain instead.", link: { label: "Udit Uncovered", href: "/uncovered" } },
 ];
 
 // ─── SYSTEMS UNDERNEATH ───────────────────────────────────────────
@@ -224,18 +241,24 @@ export const JOURNEY = [
 
 // ─── ADVISORY: PROBLEM TYPES ──────────────────────────────────────
 // Exactly three, per V3 — click reveals 2–3 lines. Not a service menu.
+// V4: 4 modules (was 3) for a clean 2x2 "Where I'm Most Useful" grid,
+// exact copy from the Advisory rebuild brief.
 export const ADVISORY_PROBLEMS = [
   {
-    title: "Financial product strategy",
-    detail: "Positioning, sequencing, and roadmap decisions for teams building fintech and financial products.",
+    title: "0→1 regulated financial products",
+    detail: "From proposition and operating model through onboarding, KYC/compliance architecture, partner dependencies and launch sequencing.",
   },
   {
-    title: "Market, brokerage & wealth infrastructure",
-    detail: "Brokerage, investing platforms, and the market infrastructure underneath them.",
+    title: "Brokerage, investing & market infrastructure",
+    detail: "Broker integrations, order flows, OMS/RMS boundaries, market data, portfolio infrastructure, corporate actions and reconciliation.",
   },
   {
-    title: "Regulated zero-to-one systems",
-    detail: "Standing up new, regulated financial infrastructure from scratch — where regulation is a first-class design constraint, not an afterthought.",
+    title: "Money movement & cross-border rails",
+    detail: "Bank and PSP integrations, funds flow architecture, LRS/remittance, ledgers, reconciliation and exception operations.",
+  },
+  {
+    title: "Product architecture & decision pressure-testing",
+    detail: "PRD reviews, build-vs-buy decisions, vendor evaluation, system maps, roadmap sequencing, dependencies and operational risk.",
   },
 ];
 

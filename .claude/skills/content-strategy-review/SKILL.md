@@ -9,7 +9,7 @@ Runs a personal-branding/content-strategy audit of this repo's site (uditkhurana
 
 ## How to run it
 
-Launch a background `general-purpose` Agent with a self-contained prompt built from the template below. The site's actual copy lives in `src/constants.js` (data arrays like `IDENTITY_CARDS`, `WRITINGS`, `ADVISORY_AREAS`, `PROJECTS`, `CRED`, `JOURNEY`) and inline JSX in `src/pages/*.jsx` — always have the agent read these fresh rather than reuse facts from a prior run, since the copy changes over time.
+Launch a background `general-purpose` Agent with a self-contained prompt built from the template below. The site's actual copy lives in `src/constants.js` (data arrays like `INTERSECTIONS`, `DO_HARD_THINGS`, `ADVISORY_PROBLEMS`, `PROJECTS`, `JOURNEY`, `OPERATING_LOOP`, `PROOF_STRIP`) and inline JSX in `src/pages/*.jsx` — always have the agent read these fresh rather than reuse facts from a prior run, since both the data model and the copy have changed substantially across redesigns (most recently the V4 pass) and will keep changing.
 
 ### Agent prompt template
 
@@ -18,17 +18,25 @@ You are a high-profile personal-branding and content-strategy expert (the
 kind who advises senior executives, founders, and industry operators on
 public positioning) reviewing uditkhurana.in — Udit Khurana's personal site.
 Research/strategy only: do not edit any code or content. Read the actual
-current copy yourself — src/constants.js in full, plus Home.jsx, About.jsx,
-Advisory.jsx, PerDiem.jsx, Writing.jsx, and Layout.jsx — don't rely on any
-prior summary, since the content changes over time.
+current copy yourself — src/constants.js in full, plus Home.jsx, Work.jsx,
+Advisory.jsx, PerDiem.jsx, UditUncovered.jsx, and Layout.jsx — don't rely on
+any prior summary, since the content changes over time. Note: there is no
+About.jsx or Writing.jsx — the site has no standalone About page (removed in
+the V4 pass; /about redirects to /) and Per Diem, not a generic "Writing"
+page, is the writing property.
 
 Site owner context: Udit Khurana, Principal PM at CoinDCX (India's leading
 crypto exchange), 9+ years across TradFi → fintech (smallcase, Tickertape) →
-crypto, based in Bengaluru. Runs (or is growing) a newsletter, "Per Diem."
-Offers selective Advisory work to founders and product leaders. Goal: the
-site should read like a serious industry product leader's profile, connect
-LinkedIn + Instagram, and reflect his eclectic personality (fitness,
-photography, writing) without diluting professional credibility.
+crypto, based in Bengaluru. Writes "Per Diem," a daily-ish newsletter
+published on LinkedIn (real content model + best-effort automatic sync, see
+README). Offers selective Advisory work to founders and product leaders
+(rebuilt in V4 around four concrete problem areas, not a service menu — see
+Advisory.jsx before proposing a repositioning). Goal: the site should read
+like a serious industry product leader's profile and reflect his eclectic
+personality (fitness, photography, writing) without diluting professional
+credibility. LinkedIn/Instagram/email are already surfaced prominently
+(hero, Advisory, footer) as of V4 — assess whether that's working, don't
+treat it as an unaddressed gap by default.
 
 Save the full report to a markdown file in the repo's scratchpad/working
 directory (or wherever the calling session indicates) and structure it as:

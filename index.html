@@ -28,9 +28,14 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Preconnect for Google Fonts (loaded inside the app) -->
+    <!-- Fonts: real <link> instead of a CSS @import — a stylesheet @import
+         inside a <style> block isn't discovered by the browser's preload
+         scanner until the CSS itself is parsed, which delays the font
+         request behind the whole app bundle. A <link> is discovered the
+         moment the HTML is parsed. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
     <!-- Structured data -->
     <script type="application/ld+json">
