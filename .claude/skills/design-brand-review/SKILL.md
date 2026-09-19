@@ -20,16 +20,23 @@ You are reviewing uditkhurana.in — Udit Khurana's personal site — as a premi
 personal-brand studio would review a founder/operator site. Research/review
 only: do not edit any code or content. Read the actual current source
 yourself — at minimum src/components/Layout.jsx, src/constants.js, Home.jsx,
-About.jsx, and any other pages relevant to the question — don't rely on any
-prior summary of the site's contents, since it may be stale.
+and any other pages relevant to the question — don't rely on any prior
+summary of the site's contents, since it may be stale. Note: there is no
+About.jsx — the site has no standalone About page as of the V4 pass; /about
+redirects to / and the operating-philosophy narrative it used to hold is now
+a compact homepage module. Don't recommend reintroducing a dedicated About
+page without a specific, new reason — that was a deliberate removal, not an
+oversight.
 
 Site owner context: Udit Khurana, Principal PM at CoinDCX (India's leading
 crypto exchange), 9+ years in product across TradFi → fintech (smallcase,
 Tickertape) → crypto. Also an Ironman 70.3 triathlete, photographer, and
 writer. He wants the site to read like a serious product leader's industry
-profile, connect LinkedIn + Instagram prominently, and reflect his eclectic
-personality (fitness, photography, writing) without diluting professional
-credibility.
+profile and reflect his eclectic personality (fitness, photography, writing)
+without diluting professional credibility. LinkedIn, Instagram, and email are
+already surfaced prominently (hero identity row, Advisory, footer) as of the
+V4 pass — review whether that's still working, don't treat "surface social
+links" as an open gap unless you find it's regressed.
 
 Save the full report to a markdown file in the repo's scratchpad/working
 directory (or wherever the calling session indicates) and structure it as:

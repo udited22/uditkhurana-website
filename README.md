@@ -1,113 +1,158 @@
 # uditkhurana.in
 
-Personal site — the public operating system for one person, told through four
-principal identity layers (Work, Per Diem, Advisory, Udit Uncovered) that
-resolve into a single operating philosophy, not a portfolio of unrelated
-interests.
+Personal site — the public operating system for one person, told through
+three principal identity layers (Work, Per Diem, Advisory) plus the
+photographic personal record (Udit Uncovered), that read as one coherent
+person rather than a portfolio of unrelated interests.
 
 ## The problem
 
 A LinkedIn profile and a PDF resume compress a career into bullet points and
 can't hold the parts of an identity that don't fit a job title — the Ironman
 finish, the diving trips, the actual advisory work and how it was reasoned
-through. This site exists to be the fuller, more honest version, structured so
-a visitor infers the underlying pattern (curiosity → systems thinking →
-experimentation → difficult execution → reflection → documentation) rather
-than being told about it.
+through. This site exists to be the fuller, more honest version, structured
+so a visitor infers the underlying pattern (curiosity → systems thinking →
+experimentation → difficult execution → reflection → documentation) directly
+from the homepage, rather than needing a separate "About" page to explain it.
 
 ## Brand architecture
 
 - **Work** — what he builds. Career narrative framed by mandate/scope/selected
   work per chapter, not a chronological résumé.
-- **Per Diem** — how he thinks. A first-class writing property, not buried
-  under a generic "Writing" or "Blog" label.
+- **Per Diem** — how he thinks. A first-class writing property with a real
+  logo and content model, not buried under a generic "Writing" or "Blog"
+  label.
 - **Advisory** — where accumulated judgement can selectively be applied.
-  Deliberately not a consulting funnel.
+  Deliberately not a consulting-agency website: no pricing, four concrete
+  problem areas instead of a service menu, real case-study previews instead
+  of a vague link.
 - **Udit Uncovered** — how he lives. The consolidated identity for travel,
-  endurance, adventure, food, and experimentation — Instagram: `@udituncovered`.
-- **About** — the bridge explaining why the first four are one person, not
-  four separate personas.
+  endurance, adventure, and experimentation — Instagram: `@udituncovered`.
 
-"Adventure" and "Fitness" are not top-level identities anymore; both live
-inside Udit Uncovered. `/adventure` and `/fitness` 301-redirect to `/uncovered`
-(see `vercel.json`) to preserve any indexed links.
+There is no standalone "About" page. The operating-philosophy narrative that
+used to live at `/about` (six full-height stages explaining Curiosity →
+Systems → Experiment → Do → Reflect → Document) was, on measurement, the
+single most disproportionate block on the entire site — over three full
+1920×1080 screens for six one-line stages. As of the V4 pass, that concept
+is a compact homepage module instead: `/about` **301-redirects to `/`**
+(see `vercel.json`), the same way `/adventure` and `/fitness` redirect to
+`/uncovered` to preserve any indexed links.
 
-## What it does
+## Homepage architecture (V4)
 
-- **Home** — hero, Work, Per Diem, Selected Work, Advisory, Udit Uncovered,
-  About bridge, in that sequence.
+Section order, top to bottom: **Hero** (identity/social row, proposition,
+full-body portrait) → **Intersections** (a 3×3 grid of where product,
+markets, and personal interests connect — see `IntersectionEngine.jsx`) →
+**Do Hard Things** (real photography: Ironman, scuba, adventure — deliberately
+placed early, not buried at the bottom) → **Work/Systems** (the three-layer
+product-systems visual — see `SystemsUnderneath.jsx`) → **Per Diem** (logo,
+featured issue, recent issues) → **Udit Uncovered** (full-bleed photo) →
+**Operating System** (the compact version of the old About page's concept) →
+**Advisory CTA** → **Footer**.
+
+This order and the typography/layout system it uses (IBM Plex Sans
+throughout, a shared `LAYOUT.contentMax` of 1240px instead of per-page ad-hoc
+widths) came out of a full audit of the previous version — see git history
+around the "V4 quality pass" commits for the specific measurements that drove
+each change, rather than duplicating that analysis here where it will go
+stale.
+
+## What each page does
+
+- **Home** (`/`) — see homepage architecture above.
 - **Work** (`/work`) — the journey, framed by mandate/scope/selected work for
-  the two most recent chapters; recent Per Diem highlights; link to Selected
-  Work (`/projects`).
-- **Per Diem** (`/per-diem`) — the latest issue in an editorial treatment,
-  then the full reverse-chronological archive. See "Per Diem content &
-  publishing" below.
-- **Advisory** (`/advisory`) — positioning plus two full, anonymized case
-  studies written step-by-step (context → approach → tradeoffs →
-  recommendation).
+  the two most recent chapters (both default closed); the problem-space
+  timeline; the Career Systems Matrix; link to Selected Work (`/projects`).
+- **Per Diem** (`/per-diem`) — the real logo, the latest issue in a featured
+  visual treatment, then the full reverse-chronological archive with cover
+  thumbnails. See "Per Diem content & publishing" below.
+- **Advisory** (`/advisory`) — hero with explicit email/LinkedIn CTAs, a 2×2
+  "Where I'm Most Useful" grid, a proof-point grid, three engagement models,
+  two real case-study previews (each expandable to the full original
+  write-up), and a final CTA.
 - **Udit Uncovered** (`/uncovered`) — the curated photo doorway into
   `@udituncovered`, not a live embed.
-- **About** (`/about`) — the narrative that ties the other four together.
-- **Projects** (`/projects`) — "Selected Work" in full: independent
-  GitHub builds, reachable from Work and Home but not in primary nav.
+- **Projects** (`/projects`) — "Selected Work" in full: independent GitHub
+  builds, reachable from Work and Home but not in primary nav.
 
-## Per Diem content & publishing
+## Per Diem content, publishing & freshness
 
 Per Diem is the site's only property with a real content model:
 `src/content/per-diem.json` (raw data) plus `src/content/per-diem.js` (sorts
 by `publishedAt`, exports `PER_DIEM_ISSUES` / `PER_DIEM_LATEST` /
-`PER_DIEM_RECENT`). The homepage module, the Work page's highlight strip, and
-the full `/per-diem` archive all read from this one source — nothing is
-hardcoded per page.
+`PER_DIEM_RECENT`). The homepage module and the full `/per-diem` archive both
+read from this one source — nothing is hardcoded per page. The logo lives at
+`public/branding/per-diem-logo.png` (a real supplied asset — see the "known
+limitations" note at the bottom of this section).
 
 **LinkedIn remains the canonical publishing surface.** The site is a
 discovery/index layer, not a mirror of full article content.
 
-To publish a new issue after posting it on LinkedIn:
+**Two ways new issues get in:**
 
-```bash
-npm run perdiem:add <linkedin-article-url>
-```
+1. **Automatic (best-effort, not real-time).** A scheduled GitHub Action
+   (`.github/workflows/perdiem-sync.yml`) runs `scripts/perdiem-sync.mjs`
+   every 6 hours plus on manual dispatch. It reads LinkedIn's public
+   newsletter listing page (verified directly to return usable,
+   unauthenticated metadata — not assumed), discovers any article slugs not
+   already in `per-diem.json`, and for each new one fetches its own public
+   `og:title`/`og:description`/JSON-LD `datePublished`. New entries get
+   **objective facts only** — the editorial `connectionA`/`connectionB`/
+   `thesis` fields that drive the "connected thinking" framing are left
+   unset, since a script has no basis to invent that judgment call. Before
+   committing anything, the workflow runs `npm ci && npm run build` and only
+   pushes if that succeeds. A run that finds nothing new is a clean no-op —
+   it never touches the file, never opens a PR, never fails the build.
+   **Known limitations, stated plainly:** LinkedIn's newsletter page only
+   surfaces a handful of recent articles (there is no public "list every
+   issue" endpoint), so this can discover ongoing freshness but is not a
+   full-archive backfill tool; and LinkedIn may rate-limit or block requests
+   from GitHub Actions' cloud IP ranges more aggressively than it did during
+   local verification from a residential IP — every failure mode is handled
+   as a silent no-op, so this is deliberately "best-effort, 6-hour cadence,"
+   never described as live.
+2. **Manual (the fallback, and still the only way to add editorial framing).**
 
-The script tries to read the URL's public OpenGraph metadata (title,
-description, image) first. LinkedIn's post/article pages sit behind a login
-wall for most requests, so in practice it usually falls back to a few manual
-prompts (title, excerpt, cover image, tags, read time, publish date) —
-deliberately no headless browser, scraping library, or LinkedIn API. It
-appends the new issue to `per-diem.json`; commit and deploy, and the homepage
-+ archive update automatically.
+   ```bash
+   npm run perdiem:add <linkedin-article-url>
+   ```
 
-To backfill an older issue rather than one published today, pass an explicit
-date:
+   Tries public OpenGraph metadata first, falls back to interactive prompts
+   (title, excerpt, cover image, tags, read time, publish date, and the
+   `connectionA`/`connectionB`/`thesis` fields the automatic path can't set).
+   Refuses to add a duplicate URL or id. To backfill an older issue:
 
-```bash
-npm run perdiem:add <linkedin-article-url> -- --date 2026-09-10
-```
+   ```bash
+   npm run perdiem:add <linkedin-article-url> -- --date 2026-09-10
+   ```
 
-The publish-date prompt defaults to **today's date in Asia/Kolkata**, not UTC
-or the machine's local timezone — the newsletter and its audience are
-India-based, and near midnight UTC those disagree by a full calendar day. The
-script also refuses to add an issue whose URL or generated id already exists
-in `per-diem.json`, so re-running the command by mistake can't silently
-duplicate an entry.
+   The publish-date prompt defaults to **today's date in Asia/Kolkata**, not
+   UTC or the machine's local timezone.
 
-The seed dataset is the real, current Per Diem run — verified issue-by-issue
-against the article pages' own server-rendered `og:title` / `og:description`
-/ `datePublished` (LinkedIn's login wall blocks a plain fetch of the visible
-article body, but these tags are present without one), not carried over from
-the old site's generic personal-LinkedIn-posts array. Earlier editions
-referenced anecdotally elsewhere weren't linked from the newsletter's own
-index page and couldn't be independently verified, so they were left out
-rather than guessed at.
+   You can also run the automatic sync locally without waiting for the
+   schedule: `npm run perdiem:sync`.
+
+**Known limitation — Per Diem logo asset:** the current file
+(`public/branding/per-diem-logo.png`) is 230×157px with a flat white
+background baked in. It's usable at the sizes currently in use, but a
+higher-resolution and/or transparent-background export would hold up better
+if the logo is ever used larger or against a non-white surface.
 
 ## How it was built
 
 **Architecture**: A React SPA (Vite) with client-side routing, a single
-shared design-token system (`src/constants.js`) driving color/typography
-across every page, a lightweight content model for Per Diem
-(`src/content/`), and a small reusable component library (`Layout`, `Reveal`
-for scroll-triggered animation, `CaseStudy` for structured case-study
-rendering, `Icons`).
+shared design-token system (`src/constants.js`) driving color, typography,
+and layout (`LAYOUT.contentMax`/`proseMax`/padding tokens) across every
+page, a lightweight content model for Per Diem (`src/content/`), and a small
+reusable component library (`Layout`, `Reveal` for scroll-triggered
+animation, `CaseStudy` for structured case-study rendering, `Icons`).
+
+**Typography**: IBM Plex Sans (weights 400/500/600/700, real italics) as the
+single family site-wide, plus IBM Plex Mono reserved for tabular/proof-number
+display (Advisory's stat grid, Per Diem archive dates). Both load via a real
+`<link>` in `index.html` rather than a CSS `@import`, so the font request
+starts the moment the HTML is parsed instead of waiting on the app's own
+stylesheet to load first.
 
 **Key decisions**:
 - **A custom block schema for case studies (`src/case-studies.js`) instead of
@@ -117,11 +162,11 @@ rendering, `Icons`).
   `CaseStudy.jsx`. Adding a new case study is a content change, not a layout
   change.
 - **One shared warm-editorial palette, one primary accent** (`C` in
-  `constants.js`) used across Work/Per Diem/Advisory/nav, with a single
-  reserved secondary accent (`C.rust`) for Udit Uncovered only — distinct but
-  coherent, not a rainbow of per-section colors.
-- **A real (if minimal) content model for Per Diem**, so publishing doesn't
-  require touching page components.
+  `constants.js`) used across every page, with a single reserved secondary
+  accent (`C.rust`) for Udit Uncovered only.
+- **A real content model for Per Diem**, with both a manual publishing path
+  and a best-effort automatic freshness path, so publishing doesn't require
+  touching page components and doesn't always require a manual step either.
 - **Scroll-triggered reveal as a shared primitive.** `Reveal.jsx` respects
   `prefers-reduced-motion` and wraps content once rather than re-implementing
   motion per page.
@@ -139,14 +184,15 @@ React, Vite, plain CSS-in-JS (no framework), deployed on Vercel.
 git clone <repo-url>
 cd uditkhurana-website
 npm install
-npm run dev             # local dev server
-npm run build            # production build to dist/
-npm run perdiem:add <url> # publish a new Per Diem issue
+npm run dev              # local dev server
+npm run build             # production build to dist/
+npm run perdiem:add <url>  # manually publish a new Per Diem issue
+npm run perdiem:sync       # run the automatic freshness sync locally
 ```
 
 Deployed via Vercel using `vercel.json` (Vite framework preset, SPA rewrite to
-`index.html`, plus 301 redirects for the retired `/adventure` and `/fitness`
-routes). No environment variables are required — the site has no backend.
+`index.html`, plus 301 redirects for `/about`, `/adventure`, and `/fitness`).
+No environment variables are required — the site has no backend.
 
 ## License
 

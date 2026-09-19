@@ -1,5 +1,5 @@
 import Layout from "../components/Layout.jsx";
-import { C, PROJECTS, RESEARCH_PORTFOLIO_URL, SOCIAL } from "../constants.js";
+import { C, LAYOUT, PROJECTS, RESEARCH_PORTFOLIO_URL, SOCIAL } from "../constants.js";
 import Reveal from "../components/Reveal.jsx";
 
 
@@ -17,13 +17,13 @@ export default function ProjectsPage() {
         .project-card:hover{border-color:${C.border};background:${C.bgLight};}
         .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
         .research-banner{display:flex;align-items:center;justify-content:space-between;gap:24px;}
-        .sp{padding:80px 80px;}
+        .sp{padding:72px 56px;}
         @media(max-width:768px){.pgrid{grid-template-columns:1fr!important;}.sp{padding:64px 24px!important;}.research-banner{flex-direction:column!important;align-items:flex-start!important;}}
       `}</style>
 
       {/* Hero */}
-      <div className="sp" style={{ padding: "80px 80px 64px", background: C.bgSection, borderBottom: `1px solid ${C.borderSoft}` }}>
-        <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
+      <div className="sp" style={{ padding: "72px 56px 64px", background: C.bgSection, borderBottom: `1px solid ${C.borderSoft}` }}>
+        <div style={{ maxWidth: LAYOUT.contentMax, margin: "0 auto" }}>
           <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: C.accent, marginBottom: "14px" }}>Projects</p>
           <h1 style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(28px,4vw,50px)", fontWeight: 400, color: C.textHigh, lineHeight: 1.1, marginBottom: "16px" }}>
             What gets built <em style={{ fontStyle: "italic", color: C.accent }}>outside the day job.</em>
@@ -35,8 +35,8 @@ export default function ProjectsPage() {
       </div>
 
       {/* GitHub project cards */}
-      <div className="sp" style={{ padding: "64px 80px", background: C.bg }}>
-        <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
+      <div className="sp" style={{ padding: "64px 56px", background: C.bg }}>
+        <div style={{ maxWidth: LAYOUT.contentMax, margin: "0 auto" }}>
           <Reveal>
             <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", flexWrap: "wrap", gap: "10px", marginBottom: "26px" }}>
               <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: C.accent }}>On GitHub</p>
@@ -70,8 +70,8 @@ export default function ProjectsPage() {
       {/* Research portfolio — deliberately pulled out of the grid above and
           given its own heading + treatment, so it reads as "a different kind
           of thing" (writing/research) rather than an 8th code repo. */}
-      <div className="sp" style={{ padding: "0 80px 80px", background: C.bg }}>
-        <div style={{ maxWidth: "1080px", margin: "0 auto" }}>
+      <div className="sp" style={{ padding: "0 56px 80px", background: C.bg }}>
+        <div style={{ maxWidth: LAYOUT.contentMax, margin: "0 auto" }}>
           <Reveal>
             <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: C.accent, marginBottom: "16px" }}>Deeper Research</p>
             <a href={RESEARCH_PORTFOLIO_URL} target="_blank" rel="noreferrer" style={{ display: "block" }}>
@@ -99,7 +99,7 @@ export default function ProjectsPage() {
       </div>
 
       {/* CTA to Advisory */}
-      <div className="sp" style={{ padding: "72px 80px", background: C.bgSection, borderTop: `1px solid ${C.borderSoft}`, textAlign: "center" }}>
+      <div className="sp" style={{ padding: "72px 56px", background: C.bgSection, borderTop: `1px solid ${C.borderSoft}`, textAlign: "center" }}>
         <div style={{ maxWidth: "600px", margin: "0 auto" }}>
           <Reveal>
             <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.3em", textTransform: "uppercase", color: C.accent, marginBottom: "16px" }}>Advisory</p>
