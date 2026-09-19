@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "perdiem:add": "node scripts/perdiem-add.mjs"
+    "perdiem:add": "node scripts/perdiem-add.mjs",
+    "perdiem:sync": "node scripts/perdiem-sync.mjs"
   },
   "dependencies": {
     "react": "^18.2.0",

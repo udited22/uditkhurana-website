@@ -1,9 +1,15 @@
 #!/usr/bin/env node
 // Idempotent sync: discovers new Per Diem issues from LinkedIn's public
 // newsletter page and appends them to src/content/per-diem.json without
-// any manual step. Intended to run on a schedule (see
-// .github/workflows/perdiem-sync.yml) with `npm run perdiem:add` kept as
-// the manual fallback for anything this can't do unattended.
+// any manual step. Runs on a schedule via GitHub Actions
+// (.github/workflows/perdiem-sync.yml) every 6 hours, plus manual
+// dispatch; `npm run perdiem:sync` runs the same script locally.
+// `npm run perdiem:add` stays in place as the manual fallback for
+// anything this can't do unattended.
+//
+// This is best-effort automatic freshness on a 6-hour cadence, not a
+// real-time feed — do not describe it as "live" anywhere on the site or
+// in docs.
 //
 // What this can and can't do, stated plainly:
 // - LinkedIn's newsletter landing page (linkedin.com/newsletters/<slug>)

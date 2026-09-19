@@ -134,7 +134,7 @@ export default function Layout({ children, activePath = "/" }) {
               <a href={SOCIAL.linkedin} target="_blank" rel="noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: C.textMid }}><LI /> LinkedIn</a>
               <a href="/per-diem" onClick={e => { e.preventDefault(); navigate("/per-diem"); }} style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: C.textMid }}>Per Diem</a>
               <a href={SOCIAL.instagram} target="_blank" rel="noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: C.textMid }}><IG /> Instagram</a>
-              <a href={`mailto:${CONTACT_EMAIL}`} style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: C.textMid }}><Mail /> Email</a>
+              <a href={`mailto:${CONTACT_EMAIL}`} style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "11px", letterSpacing: "0.02em", color: C.textMid }}><Mail /> {CONTACT_EMAIL}</a>
             </div>
           </div>
           <div style={{ marginTop: "32px", paddingTop: "20px", borderTop: `1px solid ${C.borderSoft}` }}>

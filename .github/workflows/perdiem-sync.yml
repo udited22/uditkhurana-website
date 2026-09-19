@@ -25,12 +25,29 @@ jobs:
       - name: Run sync
         run: node scripts/perdiem-sync.mjs
 
-      - name: Commit if changed
+      - name: Check for changes
+        id: diff
         run: |
           if git diff --quiet -- src/content/per-diem.json; then
-            echo "No changes — nothing to commit."
-            exit 0
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      # Only reached when the sync actually wrote something. A newly-added
+      # issue is untrusted-ish input (scraped from a page, not hand-typed) —
+      # verifying the site still builds before committing means a malformed
+      # entry (bad JSON shape, a title with characters that break something
+      # downstream) gets caught here instead of shipping to production.
+      - name: Verify build before committing
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          npm ci
+          npm run build
+
+      - name: Commit if changed
+        if: steps.diff.outputs.changed == 'true'
+        run: |
           git config user.name "perdiem-sync-bot"
           git config user.email "actions@github.com"
           git add src/content/per-diem.json
