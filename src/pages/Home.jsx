@@ -44,21 +44,36 @@ export default function HomePage() {
   const [uncoveredIdx, setUncoveredIdx] = useState(0);
   const scene = UNCOVERED_SCENES[uncoveredIdx];
 
-  // Direct load/refresh of a URL like /#do-hard-things: the hash is already
-  // in window.location on first mount, before any nav click ever happens.
-  // React commits this component's full DOM synchronously before this
-  // effect runs, so the target section is guaranteed to exist by now.
+  // Restores scroll position from window.location.hash — used both on
+  // mount (direct load/refresh of /#do-hard-things, or arriving here from
+  // another page) and on every popstate while Home stays mounted (Back/
+  // Forward between "/" and "/#do-hard-things" never changes the pathname,
+  // so Home never remounts and the mount-only case alone can't handle it —
+  // this is the actual fix for that history edge case).
   useEffect(() => {
-    if (!window.location.hash) return;
-    // A fresh top-level load (vs. a client-side transition from another
-    // page) can reach this effect before the browser has finished its
-    // first layout pass — scrollIntoView silently no-ops against a
-    // not-yet-laid-out target in that case. Two rAFs reliably wait past
-    // both this paint and the one after it, which is enough for layout to
-    // settle; this is the standard fix for this exact class of bug, not
-    // an arbitrary timing guess.
-    const hash = window.location.hash;
-    requestAnimationFrame(() => requestAnimationFrame(() => scrollToHash(hash)));
+    const applyHashScroll = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        // A fresh top-level load (vs. a client-side transition from
+        // another page) can reach this before the browser has finished its
+        // first layout pass — scrollIntoView silently no-ops against a
+        // not-yet-laid-out target in that case. Two rAFs reliably wait
+        // past both this paint and the one after it, which is enough for
+        // layout to settle; this is the standard fix for this exact class
+        // of bug, not an arbitrary timing guess.
+        requestAnimationFrame(() => requestAnimationFrame(() => scrollToHash(hash)));
+      } else {
+        // Hash just disappeared (Back from #do-hard-things to /) — jump to
+        // top instantly. This restores a browser navigation, not a user's
+        // nav-link click, so it's deliberately never animated regardless
+        // of prefers-reduced-motion, matching native back-button behavior.
+        window.scrollTo({ top: 0, behavior: "auto" });
+      }
+    };
+
+    applyHashScroll();
+    window.addEventListener("popstate", applyHashScroll);
+    return () => window.removeEventListener("popstate", applyHashScroll);
   }, []);
 
   return (
