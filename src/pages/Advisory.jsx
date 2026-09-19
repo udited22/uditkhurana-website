@@ -22,18 +22,21 @@ const CASE_PREVIEWS = [
 ];
 
 const ENGAGEMENTS = [
-  { title: "Product / architecture teardown", detail: "A focused working session around one difficult decision, followed by clear observations and next steps." },
-  { title: "Decision sprint", detail: "A short engagement to map the problem, operating model, dependencies, options and recommendation." },
-  { title: "Selective ongoing advisory", detail: "Periodic involvement for founding/product teams navigating a difficult regulated-finance build." },
+  { n: "01", title: "Product / architecture teardown", detail: "A focused working session around one difficult decision, followed by clear observations and next steps." },
+  { n: "02", title: "Decision sprint", detail: "A short engagement to map the problem, operating model, dependencies, options and recommendation." },
+  { n: "03", title: "Selective ongoing advisory", detail: "Periodic involvement for founding/product teams navigating a difficult regulated-finance build." },
 ];
 
+// Same 6 facts as before, restructured as stat/label pairs for a 2x3 grid
+// instead of one long monospaced string — wording unchanged from the
+// approved proof, just given real visual hierarchy.
 const PROOF = [
-  "10+ years in financial systems",
-  "4–5 major broker integrations",
-  "40+ AMCs",
-  "₹250Cr+ mutual-fund transactions",
-  "high-volume equity transaction infrastructure",
-  "regulated global-investing / GIFT City build experience",
+  { stat: "10+ years", label: "Financial systems" },
+  { stat: "4–5", label: "Major broker integrations" },
+  { stat: "40+", label: "AMCs" },
+  { stat: "₹250Cr+", label: "MF transactions" },
+  { stat: "High-volume", label: "Equity infrastructure" },
+  { stat: "GIFT City", label: "Regulated global-investing build" },
 ];
 
 function ProblemModule({ p }) {
@@ -41,6 +44,15 @@ function ProblemModule({ p }) {
     <div style={{ padding: "22px 24px", border: `1px solid ${C.borderSoft}`, borderRadius: "8px" }}>
       <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "16px", fontWeight: 600, color: C.textHigh, marginBottom: "10px" }}>{p.title}</p>
       <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "13.5px", fontWeight: 400, color: C.textMid, lineHeight: 1.6 }}>{p.detail}</p>
+    </div>
+  );
+}
+
+function ProofCell({ item }) {
+  return (
+    <div style={{ padding: "18px 0" }}>
+      <p style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: "22px", fontWeight: 500, color: C.accent, marginBottom: "6px" }}>{item.stat}</p>
+      <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "12.5px", fontWeight: 400, color: C.textMid }}>{item.label}</p>
     </div>
   );
 }
@@ -80,6 +92,10 @@ export default function AdvisoryPage() {
         @media(max-width:700px){.adv-problem-grid{grid-template-columns:1fr!important;}}
         .adv-case-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
         @media(max-width:820px){.adv-case-grid{grid-template-columns:1fr!important;}}
+        .adv-proof-grid{display:grid;grid-template-columns:repeat(3,1fr);column-gap:32px;}
+        .adv-proof-grid>div{border-top:1px solid ${C.borderSoft};}
+        @media(max-width:700px){.adv-proof-grid{grid-template-columns:repeat(2,1fr)!important;column-gap:20px!important;}}
+        .adv-engagement{border-top:1px solid ${C.borderSoft};padding-top:18px;}
         summary::-webkit-details-marker{display:none;}
       `}</style>
 
@@ -134,9 +150,9 @@ export default function AdvisoryPage() {
             <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "16px", fontWeight: 400, color: C.textMid, lineHeight: 1.65, maxWidth: LAYOUT.proseMax, marginBottom: "28px" }}>
               The useful part is not any one credential. It is being able to connect product, regulation, infrastructure and operations before they become four different problems.
             </p>
-            <p style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: "12.5px", color: C.textLow, lineHeight: 2 }}>
-              {PROOF.join("  ·  ")}
-            </p>
+            <div className="adv-proof-grid">
+              {PROOF.map((item) => <ProofCell key={item.label} item={item} />)}
+            </div>
           </Reveal>
         </div>
       </div>
@@ -148,7 +164,8 @@ export default function AdvisoryPage() {
             <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9px", fontWeight: 700, letterSpacing: "0.24em", textTransform: "uppercase", color: C.accent, marginBottom: "22px" }}>How We Can Work Together</p>
             <div className="adv-problem-grid" style={{ gridTemplateColumns: "repeat(3,1fr)" }}>
               {ENGAGEMENTS.map((e) => (
-                <div key={e.title}>
+                <div key={e.title} className="adv-engagement">
+                  <p style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: "10.5px", fontWeight: 500, color: C.accent, marginBottom: "12px" }}>{e.n}</p>
                   <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "15px", fontWeight: 600, color: C.textHigh, marginBottom: "8px" }}>{e.title}</p>
                   <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "13px", color: C.textMid, lineHeight: 1.6 }}>{e.detail}</p>
                 </div>
