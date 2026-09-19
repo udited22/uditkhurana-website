@@ -10,6 +10,51 @@ const LI = LinkedInIcon, IG = InstagramIcon, Mail = MailIcon;
 // code-drawn "P" square placeholder. Source file is 230×157 with a flat
 // white background baked in — fine at these sizes, would need a cleaner
 // export to scale much larger.
+// Shared by any nav link with a hash target (currently just "Do Hard
+// Things" -> "/#do-hard-things") and by Home.jsx's own mount effect for
+// direct-load/refresh of a hash URL. Scrolls immediately if the target is
+// already in the DOM (the common case once react has mounted the section);
+// no-ops otherwise, since that means we're still on a different page and
+// about to navigate — Home.jsx's mount effect (see Home.jsx) picks the
+// hash up from window.location.hash once it actually mounts. No setTimeout
+// anywhere: React commits a component's full DOM synchronously before any
+// effect runs, so by the time either caller checks, the element is either
+// already there or it genuinely isn't on this page.
+export function scrollToHash(hash) {
+  const el = document.querySelector(hash);
+  if (!el) return false;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  el.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+  return true;
+}
+
+// Small, subordinate icon row next to the header name — "Udit Khurana [in]
+// [ig] [mail]", not a social toolbar. No background/circle, muted color at
+// rest, existing accent on hover/focus. Reused as-is (just a className
+// swap) for the mobile-menu placement below 480px, where the header
+// version hides because there isn't room next to the hamburger.
+function HeaderSocial({ className }) {
+  const items = [
+    { Icon: LinkedInIcon, label: "LinkedIn", href: SOCIAL.linkedin, external: true },
+    { Icon: InstagramIcon, label: "Instagram", href: SOCIAL.instagram, external: true },
+    { Icon: MailIcon, label: "Email", href: `mailto:${CONTACT_EMAIL}` },
+  ];
+  return (
+    <div className={className} style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+      {items.map(({ Icon, label, href, external }) => (
+        <a key={label} href={href} title={label} aria-label={label}
+          target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined}
+          style={{ display: "flex", color: C.textMid, transition: "color .15s ease" }}
+          onMouseEnter={e => { e.currentTarget.style.color = C.accent; }}
+          onMouseLeave={e => { e.currentTarget.style.color = C.textMid; }}
+        >
+          <Icon size={15} />
+        </a>
+      ))}
+    </div>
+  );
+}
+
 export function PerDiemWordmark({ size = "md" }) {
   const big = size === "lg";
   return (
@@ -35,7 +80,10 @@ export default function Layout({ children, activePath = "/" }) {
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", h, { passive: true });
-    window.scrollTo(0, 0);
+    // Don't stomp on a hash-targeted scroll (e.g. a direct load of
+    // /#do-hard-things, or Home.jsx's own mount effect scrolling there) —
+    // only reset to top when there's no hash to honor.
+    if (!window.location.hash) window.scrollTo(0, 0);
     return () => window.removeEventListener("scroll", h);
   }, []);
 
@@ -44,6 +92,8 @@ export default function Layout({ children, activePath = "/" }) {
     if (href.startsWith("http")) { window.open(href, "_blank"); return; }
     window.history.pushState({}, "", href);
     window.dispatchEvent(new PopStateEvent("popstate"));
+    const hashIndex = href.indexOf("#");
+    if (hashIndex !== -1) scrollToHash(href.slice(hashIndex));
   };
 
   return (
@@ -54,9 +104,17 @@ export default function Layout({ children, activePath = "/" }) {
            both the full link row and the hamburger render at every width. */
         .nav-hamburger{display:none;}
         .site-nav{padding:0 52px;}
+        .mobile-social{display:none;margin-top:20px;padding-top:20px;border-top:1px solid ${C.borderSoft};}
         @media(max-width:980px){
           .nav-desktop{display:none!important;}
           .nav-hamburger{display:flex!important;}
+        }
+        /* Below 480px there isn't comfortable room for the name + 3 icons +
+           hamburger together — the header hides its icon row and the same
+           row reappears at the bottom of the opened mobile menu instead. */
+        @media(max-width:480px){
+          .header-social{display:none!important;}
+          .mobile-social{display:flex!important;}
         }
         @media(max-width:600px){
           .site-nav{padding:0 20px!important;}
@@ -75,9 +133,12 @@ export default function Layout({ children, activePath = "/" }) {
         backdropFilter: scrolled ? "blur(20px)" : "none",
         transition: "all 0.3s ease",
       }}>
-        <a href="/" onClick={e => { e.preventDefault(); navigate("/"); }} style={{ display: "flex", flexDirection: "column", gap: "2px", lineHeight: 1, minWidth: 0 }}>
-          <span style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "19px", fontWeight: 500, letterSpacing: "0.03em", color: C.textHigh, whiteSpace: "nowrap" }}>Udit Khurana</span>
-        </a>
+        <div style={{ display: "flex", alignItems: "center", gap: "18px", minWidth: 0 }}>
+          <a href="/" onClick={e => { e.preventDefault(); navigate("/"); }} style={{ lineHeight: 1, flexShrink: 0 }}>
+            <span style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "19px", fontWeight: 500, letterSpacing: "0.03em", color: C.textHigh, whiteSpace: "nowrap" }}>Udit Khurana</span>
+          </a>
+          <HeaderSocial className="header-social" />
+        </div>
 
         <div className="nav-desktop" style={{ display: "flex", gap: "30px", alignItems: "center" }}>
           {NAV_LINKS.map(l => (
@@ -113,6 +174,10 @@ export default function Layout({ children, activePath = "/" }) {
               {l.label}
             </a>
           ))}
+          {/* Only visible below 480px (see .mobile-social rule) — the same
+              width the header's own icon row hides at, since there's no
+              room left beside the name and hamburger down there. */}
+          <HeaderSocial className="mobile-social" />
         </div>
       )}
 

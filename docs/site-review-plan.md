@@ -16,10 +16,24 @@ A React SPA (Vite), client-side routed, one design-token system
 
 ## Primary navigation
 
-`Work · Per Diem · Advisory · Udit Uncovered` — four items. There is no
-"About" in primary nav; `/about` 301-redirects to `/` (`vercel.json`). The
-operating-philosophy narrative that used to live on a standalone About page
-is now a compact module near the bottom of the homepage.
+`Work · Per Diem · Advisory · Do Hard Things · Udit Uncovered` — five items.
+
+**"Do Hard Things" is a primary navigation identity pillar that anchors to
+a homepage section (`/#do-hard-things`) rather than owning a standalone
+route.** This is deliberate, not a placeholder waiting for a real page —
+the section already has the right content (Ironman, scuba, adventure,
+real photography), and duplicating it onto its own route would just be
+the same content twice. Do not create a standalone Do Hard Things page or
+route unless explicitly asked to. See `Layout.jsx`'s `navigate()` +
+`scrollToHash()` for how a hash href like this one is handled correctly
+from every page (client-side transition, browser back, and a direct
+load/refresh of the hash URL all work — see the "Do Hard Things nav"
+section of `NAV_LINKS`'s own comment in `constants.js`).
+
+There is no "About" in primary nav; `/about` 301-redirects to `/`
+(`vercel.json`). The operating-philosophy narrative that used to live on a
+standalone About page is now a compact module near the bottom of the
+homepage.
 
 ## Homepage section order
 

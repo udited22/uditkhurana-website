@@ -8,6 +8,16 @@ import AdvisoryPage    from "./pages/Advisory.jsx";
 import PerDiemPage     from "./pages/PerDiem.jsx";
 import NotFoundPage    from "./pages/NotFound.jsx";
 
+// A hash-driven scroll (e.g. loading /#do-hard-things fresh) was being
+// scrolled to correctly by React, then immediately reset back to the top —
+// the browser's own default scroll-restoration behavior on a genuine
+// top-level navigation runs after our mount effects and wins. Taking
+// manual control here (a standard, well-supported technique, not a hack)
+// stops the browser from fighting our intentional scroll position.
+if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+  window.history.scrollRestoration = "manual";
+}
+
 // Font loading lives in index.html now (a real <link>, discovered by the
 // browser immediately on HTML parse) rather than a CSS @import here, which
 // would only be discovered after this stylesheet itself loads and parses.
