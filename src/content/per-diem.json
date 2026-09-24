@@ -1,5 +1,14 @@
 [
   {
+    "id": "compression-staleness",
+    "title": "Compression Staleness",
+    "publishedAt": "2026-09-24",
+    "url": "https://www.linkedin.com/pulse/compression-staleness-udit-khurana-ihwvf",
+    "excerpt": "Groww published a useful explainer last week on the AAA-to-D bond-rating scale: AAA at one end, default at the other, with a series of increasingly risky grades in between. It is exactly the kind of simplification retail investing needs.",
+    "tags": [],
+    "coverImage": "https://media.licdn.com/dms/image/v2/D4D12AQFv94e80Hbn3w/article-cover_image-shrink_720_1280/B4DaDPRJdrHsAY-/0/1790183779597?e=2147483647&v=beta&t=5FnSnL9HrqyzJEb1N4XxfxYOeFZlx5EJ68BkIpqQ_GI"
+  },
+  {
     "id": "you-can-buy-expertise-can-you-buy-elapsed-time",
     "title": "You Can Buy Expertise. Can You Buy Elapsed Time?",
     "publishedAt": "2026-09-23",
