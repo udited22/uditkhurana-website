@@ -104,7 +104,7 @@ export default function HomePage() {
                 Product · Markets · Systems
               </p>
               <h1 style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(32px,4.4vw,56px)", fontWeight: 600, lineHeight: 1.1, color: C.textHigh, letterSpacing: "-0.01em", marginBottom: "22px" }}>
-                I build at the <em style={{ fontStyle: "italic", fontWeight: 600, color: C.accent }}>intersections</em> of markets, technology, and regulated finance.
+                I build at the <em style={{ fontStyle: "italic", fontWeight: 600, color: C.accent }}>intersections</em> of markets, technology, and financial infrastructure.
               </h1>
               <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "16px", fontWeight: 400, color: C.textMid, lineHeight: 1.6, maxWidth: "48ch", marginBottom: "18px" }}>
                 Outside work, that curiosity gets physical too — IRONMAN 70.3, diving, travel, writing, and the occasional hard thing.
