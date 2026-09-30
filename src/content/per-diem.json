@@ -1,5 +1,14 @@
 [
   {
+    "id": "the-coherence-trap",
+    "title": "The Coherence Trap",
+    "publishedAt": "2026-09-30",
+    "url": "https://www.linkedin.com/pulse/coherence-trap-udit-khurana-x0zzf",
+    "excerpt": "Imagine a compliance reviewer approving a large transaction under pressure. There is a deadline, forty other cases in the queue, and nothing in this one looks unusual enough to stop.",
+    "tags": [],
+    "coverImage": "https://media.licdn.com/dms/image/v2/D4D12AQFdZX8RnCHfbQ/article-cover_image-shrink_720_1280/B4DaDtxHWRI0AQ-/0/1790695475528?e=2147483647&v=beta&t=EVq0-30lJZagJoPCdPqk9eym9bB2Yy2KNZuWGKCQaMg"
+  },
+  {
     "id": "the-shared-plumbing-problem",
     "title": "The Shared Plumbing Problem",
     "publishedAt": "2026-09-29",
