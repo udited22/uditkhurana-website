@@ -1,5 +1,14 @@
 [
   {
+    "id": "the-outsourced-identity",
+    "title": "The Outsourced Identity",
+    "publishedAt": "2026-10-02",
+    "url": "https://www.linkedin.com/pulse/outsourced-identity-udit-khurana-hbzjf",
+    "excerpt": "Someone asks, “What do you do?” And almost automatically, we answer with a role. “I’m a product manager at X.",
+    "tags": [],
+    "coverImage": "https://media.licdn.com/dms/image/v2/D4D12AQFDRUVqBt09yg/article-cover_image-shrink_720_1280/B4DaD4H5LnKIAQ-/0/1790869220301?e=2147483647&v=beta&t=MR8WLorm_5s8oZze-BVmr434pFhcNwey1XJO4BlLgL8"
+  },
+  {
     "id": "grading-the-grader",
     "title": "Grading the Grader",
     "publishedAt": "2026-10-01",
