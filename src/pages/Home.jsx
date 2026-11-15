@@ -263,7 +263,7 @@ export default function HomePage() {
               Things I wanted to experience for myself.
             </h2>
             <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.8)", marginBottom: "22px" }}>
-              A running record of curiosity outside work.
+              A running record of a life beyond one dimension.
             </p>
 
             <div style={{ display: "flex", gap: "18px", flexWrap: "wrap", marginBottom: "22px" }}>
