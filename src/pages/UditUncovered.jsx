@@ -40,7 +40,7 @@ export default function UditUncoveredPage() {
         .sp{padding:${LAYOUT.padDesktop} 56px;}
         @media(max-width:900px){.unc-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:220px;}}
         @media(max-width:768px){.sp{padding:48px 24px!important;}}
-        @media(max-width:480px){.unc-grid{grid-template-columns:1fr!important;}.unc-grid>div{grid-column:span 1!important;grid-row:span 1!important;height:280px;}}
+        @media(max-width:480px){.unc-grid{grid-template-columns:1fr!important;grid-auto-rows:280px;}.unc-grid>div{grid-column:span 1!important;grid-row:span 1!important;}}
       `}</style>
 
       {/* Hero — one photograph filling most of the screen, no card border */}
@@ -48,12 +48,12 @@ export default function UditUncoveredPage() {
         {hero && <img src={hero.src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%)" }} />
         <div className="uncov-hero-pad" style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "0 56px 48px" }}>
-          <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.75)", marginBottom: "14px" }}>@udituncovered</p>
+          <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "10px", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.75)", marginBottom: "14px" }}>Udit Uncovered</p>
           <h1 style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(30px,5.5vw,58px)", fontWeight: 400, color: "#fff", lineHeight: 1.15, maxWidth: "16ch", marginBottom: "14px" }}>
-            Things I wanted to experience for myself.
+            A Life Beyond One Dimension.
           </h1>
-          <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.8)" }}>
-            A running record of curiosity outside work.
+          <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "14px", lineHeight: 1.6, color: "rgba(255,255,255,0.85)", maxWidth: "52ch" }}>
+            A running record of building, training, exploring, reading, experimenting — and the unexpected connections that emerge between them.
           </p>
         </div>
       </section>
@@ -68,8 +68,9 @@ export default function UditUncoveredPage() {
                 <Reveal key={ph.title} delay={(i % 4) * 0.05} style={{ gridColumn: `span ${cs}`, gridRow: `span ${rs}` }}>
                   <div style={{ position: "relative", height: "100%", overflow: "hidden", borderRadius: "4px" }}>
                     <img src={ph.src} alt={ph.title} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-                    <div style={{ position: "absolute", left: "10px", bottom: "8px", right: "10px" }}>
-                      <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9.5px", color: "rgba(255,255,255,0.85)", textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}>{ph.location}</p>
+                    <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "28px 12px 10px", background: "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 100%)", pointerEvents: "none" }}>
+                      <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "12.5px", fontWeight: 500, lineHeight: 1.3, color: "#fff", textShadow: "0 1px 4px rgba(0,0,0,0.5)" }}>{ph.title}</p>
+                      <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "9.5px", lineHeight: 1.4, marginTop: "2px", color: "rgba(255,255,255,0.75)", textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}>{ph.location}</p>
                     </div>
                   </div>
                 </Reveal>
@@ -79,8 +80,14 @@ export default function UditUncoveredPage() {
         </div>
       </div>
 
-      {/* Follow */}
+      {/* Follow — the story continues on Instagram */}
       <div className="sp" style={{ background: C.bgSection, borderTop: `1px solid ${C.borderSoft}`, textAlign: "center" }}>
+        <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "clamp(18px,2.2vw,22px)", fontWeight: 500, lineHeight: 1.35, color: C.textHigh, maxWidth: "34ch", margin: "0 auto 10px" }}>
+          Most of the journey unfolds in real time on Instagram.
+        </p>
+        <p style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "13px", lineHeight: 1.6, color: C.textMid, maxWidth: "52ch", margin: "0 auto 22px" }}>
+          Training, travel, stories, experiments, observations — and whatever I'm curious enough to try next.
+        </p>
         <a href={SOCIAL.instagram} target="_blank" rel="noreferrer"
           style={{ fontFamily: "'IBM Plex Sans',sans-serif", fontSize: "12px", fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: C.rust }}>
           Follow @udituncovered →

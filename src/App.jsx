@@ -65,7 +65,7 @@ const SEO = {
   "/work":        { title: "Work — Udit Khurana", desc: "Product leadership across financial services, capital markets, and crypto — the systems underneath how people invest, spend, and move money." },
   "/per-diem":    { title: "Per Diem — Udit Khurana", desc: "An ongoing writing experiment on markets, technology, products, and the systems connecting them." },
   "/advisory":    { title: "Advisory — Udit Khurana", desc: "Selective advisory for founders and product leaders building in fintech, crypto, and regulated financial products." },
-  "/uncovered":   { title: "Udit Uncovered — Udit Khurana", desc: "Travel, endurance, adventure, and the eclectic life outside of work. The curated doorway to @udituncovered." },
+  "/uncovered":   { title: "Udit Uncovered — Udit Khurana", desc: "Udit Uncovered — A Life Beyond One Dimension. A personal record of building, training, exploring, experimenting and the connections between them." },
   "/projects":    { title: "Selected Work — Udit Khurana", desc: "Independent builds outside the day job — mostly crypto-exchange infrastructure and AI agents." },
 };
 
